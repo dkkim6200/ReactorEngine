@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hpp"
 
 Matrix::Matrix(int numRow, int numCol) {
     this->numRow = numRow;

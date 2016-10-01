@@ -1,13 +1,25 @@
-//
-//  main.hpp
-//  ReactorEngine
-//
-//  Created by Daekun Kim on 2016-09-29.
-//  Copyright © 2016 DaekunKim. All rights reserved.
-//
+#ifndef MAIN_HPP
+#define MAIN_HPP
 
-#ifndef main_h
-#define main_h
+#include <iostream>
 
+using namespace std;
 
-#endif /* main_h */
+#ifdef __APPLE__
+//#include <OpenGL/gl3.h>
+#include <GLUT/glut.h>
+#include <OpenGL/glext.h>
+#endif
+
+#ifdef WIN32
+#include <GL/glew.h>
+#endif
+
+#include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+
+#include "vector3.hpp"
+#include "matrix.hpp"
+
+#endif

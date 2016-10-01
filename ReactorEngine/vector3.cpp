@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hpp"
 
 Vector3::Vector3() {
     x = 0;
@@ -6,7 +6,7 @@ Vector3::Vector3() {
     z = 0;
 }
 
-Vector3::Vector3(double x, double y, double z) {
+Vector3::Vector3(float x, float y, float z) {
     this->x = x;
     this->y = y;
     this->z = z;
@@ -31,12 +31,12 @@ Vector3 Vector3::operator-(const Vector3 &vec) {
     return result;
 }
 
-Vector3 Vector3::operator*(const double scalar) {
+Vector3 Vector3::operator*(const float scalar) {
     Vector3 result = Vector3(x * scalar, y * scalar, z * scalar);
     return result;
 }
 
-Vector3 Vector3::operator/(const double scalar) {
+Vector3 Vector3::operator/(const float scalar) {
     Vector3 result = Vector3(x / scalar, y / scalar, z / scalar);
     return result;
 }
@@ -47,7 +47,7 @@ ostream& operator<<(ostream& os, const Vector3 &vec) {
     return os;
 }
 
-double Vector3::getMagnitude() {
+float Vector3::getMagnitude() {
     return sqrt(x*x + y*y + z*z);
 }
 
@@ -55,7 +55,7 @@ Vector3 Vector3::getNormalized() {
     return (*this) / getMagnitude();
 }
 
-double Vector3::dot(Vector3 vec) {
+float Vector3::dot(Vector3 vec) {
     return x * vec.x + y * vec.y + z * vec.z;
 }
 
@@ -66,7 +66,7 @@ Vector3 Vector3::cross(Vector3 vec) {
     return result;
 }
 
-double Vector3::projectScalar(Vector3 vec) {
+float Vector3::projectScalar(Vector3 vec) {
     return dot(vec) / vec.getMagnitude(); // <a> * <b> / |b|
 }
 
@@ -74,8 +74,8 @@ Vector3 Vector3::projectVector(Vector3 vec) {
     return vec * (dot(vec) / vec.dot(vec));
 }
 
-double Vector3::angle(Vector3 vec) {
-    double cosine = dot(vec) / (getMagnitude() * vec.getMagnitude());
+float Vector3::angle(Vector3 vec) {
+    float cosine = dot(vec) / (getMagnitude() * vec.getMagnitude());
     return acos(cosine);
 }
 
@@ -113,11 +113,11 @@ double Vector3::angle(Vector3 vec) {
  * @return No return value.
  */
 
-void Vector3::rotate(Vector3 axis, double angle) {
+void Vector3::rotate(Vector3 axis, float angle) {
     axis = axis.getNormalized();
     angle = angle * M_PI / 180.0;
     
-    Matrix rotationMat = Matrix (3, 3, (double[]) {
+    Matrix rotationMat = Matrix (3, 3, (float[]) {
         cos(angle) + axis.x*axis.x * (1 - cos(angle)), axis.x * axis.y * (1 - cos(angle)) - axis.z * sin(angle), axis.x * axis.z * (1 - cos(angle)) + axis.y * sin(angle),
         axis.y * axis.x * (1 - cos(angle)) + axis.z * sin(angle), cos(angle) + axis.y*axis.y * (1 - cos(angle)), axis.y * axis.z * (1 - cos(angle)) - axis.x * sin(angle),
         axis.z * axis.x * (1 - cos(angle)) - axis.y * sin(angle), axis.z * axis.y * (1 - cos(angle)) + axis.x * sin(angle), cos(angle) + axis.z*axis.z * (1 - cos(angle))});

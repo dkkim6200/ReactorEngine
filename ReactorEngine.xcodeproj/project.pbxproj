@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		835C2D291D9D8C0A0019F073 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C2D281D9D8C0A0019F073 /* main.cpp */; };
+		835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B011D9E194F0019F073 /* OpenGL.framework */; };
+		835C3B061D9E1C480019F073 /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B051D9E1C480019F073 /* libglfw3.dylib */; };
+		835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B0E1D9F621C0019F073 /* GLUT.framework */; };
+		835C3B121D9F64600019F073 /* vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B111D9F64600019F073 /* vector3.cpp */; };
+		835C3B151D9F65050019F073 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B141D9F65050019F073 /* matrix.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,14 @@
 /* Begin PBXFileReference section */
 		835C2D251D9D8C0A0019F073 /* ReactorEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReactorEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		835C2D281D9D8C0A0019F073 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		835C3B011D9E194F0019F073 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		835C3B051D9E1C480019F073 /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.dylib; path = ../../../../../usr/local/lib/libglfw3.dylib; sourceTree = "<group>"; };
+		835C3B0D1D9E2ACE0019F073 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
+		835C3B0E1D9F621C0019F073 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		835C3B101D9F64600019F073 /* vector3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector3.hpp; sourceTree = "<group>"; };
+		835C3B111D9F64600019F073 /* vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector3.cpp; sourceTree = "<group>"; };
+		835C3B131D9F65050019F073 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
+		835C3B141D9F65050019F073 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */,
+				835C3B061D9E1C480019F073 /* libglfw3.dylib in Frameworks */,
+				835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +59,7 @@
 			children = (
 				835C2D271D9D8C0A0019F073 /* ReactorEngine */,
 				835C2D261D9D8C0A0019F073 /* Products */,
+				835C2D2F1D9D8FB30019F073 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +74,24 @@
 		835C2D271D9D8C0A0019F073 /* ReactorEngine */ = {
 			isa = PBXGroup;
 			children = (
+				835C3B0D1D9E2ACE0019F073 /* main.hpp */,
 				835C2D281D9D8C0A0019F073 /* main.cpp */,
+				835C3B101D9F64600019F073 /* vector3.hpp */,
+				835C3B111D9F64600019F073 /* vector3.cpp */,
+				835C3B131D9F65050019F073 /* matrix.hpp */,
+				835C3B141D9F65050019F073 /* matrix.cpp */,
 			);
 			path = ReactorEngine;
+			sourceTree = "<group>";
+		};
+		835C2D2F1D9D8FB30019F073 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				835C3B0E1D9F621C0019F073 /* GLUT.framework */,
+				835C3B051D9E1C480019F073 /* libglfw3.dylib */,
+				835C3B011D9E194F0019F073 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835C3B151D9F65050019F073 /* matrix.cpp in Sources */,
+				835C3B121D9F64600019F073 /* vector3.cpp in Sources */,
 				835C2D291D9D8C0A0019F073 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,14 +250,30 @@
 		835C2D2D1D9D8C0A0019F073 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Debug;
 		};
 		835C2D2E1D9D8C0A0019F073 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Release;
 		};
@@ -246,6 +296,7 @@
 				835C2D2E1D9D8C0A0019F073 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,11 +1,11 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef VECTOR_HPP
+#define VECTOR_HPP
 
 class Vector3 {
 public:
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
     
     /**
      * Initializes new Vector3 object as a zero vector;
@@ -22,19 +22,19 @@ public:
      * @param z Z-value of vector
      * @return Returns new Vector3 object.
      */
-    Vector3(double x, double y, double z);
+    Vector3(float x, float y, float z);
     
     ~Vector3();
     
     void operator=(const Vector3 &vec);
     Vector3 operator+(const Vector3 &vec); // Vector addition
     Vector3 operator-(const Vector3 &vec); // Vector subtraction
-    Vector3 operator*(const double scalar); // Scalar multiple
-    Vector3 operator/(const double scalar); // Scalar division
+    Vector3 operator*(const float scalar); // Scalar multiple
+    Vector3 operator/(const float scalar); // Scalar division
     
     friend ostream& operator<<(ostream& os, const Vector3 &vec);
     
-    double getMagnitude();
+    float getMagnitude();
     Vector3 getNormalized();
     
     /**
@@ -47,7 +47,7 @@ public:
      * @param  vec The vector to be dotted with this vector.
      * @return Dot product of this and 'vec'.
      */
-    double dot(Vector3 vec);
+    float dot(Vector3 vec);
     
     /**
      * Returns the cross product of this and 'vec';
@@ -57,11 +57,11 @@ public:
      */
     Vector3 cross(Vector3 vec);
     
-    double projectScalar(Vector3 vec); // Perform orthogonal scalar projection of this to 'vec'
+    float projectScalar(Vector3 vec); // Perform orthogonal scalar projection of this to 'vec'
     Vector3 projectVector(Vector3 vec); // Perform orthogonal vector projection of this to 'vec'
-    double angle(Vector3 vec); // Return the angle in radians
+    float angle(Vector3 vec); // Return the angle in radians
     
-    void rotate(Vector3 axis, double angle);
+    void rotate(Vector3 axis, float angle);
 };
 
 #endif
