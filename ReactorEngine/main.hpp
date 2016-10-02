@@ -2,13 +2,15 @@
 #define MAIN_HPP
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
 #ifdef __APPLE__
-//#include <OpenGL/gl3.h>
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
 #include <GLUT/glut.h>
-#include <OpenGL/glext.h>
 #endif
 
 #ifdef WIN32
@@ -21,5 +23,12 @@ using namespace std;
 
 #include "vector3.hpp"
 #include "matrix.hpp"
+
+#define SCREEN_WIDTH 512
+#define SCREEN_HEIGHT 512
+
+#define WINDOW_TITLE "Reactor Engine"
+
+#define INFO_LOG_BUF_LEN 1024
 
 #endif

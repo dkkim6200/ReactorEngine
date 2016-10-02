@@ -5,17 +5,17 @@ class Matrix {
 protected:
     int numRow;
     int numCol;
-    double **matrix;
+    float **matrix;
     
 public:
     Matrix(int numRow, int numCol);
-    Matrix(int numRow, int numCol, double *args);
+    Matrix(int numRow, int numCol, float *args);
     ~Matrix();
     
     void operator=(const Matrix &mat);
     Matrix operator+(const Matrix &mat); // Matrix addition
     Matrix operator-(const Matrix &mat); // Matrix subtraction
-    Matrix operator*(const double scalar); // Scalar multiplication
+    Matrix operator*(const float scalar); // Scalar multiplication
     Matrix operator*(const Matrix &mat); // Matrix multiplication
     Matrix operator*(const Vector3 &vec);
     
@@ -24,8 +24,8 @@ public:
     int getNumRow();
     int getNumCol();
     
-    double get(int row, int col);
-    void set(int row, int col, double value);
+    float get(int row, int col);
+    void set(int row, int col, float value);
 };
 
 #endif

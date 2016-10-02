@@ -38,6 +38,8 @@
 		835C3B111D9F64600019F073 /* vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector3.cpp; sourceTree = "<group>"; };
 		835C3B131D9F65050019F073 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		835C3B141D9F65050019F073 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		838EA12C1DA1B244004F56EF /* shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
+		838EA12D1DA1B244004F56EF /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,8 @@
 				835C3B111D9F64600019F073 /* vector3.cpp */,
 				835C3B131D9F65050019F073 /* matrix.hpp */,
 				835C3B141D9F65050019F073 /* matrix.cpp */,
+				838EA12C1DA1B244004F56EF /* shader.fs */,
+				838EA12D1DA1B244004F56EF /* shader.vs */,
 			);
 			path = ReactorEngine;
 			sourceTree = "<group>";

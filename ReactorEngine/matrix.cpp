@@ -4,9 +4,9 @@ Matrix::Matrix(int numRow, int numCol) {
     this->numRow = numRow;
     this->numCol = numCol;
     
-    matrix = new double*[numRow];
+    matrix = new float*[numRow];
     for (int i = 0; i < numRow; i++) {
-        matrix[i] = new double[numCol];
+        matrix[i] = new float[numCol];
         
         for (int j = 0; j < numCol; j++) {
             matrix[i][j] = 0.0;
@@ -14,13 +14,13 @@ Matrix::Matrix(int numRow, int numCol) {
     }
 }
 
-Matrix::Matrix(int numRow, int numCol, double *args) {
+Matrix::Matrix(int numRow, int numCol, float *args) {
     this->numRow = numRow;
     this->numCol = numCol;
     
-    matrix = new double*[numRow];
+    matrix = new float*[numRow];
     for (int i = 0; i < numRow; i++) {
-        matrix[i] = new double[numCol];
+        matrix[i] = new float[numCol];
         
         for (int j = 0; j < numCol; j++) {
             matrix[i][j] = args[i * numCol + j];
@@ -74,7 +74,7 @@ Matrix Matrix::operator-(const Matrix &mat) {
     return result;
 }
 
-Matrix Matrix::operator*(const double scalar) {
+Matrix Matrix::operator*(const float scalar) {
     Matrix result = Matrix(numRow, numCol);
     
     for (int i = 0; i < numRow; i++) {
@@ -107,7 +107,7 @@ Matrix Matrix::operator*(const Matrix &mat) {
 
 Matrix Matrix::operator*(const Vector3 &vec) {
     return (*this) * Matrix(3, 1,
-                            (double[]) {
+                            (float[]) {
                                 vec.x,
                                 vec.y,
                                 vec.z });
@@ -133,10 +133,10 @@ int Matrix::getNumCol() {
     return numCol;
 }
 
-double Matrix::get(int row, int col) {
+float Matrix::get(int row, int col) {
     return matrix[row][col];
 }
 
-void Matrix::set(int row, int col, double value) {
+void Matrix::set(int row, int col, float value) {
     matrix[row][col] = value;
 }
