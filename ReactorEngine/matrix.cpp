@@ -4,12 +4,10 @@ Matrix::Matrix(int numRow, int numCol) {
     this->numRow = numRow;
     this->numCol = numCol;
     
-    matrix = new float*[numRow];
+    m = new float[numRow * numCol];
     for (int i = 0; i < numRow; i++) {
-        matrix[i] = new float[numCol];
-        
         for (int j = 0; j < numCol; j++) {
-            matrix[i][j] = 0.0;
+            m[i * numCol + j] = 0.0;
         }
     }
 }
@@ -18,29 +16,23 @@ Matrix::Matrix(int numRow, int numCol, float *args) {
     this->numRow = numRow;
     this->numCol = numCol;
     
-    matrix = new float*[numRow];
+    m = new float[numRow * numCol];
     for (int i = 0; i < numRow; i++) {
-        matrix[i] = new float[numCol];
-        
         for (int j = 0; j < numCol; j++) {
-            matrix[i][j] = args[i * numCol + j];
+            m[i * numCol + j] = args[i * numCol + j];
         }
     }
 }
 
 Matrix::~Matrix() {
-    for (int i = 0; i < numRow; i++) {
-        delete [] matrix[i];
-    }
-    
-    delete [] matrix;
+    delete [] m;
 }
 
 void Matrix::operator=(const Matrix &mat) {
     if (numRow == mat.numRow && numCol == mat.numCol) {
         for (int i = 0; i < numRow; i++) {
             for (int j = 0; j < numCol; j++) {
-                matrix[i][j] = mat.matrix[i][j];
+                m[i * numCol + j] = mat.m[i * numCol + j];
             }
         }
     }
@@ -52,7 +44,7 @@ Matrix Matrix::operator+(const Matrix &mat) {
     if (numRow == mat.numRow && numCol == mat.numCol) {
         for (int i = 0; i < numRow; i++) {
             for (int j = 0; j < numCol; j++) {
-                result.matrix[i][j] = matrix[i][j] + mat.matrix[i][j];
+                result.m[i * numCol + j] = m[i * numCol + j] + mat.m[i * numCol + j];
             }
         }
     }
@@ -66,7 +58,7 @@ Matrix Matrix::operator-(const Matrix &mat) {
     if (numRow == mat.numRow && numCol == mat.numCol) {
         for (int i = 0; i < numRow; i++) {
             for (int j = 0; j < numCol; j++) {
-                result.matrix[i][j] = matrix[i][j] - mat.matrix[i][j];
+                result.m[i * numCol + j] = m[i * numCol + j] - mat.m[i * numCol + j];
             }
         }
     }
@@ -79,7 +71,7 @@ Matrix Matrix::operator*(const float scalar) {
     
     for (int i = 0; i < numRow; i++) {
         for (int j = 0; j < numCol; j++) {
-            result.matrix[i][j] = matrix[i][j] * scalar;
+            result.m[i * numCol + j] = m[i * numCol + j] * scalar;
         }
     }
     
@@ -96,7 +88,7 @@ Matrix Matrix::operator*(const Matrix &mat) {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < numCol; k++) {
-                    result.matrix[i][j] += (*this).matrix[i][k] * mat.matrix[k][j];
+                    result.m[i * numCol + j] += (*this).m[i * numCol + k] * mat.m[k * numCol + j];
                 }
             }
         }
@@ -117,7 +109,7 @@ ostream& operator<<(ostream& os, const Matrix &mat) {
     for (int i = 0; i < mat.numRow; i++) {
         os << "[";
         for (int j = 0; j < mat.numCol; j++) {
-            os << " " << mat.matrix[i][j] << " ";
+            os << " " << mat.m[i * mat.numCol + j] << " ";
         }
         os << "]\n";
     }
@@ -134,9 +126,9 @@ int Matrix::getNumCol() {
 }
 
 float Matrix::get(int row, int col) {
-    return matrix[row][col];
+    return m[row * numCol + col];
 }
 
 void Matrix::set(int row, int col, float value) {
-    matrix[row][col] = value;
+    m[row * numCol + col] = value;
 }

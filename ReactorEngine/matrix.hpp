@@ -5,9 +5,10 @@ class Matrix {
 protected:
     int numRow;
     int numCol;
-    float **matrix;
     
 public:
+    float *m;
+    
     Matrix(int numRow, int numCol);
     Matrix(int numRow, int numCol, float *args);
     ~Matrix();

@@ -4,11 +4,22 @@ GLuint vbo;
 GLuint vao;
 Vector3 vertices[3];
 
+float scale;
+GLuint translationMatLoc;
+
 void update() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    vertices[0].x += 0.01;
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    scale += 0.01f;
+    
+    Matrix translationMat = Matrix(4, 4, (float []) {
+        1.0f, 0.0f, 0.0f, sinf(scale),
+        0.0f, 1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    });
+    
+    glUniformMatrix4fv(translationMatLoc, 1, true, translationMat.m);
     
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -99,6 +110,12 @@ void compileShaders() {
     }
     
     glUseProgram(shaderProgram);
+    
+    translationMatLoc = glGetUniformLocation(shaderProgram, "translationMat");
+    if (translationMatLoc == 0xFFFFFFFF) {
+        cout << "Error getting 'translationMat' variable from shaderProgram." << endl;
+        exit(1);
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -115,7 +132,7 @@ int main(int argc, char* argv[]) {
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     
-    vertices[0] = Vector3(-1.0, -1.0, 0.0);
+    vertices[0] = Vector3(-1.0, -1.0, 1.0);
     vertices[1] = Vector3(1.0, -1.0, 0.0);
     vertices[2] = Vector3(0.0, 1.0, 0.0);
     
@@ -126,8 +143,11 @@ int main(int argc, char* argv[]) {
     
     glGenBuffers(1, &vbo); // vbo = new vbo(1);   1 is its size
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
     compileShaders();
+    
+    scale = 0.0f;
     
     glutMainLoop();
     
