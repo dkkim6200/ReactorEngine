@@ -27,6 +27,10 @@ public:
     
     float get(int row, int col);
     void set(int row, int col, float value);
+    
+    static Matrix getRotationMat(Vector3 axis, float angle);
+    static Matrix getTranslationMat(Vector3 translationVec);
+    static Matrix getScaleMat(Vector3 scaleVec);
 };
 
 #endif

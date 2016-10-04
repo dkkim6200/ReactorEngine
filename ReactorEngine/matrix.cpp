@@ -132,3 +132,40 @@ float Matrix::get(int row, int col) {
 void Matrix::set(int row, int col, float value) {
     m[row * numCol + col] = value;
 }
+
+/**
+ * Angle in radians
+ */
+Matrix Matrix::getRotationMat(Vector3 axis, float angle) {
+    axis = axis.getNormalized();
+    
+    Matrix rotationMat = Matrix (4, 4, (float[]) {
+        cosf(angle) + axis.x*axis.x * (1 - cosf(angle)), axis.x * axis.y * (1 - cosf(angle)) - axis.z * sinf(angle), axis.x * axis.z * (1 - cosf(angle)) + axis.y * sinf(angle), 0,
+        axis.y * axis.x * (1 - cosf(angle)) + axis.z * sinf(angle), cosf(angle) + axis.y*axis.y * (1 - cosf(angle)), axis.y * axis.z * (1 - cosf(angle)) - axis.x * sinf(angle), 0,
+        axis.z * axis.x * (1 - cosf(angle)) - axis.y * sinf(angle), axis.z * axis.y * (1 - cosf(angle)) + axis.x * sinf(angle), cosf(angle) + axis.z*axis.z * (1 - cosf(angle)), 0,
+        0,                                                          0,                                                                                                        0, 1});
+    
+    return rotationMat;
+}
+
+Matrix Matrix::getTranslationMat(Vector3 translationVec) {
+    Matrix translationMat = Matrix (4, 4, (float[]) {
+        1.0f, 0.0f, 0.0f, translationVec.x,
+        0.0f, 1.0f, 0.0f, translationVec.y,
+        0.0f, 0.0f, 1.0f, translationVec.z,
+        0.0f, 0.0f, 0.0f, 1.0f
+    });
+    
+    return translationMat;
+}
+
+Matrix Matrix::getScaleMat(Vector3 scaleVec) {
+    Matrix scaleMat = Matrix (4, 4, (float[]) {
+        scaleVec.x, 0.0f,       0.0f,       0.0f,
+        0.0f,       scaleVec.y, 0.0f,       0.0f,
+        0.0f,       0.0f,       scaleVec.z, 0.0f,
+        0.0f,       0.0f,       0.0f,       1.0f
+    });
+    
+    return scaleMat;
+}
