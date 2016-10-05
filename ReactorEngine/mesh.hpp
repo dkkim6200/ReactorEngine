@@ -6,7 +6,10 @@ public:
     Vector3 *vertices;
     int numVertices;
     
-    Mesh(Vector3 *vertices, int numVertices);
+    int **patches;
+    int numPatches;
+    
+    Mesh(Vector3 *vertices, int numVertices, int **patches, int numPatches);
 };
 
 #endif

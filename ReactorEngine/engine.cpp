@@ -4,16 +4,51 @@ Engine::Engine() {
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
-    Vector3 *vertices = new Vector3[6];
-    vertices[0] = Vector3(-1.0f, -1.0f, 0.0f);
-    vertices[1] = Vector3(1.0f, -1.0f, 0.0f);
-    vertices[2] = Vector3(1.0f, 1.0f, 0.0f);
+    ifstream teapotFile;
+    teapotFile.open("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot");
     
-    vertices[3] = Vector3(-1.0f, -1.0f, 0.0f);
-    vertices[4] = Vector3(-1.0f, 1.0f, 0.0f);
-    vertices[5] = Vector3(1.0f, 1.0f, 0.0f);
+    string s;
+    getline(teapotFile, s);
+    numTeapotPatches = atoi(s.c_str());
+    teapotPatches = new int*[numTeapotPatches];
     
-    Mesh *mesh = new Mesh(vertices, 6);
+    for (int i = 0; i < numTeapotPatches; i++) {
+        teapotPatches[i] = new int[NUM_VERTICES_PER_PATCH];
+        
+        getline(teapotFile, s);
+        stringstream ss(s);
+        
+        string token;
+        for (int j = 0; getline(ss, token, ','); j++) {
+            // Putting getline in the incremental side will do no good, since it will only get executed when the code block below is done executing, which means that the initial value of 'token' would be uninitialized, so atoi() will return 0 or other jiberish.
+            teapotPatches[i][j] = atoi(token.c_str());
+        }
+    }
+    
+    getline(teapotFile, s);
+    numTeapotVertices = atoi(s.c_str());
+    teapotVertices = new Vector3[numTeapotVertices];
+    
+    for (int i = 0; i < numTeapotVertices; i++) {
+        getline(teapotFile, s);
+        stringstream ss(s);
+        
+        string token;
+        
+        getline(ss, token, ',');
+        teapotVertices[i].x = atof(token.c_str());
+        getline(ss, token, ',');
+        teapotVertices[i].y = atof(token.c_str());
+        getline(ss, token, ',');
+        teapotVertices[i].z = atof(token.c_str());
+    }
+    
+    Mesh *mesh = new Mesh(teapotVertices, numTeapotVertices, teapotPatches, numTeapotPatches);
+    
+    for (int i = 0; i < numTeapotVertices; i++) {
+        cout << teapotVertices[i] << endl;
+    }
+    
     renderer = new Renderer(mesh);
     
     compileShaders();

@@ -8,6 +8,12 @@ protected:
     
     Renderer *renderer;
     
+    Vector3 *teapotVertices;
+    int **teapotPatches;
+    
+    int numTeapotVertices;
+    int numTeapotPatches;
+    
     string readFile(string fileName);
     void addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType);
     void compileShaders();

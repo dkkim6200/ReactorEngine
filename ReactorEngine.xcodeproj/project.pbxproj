@@ -44,6 +44,7 @@
 		835C3B111D9F64600019F073 /* vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector3.cpp; sourceTree = "<group>"; };
 		835C3B131D9F65050019F073 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		835C3B141D9F65050019F073 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		835E92A61DA47592004A45CF /* teapot */ = {isa = PBXFileReference; lastKnownFileType = text; path = teapot; sourceTree = "<group>"; };
 		838EA12C1DA1B244004F56EF /* shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
 		838EA12D1DA1B244004F56EF /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
 		83AC872B1DA3450600B86308 /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 				8334A2E51DA3691100140E2E /* time.cpp */,
 				838EA12C1DA1B244004F56EF /* shader.fs */,
 				838EA12D1DA1B244004F56EF /* shader.vs */,
+				835E92A61DA47592004A45CF /* teapot */,
 			);
 			path = ReactorEngine;
 			sourceTree = "<group>";

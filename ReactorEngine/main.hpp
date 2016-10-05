@@ -38,4 +38,6 @@ using namespace std;
 
 #define INFO_LOG_BUF_LEN 1024
 
+#define NUM_VERTICES_PER_PATCH 16
+
 #endif
