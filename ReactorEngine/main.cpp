@@ -3,8 +3,6 @@
 Engine *engine;
 
 void update() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    
     engine->update();
     
     glutSwapBuffers();
@@ -17,11 +15,15 @@ void idle() {
 int main(int argc, char* argv[]) {
     glutInit(&argc, argv);
     
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_3_2_CORE_PROFILE);
+    // https://www.opengl.org/discussion_boards/showthread.php/172472-GL_DEPTH_TEST-not-working
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE);
     
     glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     glutInitWindowPosition(100, 100);
     glutCreateWindow(WINDOW_TITLE);
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     

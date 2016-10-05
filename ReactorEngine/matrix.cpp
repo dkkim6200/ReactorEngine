@@ -169,3 +169,18 @@ Matrix Matrix::getScaleMat(Vector3 scaleVec) {
     
     return scaleMat;
 }
+
+
+/**
+ * fov : angle in radians
+ */
+Matrix Matrix::getProjectionMat(float aspectRatio, float zNear, float zFar, float fov) {
+    Matrix projectionMat = Matrix (4, 4, (float[]) {
+        1.0f / (aspectRatio * tan(fov / 2)), 0,                   0,                            0,
+        0,                                   1.0f / tan(fov / 2), 0,                            0,
+        0,                                   0,                   (-zNear-zFar) / (zNear-zFar), (2*zFar*zNear) / (zNear-zFar),
+        0,                                   0,                   1,                            0
+    });
+    
+    return projectionMat;
+}

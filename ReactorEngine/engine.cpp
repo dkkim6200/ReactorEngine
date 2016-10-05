@@ -129,6 +129,12 @@ void Engine::compileShaders() {
     
     glUseProgram(shaderProgram);
     
+    projectionMatLoc = glGetUniformLocation(shaderProgram, "projectionMat");
+    if (projectionMatLoc == 0xFFFFFFFF) {
+        cout << "Error getting 'projectionMatLoc' variable from shaderProgram." << endl;
+        exit(1);
+    }
+    
     scaleMatLoc = glGetUniformLocation(shaderProgram, "scaleMat");
     if (scaleMatLoc == 0xFFFFFFFF) {
         cout << "Error getting 'scaleMatLoc' variable from shaderProgram." << endl;
@@ -146,6 +152,12 @@ void Engine::compileShaders() {
         cout << "Error getting 'translationMatLoc' variable from shaderProgram." << endl;
         exit(1);
     }
+    
+    colorVecLoc = glGetUniformLocation(shaderProgram, "colorVec");
+    if (colorVecLoc == 0xFFFFFFFF) {
+        cout << "Error getting 'colorVec' variable from shaderProgram." << endl;
+        exit(1);
+    }
 }
 
 void Engine::update() {
@@ -156,5 +168,6 @@ void Engine::update() {
     
     cout << 1.0 / Time::deltaTime << " FPS" << endl;
     
-    renderer->update(scaleMatLoc, rotationMatLoc, translationMatLoc);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    renderer->update(projectionMatLoc, scaleMatLoc, rotationMatLoc, translationMatLoc, colorVecLoc);
 }

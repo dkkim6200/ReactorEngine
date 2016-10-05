@@ -4,26 +4,49 @@ Renderer::Renderer(Mesh *mesh){
     this->mesh = mesh;
     
     rotation = 0.0f;
-    rotationAxis = Vector3(1.0f, 1.0f, 1.0f);
+    rotationAxis = Vector3(1.0f, 1.0f, 0.0f);
     scale = Vector3(0.3f, 0.3f, 0.3f);
-    translation = Vector3(0.0f, 0.0f, 0.0f);
+    translation = Vector3(0.0f, 0.0f, 5.0f);
     
     glGenBuffers(1, &vboId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
     glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(Vector3), mesh->vertices, GL_STATIC_DRAW);
     
     glGenBuffers(1, &iboId);
+    
+    color = new float*[mesh->numPatches];
+    for (int i = 0; i < mesh->numPatches; i++) {
+        color[i] = new float[3];
+        color[i][0] = (float)rand() / INT_MAX;
+        color[i][1] = (float)rand() / INT_MAX;
+        color[i][2] = (float)rand() / INT_MAX;
+    }
 }
 
 Renderer::~Renderer() {
     delete mesh;
 }
 
-void Renderer::update(GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc) { // Render mesh
+void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc, GLuint colorVecLoc) { // Render mesh
+    
+    rotation += 90 * Time::deltaTime;
+    rotation = fmod(rotation, 360.0f);
     
     //================================================================
     // Update Matrices
     //================================================================
+    
+    Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 100.0f, 30.0f * M_PI / 180.0f);
+    
+    // orthogonal projection
+//    projectionMat = Matrix(4, 4, (float[]) {
+//        1, 0, 0, 0,
+//        0, 1, 0, 0,
+//        0, 0, 0, 0,
+//        0, 0, 0, 1
+//    });
+    
+    glUniformMatrix4fv(projectionMatLoc, 1, true, projectionMat.m);
     
     Matrix scaleMat = Matrix::getScaleMat(scale);
     glUniformMatrix4fv(scaleMatLoc, 1, true, scaleMat.m);
@@ -39,9 +62,6 @@ void Renderer::update(GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translat
     //=================================================================
     
     int divs = 16; // Must be >= 16
-    
-    rotation += 90 * Time::deltaTime;
-    rotation = fmod(rotation, 360.0f);
     
     Vector3 *controlPoints = new Vector3[divs];
     Vector3 *resultVertices = new Vector3[(divs + 1) * (divs + 1)];
@@ -73,6 +93,8 @@ void Renderer::update(GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translat
         //================================================================
         // Render each patches
         //================================================================
+        
+        glUniform3fv(colorVecLoc, 1, color[i]);
         
         glEnableVertexAttribArray(0);
         

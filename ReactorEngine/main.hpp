@@ -31,8 +31,8 @@ using namespace std;
 #include "renderer.hpp"
 #include "engine.hpp"
 
-#define SCREEN_WIDTH 512
-#define SCREEN_HEIGHT 512
+#define SCREEN_WIDTH 500
+#define SCREEN_HEIGHT 500
 
 #define WINDOW_TITLE "Reactor Engine"
 

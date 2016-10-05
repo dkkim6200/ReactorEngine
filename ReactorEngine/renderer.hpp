@@ -17,10 +17,12 @@ public:
     Vector3 rotationAxis;
     Vector3 translation;
     
+    float **color;
+    
     Renderer(Mesh *mesh);
     ~Renderer();
     
-    void update(GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc);
+    void update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc, GLuint colorVecLoc);
 };
 
 #endif

@@ -31,6 +31,7 @@ public:
     static Matrix getRotationMat(Vector3 axis, float angle);
     static Matrix getTranslationMat(Vector3 translationVec);
     static Matrix getScaleMat(Vector3 scaleVec);
+    static Matrix getProjectionMat(float aspectRatio, float nearZ, float farZ, float fov);
 };
 
 #endif
