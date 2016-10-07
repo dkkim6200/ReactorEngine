@@ -25,6 +25,8 @@ int main(int argc, char* argv[]) {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     
+    glEnable(GL_TEXTURE_2D);
+    
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     
     // http://swchoi06.tistory.com/entry/OpenGL-validation-failed-no-vertex-array-object-bound

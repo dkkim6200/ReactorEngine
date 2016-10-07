@@ -4,51 +4,7 @@ Engine::Engine() {
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
-    ifstream teapotFile;
-    teapotFile.open("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot");
-    
-    string s;
-    getline(teapotFile, s);
-    numTeapotPatches = atoi(s.c_str());
-    teapotPatches = new int*[numTeapotPatches];
-    
-    for (int i = 0; i < numTeapotPatches; i++) {
-        teapotPatches[i] = new int[NUM_VERTICES_PER_PATCH];
-        
-        getline(teapotFile, s);
-        stringstream ss(s);
-        
-        string token;
-        for (int j = 0; getline(ss, token, ','); j++) {
-            // Putting getline in the incremental side will do no good, since it will only get executed when the code block below is done executing, which means that the initial value of 'token' would be uninitialized, so atoi() will return 0 or other jiberish.
-            teapotPatches[i][j] = atoi(token.c_str());
-        }
-    }
-    
-    getline(teapotFile, s);
-    numTeapotVertices = atoi(s.c_str());
-    teapotVertices = new Vector3[numTeapotVertices];
-    
-    for (int i = 0; i < numTeapotVertices; i++) {
-        getline(teapotFile, s);
-        stringstream ss(s);
-        
-        string token;
-        
-        getline(ss, token, ',');
-        teapotVertices[i].x = atof(token.c_str());
-        getline(ss, token, ',');
-        teapotVertices[i].y = atof(token.c_str());
-        getline(ss, token, ',');
-        teapotVertices[i].z = atof(token.c_str());
-    }
-    
-    Mesh *mesh = new Mesh(teapotVertices, numTeapotVertices, teapotPatches, numTeapotPatches);
-    
-    for (int i = 0; i < numTeapotVertices; i++) {
-        cout << teapotVertices[i] << endl;
-    }
-    
+    Mesh *mesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj");
     renderer = new Renderer(mesh);
     
     compileShaders();
@@ -153,11 +109,12 @@ void Engine::compileShaders() {
         exit(1);
     }
     
-    colorVecLoc = glGetUniformLocation(shaderProgram, "colorVec");
-    if (colorVecLoc == 0xFFFFFFFF) {
-        cout << "Error getting 'colorVec' variable from shaderProgram." << endl;
+    GLuint sampler = glGetUniformLocation(shaderProgram, "sampler");
+    if (sampler == 0xFFFFFFFF) {
+        cout << "Error getting 'sampler' variable from shaderProgram." << endl;
         exit(1);
     }
+    glUniform1i(sampler, 0);
 }
 
 void Engine::update() {

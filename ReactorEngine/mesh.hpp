@@ -6,10 +6,13 @@ public:
     Vector3 *vertices;
     int numVertices;
     
-    int **patches;
-    int numPatches;
+    Vector2 *uvs;
+    int numUVs;
     
-    Mesh(Vector3 *vertices, int numVertices, int **patches, int numPatches);
+    Vector3 *normals;
+    int numNormals;
+    
+    Mesh(char *objFilePath);
 };
 
 #endif

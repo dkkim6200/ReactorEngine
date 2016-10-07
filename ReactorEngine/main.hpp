@@ -7,6 +7,7 @@
 #include <cmath>
 #include <chrono>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -26,7 +27,9 @@ using namespace std;
 
 #include "time.hpp"
 #include "vector3.hpp"
+#include "vector2.hpp"
 #include "matrix.hpp"
+#include "texture.hpp"
 #include "mesh.hpp"
 #include "renderer.hpp"
 #include "engine.hpp"
