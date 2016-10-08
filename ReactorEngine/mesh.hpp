@@ -2,17 +2,18 @@
 #define MESH_HPP
 
 class Mesh {
+private:
+    bool equals(float f1, float f2);
+    
 public:
-    Vector3 *vertices;
-    int numVertices;
+    std::vector<Vector3> vertices;
+    std::vector<Vector2> uvs;
+    std::vector<Vector3> normals;
+    std::vector<unsigned int> indices;
     
-    Vector2 *uvs;
-    int numUVs;
+    Texture *texture;
     
-    Vector3 *normals;
-    int numNormals;
-    
-    Mesh(char *objFilePath);
+    Mesh(char *objFilePath, char *imagePath);
 };
 
 #endif

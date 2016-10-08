@@ -25,7 +25,6 @@ public:
     GLuint scaleMatLoc;
     GLuint rotationMatLoc;
     GLuint translationMatLoc;
-    GLuint colorVecLoc;
     
     void update();
 };

@@ -10,15 +10,14 @@ Renderer::Renderer(Mesh *mesh){
     
     glGenBuffers(1, &vboId);
     glGenBuffers(1, &uvboId);
-    
-    texture = new Texture("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
+    glGenBuffers(1, &iboId);
 }
 
 Renderer::~Renderer() {
     delete mesh;
 }
 
-void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc, GLuint colorVecLoc) { // Render mesh
+void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc) { // Render mesh
     
     rotation += 90 * Time::deltaTime;
     rotation = fmod(rotation, 360.0f);
@@ -52,21 +51,22 @@ void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotati
     // Render each patches
     //================================================================
     
-    texture->bind(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, mesh->texture->textureObjId);
     
     glEnableVertexAttribArray(0); // 'position' variable
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
     glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
-    glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(Vector3), mesh->vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, mesh->vertices.size() * sizeof(Vector3), &mesh->vertices[0], GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(1); // 'textureCoord' variable
     glBindBuffer(GL_ARRAY_BUFFER, uvboId);
     glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
-    glBufferData(GL_ARRAY_BUFFER, mesh->numUVs * sizeof(Vector2), mesh->uvs, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, mesh->uvs.size() * sizeof(Vector2), &mesh->uvs[0], GL_STATIC_DRAW);
     
-//    glDrawElements(GL_TRIANGLES, mesh->numVertexIndices, GL_UNSIGNED_INT, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, vboId);
-    glDrawArrays(GL_TRIANGLES, 0, mesh->numVertices);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboId);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->indices.size() * sizeof(unsigned int), &mesh->indices[0], GL_STATIC_DRAW);
+    glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, 0);
     
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);

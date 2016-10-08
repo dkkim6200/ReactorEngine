@@ -1,6 +1,12 @@
 #include "main.hpp"
 
-Mesh::Mesh(char *objFilePath) {
+bool Mesh::equals(float f1, float f2) {
+    return fabs(f1 - f2) < 0.01f;
+}
+
+Mesh::Mesh(char *objFilePath, char *imagePath) {
+    this->texture = new Texture(imagePath);
+    
     std::vector<Vector3> tempVertices;
     std::vector<unsigned int> tempVertexIndices;
     
@@ -69,18 +75,35 @@ Mesh::Mesh(char *objFilePath) {
         }
     }
     
-    numVertices = tempVertexIndices.size();
-    vertices = new Vector3[numVertices];
-    
-    numUVs = tempUVIndices.size();
-    uvs = new Vector2[numUVs];
-    
-    numNormals = tempNormalIndices.size();
-    normals = new Vector3[numNormals];
-    
     for (int i = 0; i < tempVertexIndices.size(); i++) {
-        vertices[i] = tempVertices[tempVertexIndices[i] - 1];
-        uvs[i] = tempUVs[tempUVIndices[i] - 1];
-        normals[i] = tempNormals[tempNormalIndices[i] - 1];
+//        vertices.push_back(tempVertices[tempVertexIndices[i] - 1]);
+//        uvs.push_back(tempUVs[tempUVIndices[i] - 1]);
+//        normals.push_back(tempNormals[tempNormalIndices[i] - 1]);
+        
+        int existingIndex = -1;
+        for (int j = 0; j < vertices.size(); j++) {
+            if (equals(tempVertices[tempVertexIndices[i] - 1].x, vertices[j].x) &&
+                equals(tempVertices[tempVertexIndices[i] - 1].y, vertices[j].y) &&
+                equals(tempVertices[tempVertexIndices[i] - 1].z, vertices[j].z) &&
+                equals(tempUVs[tempUVIndices[i] - 1].x, uvs[j].x) &&
+                equals(tempUVs[tempUVIndices[i] - 1].y, uvs[j].y) &&
+                equals(tempNormals[tempNormalIndices[i] - 1].x, normals[j].x) &&
+                equals(tempNormals[tempNormalIndices[i] - 1].y, normals[j].y) &&
+                equals(tempNormals[tempNormalIndices[i] - 1].z, normals[j].z)) {
+                
+                existingIndex = j;
+                break;
+            }
+        }
+        
+        if (existingIndex == -1) { // If the vertex with same UV and normal is not found
+            vertices.push_back(tempVertices[tempVertexIndices[i] - 1]);
+            uvs.push_back(tempUVs[tempUVIndices[i] - 1]);
+            normals.push_back(tempNormals[tempNormalIndices[i] - 1]);
+            indices.push_back(vertices.size() - 1);
+        }
+        else { // If the vertex already exists
+            indices.push_back(existingIndex);
+        }
     }
 }

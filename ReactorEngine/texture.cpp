@@ -33,19 +33,10 @@ Texture::Texture(char *imagePath) {
     
     fclose(file);
     
-    cout << (unsigned int)data[0] << endl;
-    cout << (unsigned int)data[1] << endl;
-    cout << (unsigned int)data[2] << endl;
-    
     glGenTextures(1, &textureObjId);
     glBindTexture(GL_TEXTURE_2D, textureObjId);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void Texture::bind(GLenum textureUnit) {
-    glActiveTexture(textureUnit);
-    glBindTexture(GL_TEXTURE_2D, textureObjId);
 }

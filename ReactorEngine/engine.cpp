@@ -4,7 +4,8 @@ Engine::Engine() {
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
-    Mesh *mesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj");
+    Mesh *mesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj",
+                          "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
     renderer = new Renderer(mesh);
     
     compileShaders();
@@ -126,5 +127,5 @@ void Engine::update() {
     cout << 1.0 / Time::deltaTime << " FPS" << endl;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    renderer->update(projectionMatLoc, scaleMatLoc, rotationMatLoc, translationMatLoc, colorVecLoc);
+    renderer->update(projectionMatLoc, scaleMatLoc, rotationMatLoc, translationMatLoc);
 }

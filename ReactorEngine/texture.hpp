@@ -3,17 +3,15 @@
 
 class Texture {
 private:
-    GLuint textureObjId;
-    
     unsigned int width;
     unsigned int height;
     
     unsigned char *data;
     
 public:
-    Texture(char *imagePath);
+    GLuint textureObjId;
     
-    void bind(GLenum textureUnit);
+    Texture(char *imagePath);
 };
 
 #endif
