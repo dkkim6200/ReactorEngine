@@ -17,7 +17,7 @@ Renderer::~Renderer() {
     delete mesh;
 }
 
-void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc) { // Render mesh
+void Renderer::update(GLuint transformationMatLoc) { // Render mesh
     
     rotation += 90 * Time::deltaTime;
     rotation = fmod(rotation, 360.0f);
@@ -27,7 +27,6 @@ void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotati
     //================================================================
     
     Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 100.0f, 30.0f * M_PI / 180.0f);
-    
     // orthogonal projection
 //    projectionMat = Matrix(4, 4, (float[]) {
 //        1, 0, 0, 0,
@@ -35,17 +34,12 @@ void Renderer::update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotati
 //        0, 0, 0, 0,
 //        0, 0, 0, 1
 //    });
-    
-    glUniformMatrix4fv(projectionMatLoc, 1, true, projectionMat.m);
-    
     Matrix scaleMat = Matrix::getScaleMat(scale);
-    glUniformMatrix4fv(scaleMatLoc, 1, true, scaleMat.m);
-    
     Matrix rotationMat = Matrix::getRotationMat(rotationAxis, rotation * M_PI / 180.0f);
-    glUniformMatrix4fv(rotationMatLoc, 1, true, rotationMat.m);
-    
     Matrix translationMat = Matrix::getTranslationMat(translation);
-    glUniformMatrix4fv(translationMatLoc, 1, true, translationMat.m);
+    
+    Matrix transformationMat = projectionMat * translationMat * rotationMat * scaleMat;
+    glUniformMatrix4fv(transformationMatLoc, 1, true, transformationMat.m);
     
     //================================================================
     // Render each patches

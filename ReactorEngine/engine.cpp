@@ -86,27 +86,9 @@ void Engine::compileShaders() {
     
     glUseProgram(shaderProgram);
     
-    projectionMatLoc = glGetUniformLocation(shaderProgram, "projectionMat");
-    if (projectionMatLoc == 0xFFFFFFFF) {
-        cout << "Error getting 'projectionMatLoc' variable from shaderProgram." << endl;
-        exit(1);
-    }
-    
-    scaleMatLoc = glGetUniformLocation(shaderProgram, "scaleMat");
-    if (scaleMatLoc == 0xFFFFFFFF) {
-        cout << "Error getting 'scaleMatLoc' variable from shaderProgram." << endl;
-        exit(1);
-    }
-    
-    rotationMatLoc = glGetUniformLocation(shaderProgram, "rotationMat");
-    if (rotationMatLoc == 0xFFFFFFFF) {
-        cout << "Error getting 'rotationMat' variable from shaderProgram." << endl;
-        exit(1);
-    }
-    
-    translationMatLoc = glGetUniformLocation(shaderProgram, "translationMat");
-    if (translationMatLoc == 0xFFFFFFFF) {
-        cout << "Error getting 'translationMatLoc' variable from shaderProgram." << endl;
+    transformationMatLoc = glGetUniformLocation(shaderProgram, "transformationMat");
+    if (transformationMatLoc == 0xFFFFFFFF) {
+        cout << "Error getting 'transformationMat' variable from shaderProgram." << endl;
         exit(1);
     }
     
@@ -127,5 +109,5 @@ void Engine::update() {
     cout << 1.0 / Time::deltaTime << " FPS" << endl;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    renderer->update(projectionMatLoc, scaleMatLoc, rotationMatLoc, translationMatLoc);
+    renderer->update(transformationMatLoc);
 }

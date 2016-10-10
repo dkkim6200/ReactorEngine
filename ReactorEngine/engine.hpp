@@ -21,10 +21,7 @@ protected:
 public:
     Engine();
     
-    GLuint projectionMatLoc;
-    GLuint scaleMatLoc;
-    GLuint rotationMatLoc;
-    GLuint translationMatLoc;
+    GLuint transformationMatLoc;
     
     void update();
 };

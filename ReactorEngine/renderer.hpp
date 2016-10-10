@@ -17,7 +17,7 @@ public:
     Renderer(Mesh *mesh);
     ~Renderer();
     
-    void update(GLuint projectionMatLoc, GLuint scaleMatLoc, GLuint rotationMatLoc, GLuint translationMatLoc);
+    void update(GLuint transformationMatLoc);
 };
 
 #endif
