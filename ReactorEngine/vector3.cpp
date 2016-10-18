@@ -79,40 +79,6 @@ float Vector3::angle(Vector3 vec) {
     return acos(cosine);
 }
 
-/**
- * Rotates this vector.
- *
- * <p>
- * The rotation matrix used (from [2]):<br>
- * <br>
- * [ cosA  -sinA  0  ][ cosB  0 sinB ][ 1   0      0  ][ x ]<br>
- * [ sinA  cosA   0  ][  0    1  0   ][ 0  cosY -sinY ][ y ]<br>
- * [ 0     0      1  ][ -sinB 0 cosB ][ 0  sinY  cosY ][ z ]<br>
- * <br>
- * whose yaw(around Z-axis), pitch(around Y-axis) and roll(around X-axis) angles are A(alpha), B(beta) and Y(gamma).<br>
- * WHY IS THE ROTATION MATRIX ABOVE NOT WORKING?????<br>
- * </p>
- *
- * <p>
- * For now, I'm rotating the vector around Z-axis, then Y-axis, then X-axis.
- * </p>
- *
- * <p>
- * Sources<br>
- * 1. http://stackoverflow.com/questions/5207708/rotation-in-a-vector2d-class-in-java<br>
- * 2. https://en.wikipedia.org/wiki/Rotation_matrix<br>
- * 3. http://mathworld.wolfram.com/RotationMatrix.html<br>
- * 4. http://www.iue.tuwien.ac.at/phd/wessner/node42.html<br>
- * 5. http://www.nh.cas.cz/people/lazar/celler/online_tools.php?start_vec=100,100,100&rot_ax=60,30,20&rot_ang=150
- * 6. https://docs.unity3d.com/ScriptReference/Transform.Rotate.html
- * <b>CAUTION: It alters the current vector.</b>
- * </p>
- *
- * @param  axis Axis of which this vector is to rotate around
- * @param  angle Amount of angle to rotate
- * @return No return value.
- */
-
 void Vector3::rotate(Vector3 axis, float angle) {
     axis = axis.getNormalized();
     angle = angle * M_PI / 180.0;

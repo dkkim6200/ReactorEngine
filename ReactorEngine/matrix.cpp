@@ -133,9 +133,6 @@ void Matrix::set(int row, int col, float value) {
     m[row * numCol + col] = value;
 }
 
-/**
- * Angle in radians
- */
 Matrix Matrix::getRotationMat(Vector3 axis, float angle) {
     axis = axis.getNormalized();
     
@@ -171,9 +168,6 @@ Matrix Matrix::getScaleMat(Vector3 scaleVec) {
 }
 
 
-/**
- * fov : angle in radians
- */
 Matrix Matrix::getProjectionMat(float aspectRatio, float zNear, float zFar, float fov) {
     Matrix projectionMat = Matrix (4, 4, (float[]) {
         1.0f / (aspectRatio * tan(fov / 2)), 0,                   0,                            0,
