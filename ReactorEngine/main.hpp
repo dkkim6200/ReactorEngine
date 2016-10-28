@@ -8,6 +8,7 @@
 #include <chrono>
 #include <sstream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -31,7 +32,12 @@ using namespace std;
 #include "matrix.hpp"
 #include "texture.hpp"
 #include "mesh.hpp"
+#include "component.hpp"
+#include "transform.hpp"
 #include "renderer.hpp"
+#include "game_object.hpp"
+#include "system.hpp"
+#include "render_system.hpp"
 #include "engine.hpp"
 
 #define SCREEN_WIDTH 500
@@ -42,5 +48,11 @@ using namespace std;
 #define INFO_LOG_BUF_LEN 1024
 
 #define NUM_VERTICES_PER_PATCH 16
+
+// class Component
+#define COMPONENT_TRANSFORM 0
+#define COMPONENT_RENDERER 1
+
+extern Engine *engine;
 
 #endif

@@ -92,6 +92,7 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
                 equals(tempNormals[tempNormalIndices[i] - 1].z, normals[j].z)) {
                 
                 existingIndex = j;
+                
                 break;
             }
         }

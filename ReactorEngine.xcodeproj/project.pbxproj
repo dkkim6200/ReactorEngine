@@ -14,11 +14,16 @@
 		835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B0E1D9F621C0019F073 /* GLUT.framework */; };
 		835C3B121D9F64600019F073 /* vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B111D9F64600019F073 /* vector3.cpp */; };
 		835C3B151D9F65050019F073 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B141D9F65050019F073 /* matrix.cpp */; };
+		8383071B1DB931F7005BE968 /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838307191DB931F7005BE968 /* system.cpp */; };
+		8383071F1DB93967005BE968 /* render_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8383071D1DB93967005BE968 /* render_system.cpp */; };
 		838717451DA6CD8C008DC001 /* vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838717431DA6CD8C008DC001 /* vector2.cpp */; };
 		83AC872D1DA3450600B86308 /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83AC872B1DA3450600B86308 /* renderer.cpp */; };
 		83AC87311DA34AA400B86308 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83AC872F1DA34AA400B86308 /* mesh.cpp */; };
 		83AC87341DA34DE100B86308 /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83AC87321DA34DE100B86308 /* engine.cpp */; };
 		83C78A8D1DA55A420008466D /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C78A8B1DA55A420008466D /* texture.cpp */; };
+		83D0FF6D1DB682B6002B749E /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6B1DB682B6002B749E /* game_object.cpp */; };
+		83D0FF711DB68389002B749E /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6F1DB68389002B749E /* component.cpp */; };
+		83D0FF741DB6869F002B749E /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF721DB6869F002B749E /* transform.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +52,10 @@
 		835C3B111D9F64600019F073 /* vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector3.cpp; sourceTree = "<group>"; };
 		835C3B131D9F65050019F073 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		835C3B141D9F65050019F073 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		838307191DB931F7005BE968 /* system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cpp; sourceTree = "<group>"; };
+		8383071A1DB931F7005BE968 /* system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = system.hpp; sourceTree = "<group>"; };
+		8383071D1DB93967005BE968 /* render_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render_system.cpp; sourceTree = "<group>"; };
+		8383071E1DB93967005BE968 /* render_system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render_system.hpp; sourceTree = "<group>"; };
 		838717431DA6CD8C008DC001 /* vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector2.cpp; sourceTree = "<group>"; };
 		838717441DA6CD8C008DC001 /* vector2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector2.hpp; sourceTree = "<group>"; };
 		838717461DA6CFEE008DC001 /* teapot.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
@@ -61,6 +70,12 @@
 		83AC87331DA34DE100B86308 /* engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine.hpp; sourceTree = "<group>"; };
 		83C78A8B1DA55A420008466D /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		83C78A8C1DA55A420008466D /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		83D0FF6B1DB682B6002B749E /* game_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cpp; sourceTree = "<group>"; };
+		83D0FF6C1DB682B6002B749E /* game_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_object.hpp; sourceTree = "<group>"; };
+		83D0FF6F1DB68389002B749E /* component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cpp; sourceTree = "<group>"; };
+		83D0FF701DB68389002B749E /* component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = component.hpp; sourceTree = "<group>"; };
+		83D0FF721DB6869F002B749E /* transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
+		83D0FF731DB6869F002B749E /* transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = transform.hpp; sourceTree = "<group>"; };
 		83D2A1511DA7FE6800282D0C /* sphere.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,8 +117,9 @@
 				835C2D281D9D8C0A0019F073 /* main.cpp */,
 				83AC87331DA34DE100B86308 /* engine.hpp */,
 				83AC87321DA34DE100B86308 /* engine.cpp */,
-				83AC872E1DA34A8E00B86308 /* renderer.hpp */,
-				83AC872B1DA3450600B86308 /* renderer.cpp */,
+				838307181DB72A9D005BE968 /* game_object */,
+				83D0FF6E1DB68372002B749E /* component */,
+				8383071C1DB93922005BE968 /* system */,
 				83AC87301DA34AA400B86308 /* mesh.hpp */,
 				83AC872F1DA34AA400B86308 /* mesh.cpp */,
 				83C78A8C1DA55A420008466D /* texture.hpp */,
@@ -134,6 +150,39 @@
 				835C3B011D9E194F0019F073 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		838307181DB72A9D005BE968 /* game_object */ = {
+			isa = PBXGroup;
+			children = (
+				83D0FF6C1DB682B6002B749E /* game_object.hpp */,
+				83D0FF6B1DB682B6002B749E /* game_object.cpp */,
+			);
+			name = game_object;
+			sourceTree = "<group>";
+		};
+		8383071C1DB93922005BE968 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				8383071A1DB931F7005BE968 /* system.hpp */,
+				838307191DB931F7005BE968 /* system.cpp */,
+				8383071E1DB93967005BE968 /* render_system.hpp */,
+				8383071D1DB93967005BE968 /* render_system.cpp */,
+			);
+			name = system;
+			sourceTree = "<group>";
+		};
+		83D0FF6E1DB68372002B749E /* component */ = {
+			isa = PBXGroup;
+			children = (
+				83D0FF701DB68389002B749E /* component.hpp */,
+				83D0FF6F1DB68389002B749E /* component.cpp */,
+				83D0FF731DB6869F002B749E /* transform.hpp */,
+				83D0FF721DB6869F002B749E /* transform.cpp */,
+				83AC872E1DA34A8E00B86308 /* renderer.hpp */,
+				83AC872B1DA3450600B86308 /* renderer.cpp */,
+			);
+			name = component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,14 +243,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				835C3B151D9F65050019F073 /* matrix.cpp in Sources */,
+				8383071B1DB931F7005BE968 /* system.cpp in Sources */,
+				8383071F1DB93967005BE968 /* render_system.cpp in Sources */,
 				8334A2E61DA3691100140E2E /* time.cpp in Sources */,
+				83D0FF6D1DB682B6002B749E /* game_object.cpp in Sources */,
 				83AC87341DA34DE100B86308 /* engine.cpp in Sources */,
 				835C3B121D9F64600019F073 /* vector3.cpp in Sources */,
 				83AC872D1DA3450600B86308 /* renderer.cpp in Sources */,
+				83D0FF741DB6869F002B749E /* transform.cpp in Sources */,
 				83C78A8D1DA55A420008466D /* texture.cpp in Sources */,
 				83AC87311DA34AA400B86308 /* mesh.cpp in Sources */,
 				838717451DA6CD8C008DC001 /* vector2.cpp in Sources */,
 				835C2D291D9D8C0A0019F073 /* main.cpp in Sources */,
+				83D0FF711DB68389002B749E /* component.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

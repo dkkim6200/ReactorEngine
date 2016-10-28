@@ -37,6 +37,35 @@ int main(int argc, char* argv[]) {
     
     engine = new Engine();
     
+    //=====================================================================
+    
+    GameObject *gameObject1 = new GameObject();
+    
+    Transform *transform1 = (Transform *)gameObject1->getComponent(COMPONENT_TRANSFORM);
+    transform1->position = Vector3(0, 0, 5);
+    transform1->rotation = Vector3(0, 0, 0);
+    transform1->scale = Vector3(1, 1, 1) / 10;
+    
+    Renderer *renderer1 = (Renderer *)gameObject1->addComponent(COMPONENT_RENDERER);
+    Mesh *teapotMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj",
+                                "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
+    renderer1->mesh = teapotMesh;
+    
+    //=====================================================================
+    
+    GameObject *gameObject2 = new GameObject();
+    Transform *transform2 = (Transform *)gameObject2->getComponent(COMPONENT_TRANSFORM);
+    transform2->position = Vector3(0, 0, 2);
+    transform2->rotation = Vector3(0, 0, 0);
+    transform2->scale = Vector3(1, 1, 1) / 10;
+    
+    Renderer *renderer2 = (Renderer *)gameObject2->addComponent(COMPONENT_RENDERER);
+    Mesh *cubeMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/cube.obj",
+                              "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
+    renderer2->mesh = cubeMesh;
+    
+    //======================================================================
+    
     glutDisplayFunc(update);
     glutIdleFunc(idle);
     

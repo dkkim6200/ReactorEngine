@@ -1,7 +1,7 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-class Renderer {
+class Renderer : public Component {
 public:
     GLuint vboId; // Vertex Buffer Object ID
     GLuint uvboId; // UV Buffer Object ID
@@ -9,15 +9,8 @@ public:
     
     Mesh *mesh;
     
-    Vector3 scale;
-    float rotation;
-    Vector3 rotationAxis;
-    Vector3 translation;
-    
-    Renderer(Mesh *mesh);
+    Renderer();
     ~Renderer();
-    
-    void update(GLuint transformationMatLoc);
 };
 
 #endif

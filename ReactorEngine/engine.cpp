@@ -4,11 +4,14 @@ Engine::Engine() {
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
-    Mesh *mesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj",
-                          "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
-    renderer = new Renderer(mesh);
+    gameObjects = new map<int, GameObject *>();
+    
+    systems = new vector<System *>();
+    systems->push_back(new RenderSystem());
     
     compileShaders();
+    
+    renderSystem = new RenderSystem();
 }
 
 /**
@@ -109,5 +112,20 @@ void Engine::update() {
     cout << 1.0 / Time::deltaTime << " FPS" << endl;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    renderer->update(transformationMatLoc);
+    
+    for (int i = 0; i < systems->size(); i++) {
+        systems->at(i)->update();
+    }
+}
+
+GameObject *Engine::getGameObject(int id) {
+    if (gameObjects->find(id) != gameObjects->end()) {
+        return gameObjects->at(id);
+    } else {
+        return NULL;
+    }
+}
+
+void Engine::addGameObject(GameObject *gameObject) {
+    gameObjects->emplace(gameObject->getId(), gameObject);
 }
