@@ -2,6 +2,10 @@
 #define TRANSFORM_COMPONENT_HPP
 
 class Transform : public Component {
+protected:
+    Transform *parent;
+    vector<Transform *> *children;
+    
 public:
     Transform();
     Transform(Vector3 position, Vector3 rotation, Vector3 scale);
@@ -9,6 +13,11 @@ public:
     Vector3 position;
     Vector3 rotation;
     Vector3 scale;
+    
+    Transform *getParent();
+    void setParent(Transform *parent);
+    
+    Vector3 getWorldPosition();
 };
 
 #endif

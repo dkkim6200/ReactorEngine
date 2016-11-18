@@ -19,7 +19,7 @@ void RenderSystem::update(GameObject *gameObject) {
         Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 100.0f, 30.0f * M_PI / 180.0f);
         Matrix scaleMat = Matrix::getScaleMat(transform->scale);
         Matrix rotationMat = Matrix::getRotationMat(Vector3(0, 0, 1), 0);
-        Matrix translationMat = Matrix::getTranslationMat(transform->position);
+        Matrix translationMat = Matrix::getTranslationMat(transform->getWorldPosition());
         
         Matrix transformationMat = projectionMat * translationMat * rotationMat * scaleMat;
         glUniformMatrix4fv(engine->transformationMatLoc, 1, true, transformationMat.m);
@@ -32,11 +32,12 @@ void RenderSystem::update(GameObject *gameObject) {
         glBindTexture(GL_TEXTURE_2D, renderer->mesh->texture->textureObjId);
         
         glEnableVertexAttribArray(0); // 'position' variable
+        glEnableVertexAttribArray(1); // 'textureCoord' variable
+        
         glBindBuffer(GL_ARRAY_BUFFER, renderer->vboId);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
         glBufferData(GL_ARRAY_BUFFER, renderer->mesh->vertices.size() * sizeof(Vector3), &renderer->mesh->vertices[0], GL_STATIC_DRAW);
         
-        glEnableVertexAttribArray(1); // 'textureCoord' variable
         glBindBuffer(GL_ARRAY_BUFFER, renderer->uvboId);
         glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
         glBufferData(GL_ARRAY_BUFFER, renderer->mesh->uvs.size() * sizeof(Vector2), &renderer->mesh->uvs[0], GL_STATIC_DRAW);

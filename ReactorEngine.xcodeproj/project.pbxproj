@@ -10,7 +10,6 @@
 		8334A2E61DA3691100140E2E /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8334A2E51DA3691100140E2E /* time.cpp */; };
 		835C2D291D9D8C0A0019F073 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C2D281D9D8C0A0019F073 /* main.cpp */; };
 		835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B011D9E194F0019F073 /* OpenGL.framework */; };
-		835C3B061D9E1C480019F073 /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B051D9E1C480019F073 /* libglfw3.dylib */; };
 		835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B0E1D9F621C0019F073 /* GLUT.framework */; };
 		835C3B121D9F64600019F073 /* vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B111D9F64600019F073 /* vector3.cpp */; };
 		835C3B151D9F65050019F073 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B141D9F65050019F073 /* matrix.cpp */; };
@@ -45,7 +44,6 @@
 		835C2D251D9D8C0A0019F073 /* ReactorEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReactorEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		835C2D281D9D8C0A0019F073 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		835C3B011D9E194F0019F073 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		835C3B051D9E1C480019F073 /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.dylib; path = ../../../../../usr/local/lib/libglfw3.dylib; sourceTree = "<group>"; };
 		835C3B0D1D9E2ACE0019F073 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 		835C3B0E1D9F621C0019F073 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		835C3B101D9F64600019F073 /* vector3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector3.hpp; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */,
-				835C3B061D9E1C480019F073 /* libglfw3.dylib in Frameworks */,
 				835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,8 +112,7 @@
 			children = (
 				835C3B0D1D9E2ACE0019F073 /* main.hpp */,
 				835C2D281D9D8C0A0019F073 /* main.cpp */,
-				83AC87331DA34DE100B86308 /* engine.hpp */,
-				83AC87321DA34DE100B86308 /* engine.cpp */,
+				83AC2FF41DDF67C700C93B2F /* engine */,
 				838307181DB72A9D005BE968 /* game_object */,
 				83D0FF6E1DB68372002B749E /* component */,
 				8383071C1DB93922005BE968 /* system */,
@@ -130,8 +126,6 @@
 				838717431DA6CD8C008DC001 /* vector2.cpp */,
 				835C3B131D9F65050019F073 /* matrix.hpp */,
 				835C3B141D9F65050019F073 /* matrix.cpp */,
-				8334A2E41DA3691100140E2E /* time.hpp */,
-				8334A2E51DA3691100140E2E /* time.cpp */,
 				838717461DA6CFEE008DC001 /* teapot.obj */,
 				838717471DA73A04008DC001 /* cube.obj */,
 				83D2A1511DA7FE6800282D0C /* sphere.obj */,
@@ -146,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				835C3B0E1D9F621C0019F073 /* GLUT.framework */,
-				835C3B051D9E1C480019F073 /* libglfw3.dylib */,
 				835C3B011D9E194F0019F073 /* OpenGL.framework */,
 			);
 			name = Frameworks;
@@ -170,6 +163,17 @@
 				8383071D1DB93967005BE968 /* render_system.cpp */,
 			);
 			name = system;
+			sourceTree = "<group>";
+		};
+		83AC2FF41DDF67C700C93B2F /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				83AC87331DA34DE100B86308 /* engine.hpp */,
+				83AC87321DA34DE100B86308 /* engine.cpp */,
+				8334A2E41DA3691100140E2E /* time.hpp */,
+				8334A2E51DA3691100140E2E /* time.cpp */,
+			);
+			name = engine;
 			sourceTree = "<group>";
 		};
 		83D0FF6E1DB68372002B749E /* component */ = {

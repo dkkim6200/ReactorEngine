@@ -4,14 +4,12 @@ Engine::Engine() {
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
-    gameObjects = new map<int, GameObject *>();
-    
     systems = new vector<System *>();
     systems->push_back(new RenderSystem());
     
-    compileShaders();
+    gameObjects = new map<int, GameObject *>();
     
-    renderSystem = new RenderSystem();
+    compileShaders();
 }
 
 /**
@@ -114,14 +112,17 @@ void Engine::update() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     for (int i = 0; i < systems->size(); i++) {
-        systems->at(i)->update();
+        for (auto it = gameObjects->begin(); it != gameObjects->end(); it++) {
+            systems->at(i)->update(it->second);
+        }
     }
 }
 
 GameObject *Engine::getGameObject(int id) {
     if (gameObjects->find(id) != gameObjects->end()) {
         return gameObjects->at(id);
-    } else {
+    }
+    else {
         return NULL;
     }
 }

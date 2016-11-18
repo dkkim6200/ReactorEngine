@@ -40,11 +40,12 @@ int main(int argc, char* argv[]) {
     //=====================================================================
     
     GameObject *gameObject1 = new GameObject();
+    engine->addGameObject(gameObject1);
+    gameObject1->transform->setParent(NULL);
     
-    Transform *transform1 = (Transform *)gameObject1->getComponent(COMPONENT_TRANSFORM);
-    transform1->position = Vector3(0, 0, 5);
-    transform1->rotation = Vector3(0, 0, 0);
-    transform1->scale = Vector3(1, 1, 1) / 10;
+    gameObject1->transform->position = Vector3(1, 0, 5);
+    gameObject1->transform->rotation = Vector3(0, 0, 0);
+    gameObject1->transform->scale = Vector3(1, 1, 1) / 10;
     
     Renderer *renderer1 = (Renderer *)gameObject1->addComponent(COMPONENT_RENDERER);
     Mesh *teapotMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj",
@@ -54,10 +55,12 @@ int main(int argc, char* argv[]) {
     //=====================================================================
     
     GameObject *gameObject2 = new GameObject();
-    Transform *transform2 = (Transform *)gameObject2->getComponent(COMPONENT_TRANSFORM);
-    transform2->position = Vector3(0, 0, 2);
-    transform2->rotation = Vector3(0, 0, 0);
-    transform2->scale = Vector3(1, 1, 1) / 10;
+    engine->addGameObject(gameObject2);
+    gameObject2->transform->setParent(engine->getGameObject(gameObject1->getId())->transform);
+    
+    gameObject2->transform->position = Vector3(-1, 0, 0);
+    gameObject2->transform->rotation = Vector3(0, 0, 0);
+    gameObject2->transform->scale = Vector3(1, 1, 1) / 10;
     
     Renderer *renderer2 = (Renderer *)gameObject2->addComponent(COMPONENT_RENDERER);
     Mesh *cubeMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/cube.obj",

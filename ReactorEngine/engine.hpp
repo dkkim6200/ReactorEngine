@@ -13,14 +13,13 @@ protected:
     int numTeapotPatches;
     
     vector<System *> *systems;
-    RenderSystem *renderSystem;
+    map<int, GameObject *> *gameObjects;
     
     string readFile(string fileName);
     void addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType);
     void compileShaders();
     
 public:
-    map<int, GameObject *> *gameObjects;
     GLuint transformationMatLoc;
     
     Engine();

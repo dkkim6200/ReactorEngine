@@ -3,10 +3,8 @@
 GameObject::GameObject() {
     id = rand();
     
+    transform = new Transform();
     components = new map<int, Component *>();
-    addComponent(COMPONENT_TRANSFORM);
-    
-    engine->addGameObject(this);
 }
 
 GameObject::~GameObject() {
@@ -18,7 +16,10 @@ int GameObject::getId() {
 }
 
 Component *GameObject::getComponent(int id) {
-    if (components->find(id) != components->end()) {
+    if (id == COMPONENT_TRANSFORM) {
+        return transform;
+    }
+    else if (components->find(id) != components->end()) {
         return components->at(id);
     } else {
         return NULL;
@@ -28,10 +29,7 @@ Component *GameObject::getComponent(int id) {
 Component *GameObject::addComponent(int id) {
     Component *componentToAdd = NULL;
     
-    if (id == COMPONENT_TRANSFORM) {
-        componentToAdd = new Transform();
-    }
-    else if (id == COMPONENT_RENDERER) {
+    if (id == COMPONENT_RENDERER) {
         componentToAdd = new Renderer();
     }
     else {
@@ -42,6 +40,7 @@ Component *GameObject::addComponent(int id) {
     if (components->find(componentToAdd->getId()) == components->end()) {
         componentToAdd->gameObject = this;
         components->emplace(componentToAdd->getId(), componentToAdd);
+        
     }
     
     return componentToAdd;

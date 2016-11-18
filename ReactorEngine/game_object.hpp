@@ -6,18 +6,16 @@ private:
     int id;
     
     map<int, Component *> *components;
-    map<int, GameObject *> *childGameObjects;
     
 public:
     GameObject();
     virtual ~GameObject();
     
     int getId();
+    Transform *transform;
     
     Component *getComponent(int id);
     Component *addComponent(int id);
-    
-    
 };
 
 #endif

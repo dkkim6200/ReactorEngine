@@ -5,7 +5,6 @@ class System {
 public:
     virtual ~System();
     
-    void update();
     virtual void update(GameObject *gameObject) = 0;
 };
 
