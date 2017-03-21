@@ -56,8 +56,8 @@ void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shad
 void Engine::compileShaders() {
     GLuint shaderProgram = glCreateProgram();
     
-    string vs = readFile("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/shader.vs");
-    string fs = readFile("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/shader.fs");
+    string vs = readFile("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.vs");
+    string fs = readFile("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.fs");
     
     // TODO: Check if vs and fs are properly read.
     

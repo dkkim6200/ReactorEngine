@@ -2,8 +2,17 @@
 
 Engine *engine;
 
+int gameObjectId1;
+int gameObjectId2;
+float rotation = 0;
+
 void update() {
     engine->update();
+    
+    GameObject *gameObject = engine->getGameObject(gameObjectId1);
+    gameObject->transform->rotation = Vector3(0, 0, rotation);
+    
+    rotation += 90.0f * M_PI / 180.0f * Time::deltaTime;
     
     glutSwapBuffers();
 }
@@ -42,14 +51,15 @@ int main(int argc, char* argv[]) {
     GameObject *gameObject1 = new GameObject();
     engine->addGameObject(gameObject1);
     gameObject1->transform->setParent(NULL);
+    gameObjectId1 = gameObject1->getId();
     
     gameObject1->transform->position = Vector3(1, 0, 5);
     gameObject1->transform->rotation = Vector3(0, 0, 0);
     gameObject1->transform->scale = Vector3(1, 1, 1) / 10;
     
     Renderer *renderer1 = (Renderer *)gameObject1->addComponent(COMPONENT_RENDERER);
-    Mesh *teapotMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/teapot.obj",
-                                "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
+    Mesh *teapotMesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/teapot.obj",
+                                "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/world_map.bmp");
     renderer1->mesh = teapotMesh;
     
     //=====================================================================
@@ -57,14 +67,15 @@ int main(int argc, char* argv[]) {
     GameObject *gameObject2 = new GameObject();
     engine->addGameObject(gameObject2);
     gameObject2->transform->setParent(engine->getGameObject(gameObject1->getId())->transform);
+    gameObjectId2 = gameObject2->getId();
     
     gameObject2->transform->position = Vector3(-1, 0, 0);
     gameObject2->transform->rotation = Vector3(0, 0, 0);
     gameObject2->transform->scale = Vector3(1, 1, 1) / 10;
     
     Renderer *renderer2 = (Renderer *)gameObject2->addComponent(COMPONENT_RENDERER);
-    Mesh *cubeMesh = new Mesh("/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/cube.obj",
-                              "/Users/DaekunKim/Documents/Programming Related/ReactorEngine/ReactorEngine/world_map.bmp");
+    Mesh *cubeMesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/cube.obj",
+                              "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/world_map.bmp");
     renderer2->mesh = cubeMesh;
     
     //======================================================================
