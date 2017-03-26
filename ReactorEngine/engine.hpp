@@ -25,6 +25,7 @@ public:
     Engine();
     
     void update();
+    void keyboardDetected(int key);
     
     GameObject *getGameObject(int id);
     void addGameObject(GameObject *gameObject);

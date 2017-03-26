@@ -26,9 +26,19 @@ Vector3 Vector3::operator+(const Vector3 &vec) {
     return result;
 }
 
+Vector3 Vector3::operator+=(const Vector3 &vec) {
+    (*this) = (*this) + vec;
+    return (*this);
+}
+
 Vector3 Vector3::operator-(const Vector3 &vec) {
     Vector3 result = Vector3(x - vec.x, y - vec.y, z - vec.z);
     return result;
+}
+
+Vector3 Vector3::operator-=(const Vector3 &vec) {
+    (*this) = (*this) - vec;
+    return (*this);
 }
 
 Vector3 Vector3::operator*(const float scalar) {

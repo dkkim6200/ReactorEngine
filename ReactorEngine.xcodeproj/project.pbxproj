@@ -38,7 +38,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		832CCD371DA7550200FE103A /* world_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = world_map.bmp; sourceTree = "<group>"; };
 		8334A2E41DA3691100140E2E /* time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = time.hpp; sourceTree = "<group>"; };
 		8334A2E51DA3691100140E2E /* time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time.cpp; sourceTree = "<group>"; };
 		835C2D251D9D8C0A0019F073 /* ReactorEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReactorEngine; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,8 +55,6 @@
 		8383071E1DB93967005BE968 /* render_system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render_system.hpp; sourceTree = "<group>"; };
 		838717431DA6CD8C008DC001 /* vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector2.cpp; sourceTree = "<group>"; };
 		838717441DA6CD8C008DC001 /* vector2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector2.hpp; sourceTree = "<group>"; };
-		838717461DA6CFEE008DC001 /* teapot.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
-		838717471DA73A04008DC001 /* cube.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
 		838EA12C1DA1B244004F56EF /* shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
 		838EA12D1DA1B244004F56EF /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
 		83AC872B1DA3450600B86308 /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
@@ -68,13 +65,106 @@
 		83AC87331DA34DE100B86308 /* engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine.hpp; sourceTree = "<group>"; };
 		83C78A8B1DA55A420008466D /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		83C78A8C1DA55A420008466D /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		83C855FE1E87ABCE003429DB /* ambo_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ambo_mesh.obj; sourceTree = "<group>"; };
+		83C855FF1E87ABCE003429DB /* ambo_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ambo_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856001E87ABCE003429DB /* apartment_large_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = apartment_large_mesh.obj; sourceTree = "<group>"; };
+		83C856011E87ABCE003429DB /* ariel_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ariel_mesh.obj; sourceTree = "<group>"; };
+		83C856021E87ABCE003429DB /* billboard_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = billboard_mesh.obj; sourceTree = "<group>"; };
+		83C856031E87ABCE003429DB /* bin_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bin_mesh.obj; sourceTree = "<group>"; };
+		83C856041E87ABCE003429DB /* bus_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bus_mesh.obj; sourceTree = "<group>"; };
+		83C856051E87ABCE003429DB /* bus_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bus_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856061E87ABCE003429DB /* bush_large_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bush_large_mesh.obj; sourceTree = "<group>"; };
+		83C856071E87ABCE003429DB /* bush_small_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bush_small_mesh.obj; sourceTree = "<group>"; };
+		83C856081E87ABCE003429DB /* car_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = car_mesh.obj; sourceTree = "<group>"; };
+		83C856091E87ABCE003429DB /* car_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = car_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C8560A1E87ABCE003429DB /* cop_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cop_mesh.obj; sourceTree = "<group>"; };
+		83C8560B1E87ABCE003429DB /* cop_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cop_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C8560C1E87ABCE003429DB /* dish_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = dish_mesh.obj; sourceTree = "<group>"; };
+		83C8560D1E87ABCE003429DB /* dumpster_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = dumpster_mesh.obj; sourceTree = "<group>"; };
+		83C8560E1E87ABCE003429DB /* fence_long_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = fence_long_mesh.obj; sourceTree = "<group>"; };
+		83C8560F1E87ABCE003429DB /* fence_short_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = fence_short_mesh.obj; sourceTree = "<group>"; };
+		83C856101E87ABCE003429DB /* fire_truck_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = fire_truck_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856111E87ABCE003429DB /* flag_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = flag_mesh.obj; sourceTree = "<group>"; };
+		83C856121E87ABCE003429DB /* flower_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = flower_mesh.obj; sourceTree = "<group>"; };
+		83C856131E87ABCE003429DB /* grave_large_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = grave_large_mesh.obj; sourceTree = "<group>"; };
+		83C856141E87ABCE003429DB /* grave_medium_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = grave_medium_mesh.obj; sourceTree = "<group>"; };
+		83C856151E87ABCE003429DB /* grave_small_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = grave_small_mesh.obj; sourceTree = "<group>"; };
+		83C856161E87ABCE003429DB /* hedge_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = hedge_mesh.obj; sourceTree = "<group>"; };
+		83C856171E87ABCE003429DB /* hydrant_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = hydrant_mesh.obj; sourceTree = "<group>"; };
+		83C856181E87ABCE003429DB /* lamp_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = lamp_mesh.obj; sourceTree = "<group>"; };
+		83C856191E87ABCE003429DB /* memorial_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = memorial_mesh.obj; sourceTree = "<group>"; };
+		83C8561A1E87ABCE003429DB /* office_large_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = office_large_mesh.obj; sourceTree = "<group>"; };
+		83C8561B1E87ABCE003429DB /* office_medium_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = office_medium_mesh.obj; sourceTree = "<group>"; };
+		83C8561C1E87ABCE003429DB /* office_stepped_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = office_stepped_mesh.obj; sourceTree = "<group>"; };
+		83C8561D1E87ABCE003429DB /* path_cross_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = path_cross_mesh.obj; sourceTree = "<group>"; };
+		83C8561E1E87ABCE003429DB /* path_straight_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = path_straight_mesh.obj; sourceTree = "<group>"; };
+		83C8561F1E87ABCE003429DB /* pipe_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = pipe_mesh.obj; sourceTree = "<group>"; };
+		83C856201E87ABCE003429DB /* road_bend_left_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_bend_left_mesh.obj; sourceTree = "<group>"; };
+		83C856211E87ABCE003429DB /* road_bend_right_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_bend_right_mesh.obj; sourceTree = "<group>"; };
+		83C856221E87ABCE003429DB /* road_corner_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_corner_mesh.obj; sourceTree = "<group>"; };
+		83C856231E87ABCE003429DB /* road_crossing_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_crossing_mesh.obj; sourceTree = "<group>"; };
+		83C856241E87ABCE003429DB /* road_divider_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_divider_mesh.obj; sourceTree = "<group>"; };
+		83C856251E87ABCE003429DB /* road_square_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_square_mesh.obj; sourceTree = "<group>"; };
+		83C856261E87ABCE003429DB /* road_straight_clear_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_straight_clear_mesh.obj; sourceTree = "<group>"; };
+		83C856271E87ABCE003429DB /* road_t_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_t_mesh.obj; sourceTree = "<group>"; };
+		83C856281E87ABCE003429DB /* rubbish_truck_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = rubbish_truck_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856291E87ABCE003429DB /* rubbishTruck_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = rubbishTruck_mesh.obj; sourceTree = "<group>"; };
+		83C8562A1E87ABCE003429DB /* store_corner_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = store_corner_mesh.obj; sourceTree = "<group>"; };
+		83C8562B1E87ABCE003429DB /* taxi_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = taxi_mesh.obj; sourceTree = "<group>"; };
+		83C8562C1E87ABCE003429DB /* taxi_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = taxi_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C8562D1E87ABCE003429DB /* traffic_light_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = traffic_light_mesh.obj; sourceTree = "<group>"; };
+		83C8562E1E87ABCE003429DB /* trash_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = trash_mesh.obj; sourceTree = "<group>"; };
+		83C8562F1E87ABCE003429DB /* tree_large_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = tree_large_mesh.obj; sourceTree = "<group>"; };
+		83C856301E87ABCE003429DB /* tree_medium_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = tree_medium_mesh.obj; sourceTree = "<group>"; };
+		83C856311E87ABCE003429DB /* tree_small_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = tree_small_mesh.obj; sourceTree = "<group>"; };
+		83C856321E87ABCE003429DB /* ute_empty_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ute_empty_mesh.obj; sourceTree = "<group>"; };
+		83C856331E87ABCE003429DB /* ute_empty_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ute_empty_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856341E87ABCE003429DB /* ute_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ute_mesh.obj; sourceTree = "<group>"; };
+		83C856351E87ABCE003429DB /* ute_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ute_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856361E87ABCE003429DB /* van_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = van_mesh.obj; sourceTree = "<group>"; };
+		83C856371E87ABCE003429DB /* van_seperate_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = van_seperate_mesh.obj; sourceTree = "<group>"; };
+		83C856391E87ABCE003429DB /* Building01a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building01a.bmp; sourceTree = "<group>"; };
+		83C8563A1E87ABCE003429DB /* Building01b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building01b.bmp; sourceTree = "<group>"; };
+		83C8563B1E87ABCE003429DB /* Building01c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building01c.bmp; sourceTree = "<group>"; };
+		83C8563C1E87ABCE003429DB /* Building02a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building02a.bmp; sourceTree = "<group>"; };
+		83C8563D1E87ABCE003429DB /* Building02b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building02b.bmp; sourceTree = "<group>"; };
+		83C8563E1E87ABCE003429DB /* Building02c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building02c.bmp; sourceTree = "<group>"; };
+		83C8563F1E87ABCE003429DB /* Building03a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building03a.bmp; sourceTree = "<group>"; };
+		83C856401E87ABCE003429DB /* Building03b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building03b.bmp; sourceTree = "<group>"; };
+		83C856411E87ABCE003429DB /* Building03c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Building03c.bmp; sourceTree = "<group>"; };
+		83C856421E87ABCE003429DB /* House_01.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = House_01.bmp; sourceTree = "<group>"; };
+		83C856431E87ABCE003429DB /* House_02.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = House_02.bmp; sourceTree = "<group>"; };
+		83C856441E87ABCE003429DB /* House_03.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = House_03.bmp; sourceTree = "<group>"; };
+		83C856451E87ABCE003429DB /* Nature_Trees.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Nature_Trees.bmp; sourceTree = "<group>"; };
+		83C856461E87ABCE003429DB /* Props.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Props.bmp; sourceTree = "<group>"; };
+		83C856471E87ABCE003429DB /* Props_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Props_2.bmp; sourceTree = "<group>"; };
+		83C856481E87ABCE003429DB /* Props_Billboard.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Props_Billboard.bmp; sourceTree = "<group>"; };
+		83C856491E87ABCE003429DB /* Props_Dumpster.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Props_Dumpster.bmp; sourceTree = "<group>"; };
+		83C8564A1E87ABCE003429DB /* Road.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Road.bmp; sourceTree = "<group>"; };
+		83C8564B1E87ABCE003429DB /* Road_divider.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Road_divider.bmp; sourceTree = "<group>"; };
+		83C8564C1E87ABCE003429DB /* Vehice_Ambulance.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehice_Ambulance.bmp; sourceTree = "<group>"; };
+		83C8564D1E87ABCE003429DB /* Vehicle_Bus_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Bus_a.bmp; sourceTree = "<group>"; };
+		83C8564E1E87ABCE003429DB /* Vehicle_Bus_b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Bus_b.bmp; sourceTree = "<group>"; };
+		83C8564F1E87ABCE003429DB /* Vehicle_Bus_c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Bus_c.bmp; sourceTree = "<group>"; };
+		83C856501E87ABCE003429DB /* Vehicle_Car01_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Car01_a.bmp; sourceTree = "<group>"; };
+		83C856511E87ABCE003429DB /* Vehicle_Car01_b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Car01_b.bmp; sourceTree = "<group>"; };
+		83C856521E87ABCE003429DB /* Vehicle_Car01_c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Car01_c.bmp; sourceTree = "<group>"; };
+		83C856531E87ABCE003429DB /* Vehicle_Fire_Truck.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Fire_Truck.bmp; sourceTree = "<group>"; };
+		83C856541E87ABCE003429DB /* Vehicle_Police.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Police.bmp; sourceTree = "<group>"; };
+		83C856551E87ABCE003429DB /* Vehicle_Rubbish_Truck.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Rubbish_Truck.bmp; sourceTree = "<group>"; };
+		83C856561E87ABCE003429DB /* Vehicle_Taxi.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Taxi.bmp; sourceTree = "<group>"; };
+		83C856571E87ABCE003429DB /* Vehicle_Ute_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Ute_a.bmp; sourceTree = "<group>"; };
+		83C856581E87ABCE003429DB /* Vehicle_Ute_b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Ute_b.bmp; sourceTree = "<group>"; };
+		83C856591E87ABCE003429DB /* Vehicle_Ute_c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Ute_c.bmp; sourceTree = "<group>"; };
+		83C8565A1E87ABCE003429DB /* Vehicle_Van_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_a.bmp; sourceTree = "<group>"; };
+		83C8565B1E87ABCE003429DB /* Vehicle_Van_b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_b.bmp; sourceTree = "<group>"; };
+		83C8565C1E87ABCE003429DB /* Vehicle_Van_c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_c.bmp; sourceTree = "<group>"; };
 		83D0FF6B1DB682B6002B749E /* game_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cpp; sourceTree = "<group>"; };
 		83D0FF6C1DB682B6002B749E /* game_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_object.hpp; sourceTree = "<group>"; };
 		83D0FF6F1DB68389002B749E /* component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cpp; sourceTree = "<group>"; };
 		83D0FF701DB68389002B749E /* component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = component.hpp; sourceTree = "<group>"; };
 		83D0FF721DB6869F002B749E /* transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
 		83D0FF731DB6869F002B749E /* transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = transform.hpp; sourceTree = "<group>"; };
-		83D2A1511DA7FE6800282D0C /* sphere.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +180,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832730D11E8118AD00C64273 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				83AC87301DA34AA400B86308 /* mesh.hpp */,
+				83AC872F1DA34AA400B86308 /* mesh.cpp */,
+				83C78A8C1DA55A420008466D /* texture.hpp */,
+				83C78A8B1DA55A420008466D /* texture.cpp */,
+				832730D21E8118C200C64273 /* math */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		832730D21E8118C200C64273 /* math */ = {
+			isa = PBXGroup;
+			children = (
+				835C3B101D9F64600019F073 /* vector3.hpp */,
+				835C3B111D9F64600019F073 /* vector3.cpp */,
+				838717441DA6CD8C008DC001 /* vector2.hpp */,
+				838717431DA6CD8C008DC001 /* vector2.cpp */,
+				835C3B131D9F65050019F073 /* matrix.hpp */,
+				835C3B141D9F65050019F073 /* matrix.cpp */,
+			);
+			name = math;
+			sourceTree = "<group>";
+		};
+		832730D31E81190100C64273 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				83AC2FF41DDF67C700C93B2F /* engine */,
+				838307181DB72A9D005BE968 /* game_object */,
+				83D0FF6E1DB68372002B749E /* component */,
+				8383071C1DB93922005BE968 /* system */,
+				83C8565D1E87ABF9003429DB /* shaders */,
+				832730D11E8118AD00C64273 /* util */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
 		835C2D1C1D9D8C0A0019F073 = {
 			isa = PBXGroup;
 			children = (
@@ -112,26 +240,8 @@
 			children = (
 				835C3B0D1D9E2ACE0019F073 /* main.hpp */,
 				835C2D281D9D8C0A0019F073 /* main.cpp */,
-				83AC2FF41DDF67C700C93B2F /* engine */,
-				838307181DB72A9D005BE968 /* game_object */,
-				83D0FF6E1DB68372002B749E /* component */,
-				8383071C1DB93922005BE968 /* system */,
-				83AC87301DA34AA400B86308 /* mesh.hpp */,
-				83AC872F1DA34AA400B86308 /* mesh.cpp */,
-				83C78A8C1DA55A420008466D /* texture.hpp */,
-				83C78A8B1DA55A420008466D /* texture.cpp */,
-				835C3B101D9F64600019F073 /* vector3.hpp */,
-				835C3B111D9F64600019F073 /* vector3.cpp */,
-				838717441DA6CD8C008DC001 /* vector2.hpp */,
-				838717431DA6CD8C008DC001 /* vector2.cpp */,
-				835C3B131D9F65050019F073 /* matrix.hpp */,
-				835C3B141D9F65050019F073 /* matrix.cpp */,
-				838717461DA6CFEE008DC001 /* teapot.obj */,
-				838717471DA73A04008DC001 /* cube.obj */,
-				83D2A1511DA7FE6800282D0C /* sphere.obj */,
-				838EA12C1DA1B244004F56EF /* shader.fs */,
-				838EA12D1DA1B244004F56EF /* shader.vs */,
-				832CCD371DA7550200FE103A /* world_map.bmp */,
+				832730D31E81190100C64273 /* core */,
+				83C855FB1E87ABCE003429DB /* models */,
 			);
 			path = ReactorEngine;
 			sourceTree = "<group>";
@@ -174,6 +284,140 @@
 				8334A2E51DA3691100140E2E /* time.cpp */,
 			);
 			name = engine;
+			sourceTree = "<group>";
+		};
+		83C855FB1E87ABCE003429DB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				83C855FC1E87ABCE003429DB /* simple_town */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		83C855FC1E87ABCE003429DB /* simple_town */ = {
+			isa = PBXGroup;
+			children = (
+				83C855FD1E87ABCE003429DB /* models */,
+				83C856381E87ABCE003429DB /* textures */,
+			);
+			path = simple_town;
+			sourceTree = "<group>";
+		};
+		83C855FD1E87ABCE003429DB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				83C855FE1E87ABCE003429DB /* ambo_mesh.obj */,
+				83C855FF1E87ABCE003429DB /* ambo_seperate_mesh.obj */,
+				83C856001E87ABCE003429DB /* apartment_large_mesh.obj */,
+				83C856011E87ABCE003429DB /* ariel_mesh.obj */,
+				83C856021E87ABCE003429DB /* billboard_mesh.obj */,
+				83C856031E87ABCE003429DB /* bin_mesh.obj */,
+				83C856041E87ABCE003429DB /* bus_mesh.obj */,
+				83C856051E87ABCE003429DB /* bus_seperate_mesh.obj */,
+				83C856061E87ABCE003429DB /* bush_large_mesh.obj */,
+				83C856071E87ABCE003429DB /* bush_small_mesh.obj */,
+				83C856081E87ABCE003429DB /* car_mesh.obj */,
+				83C856091E87ABCE003429DB /* car_seperate_mesh.obj */,
+				83C8560A1E87ABCE003429DB /* cop_mesh.obj */,
+				83C8560B1E87ABCE003429DB /* cop_seperate_mesh.obj */,
+				83C8560C1E87ABCE003429DB /* dish_mesh.obj */,
+				83C8560D1E87ABCE003429DB /* dumpster_mesh.obj */,
+				83C8560E1E87ABCE003429DB /* fence_long_mesh.obj */,
+				83C8560F1E87ABCE003429DB /* fence_short_mesh.obj */,
+				83C856101E87ABCE003429DB /* fire_truck_seperate_mesh.obj */,
+				83C856111E87ABCE003429DB /* flag_mesh.obj */,
+				83C856121E87ABCE003429DB /* flower_mesh.obj */,
+				83C856131E87ABCE003429DB /* grave_large_mesh.obj */,
+				83C856141E87ABCE003429DB /* grave_medium_mesh.obj */,
+				83C856151E87ABCE003429DB /* grave_small_mesh.obj */,
+				83C856161E87ABCE003429DB /* hedge_mesh.obj */,
+				83C856171E87ABCE003429DB /* hydrant_mesh.obj */,
+				83C856181E87ABCE003429DB /* lamp_mesh.obj */,
+				83C856191E87ABCE003429DB /* memorial_mesh.obj */,
+				83C8561A1E87ABCE003429DB /* office_large_mesh.obj */,
+				83C8561B1E87ABCE003429DB /* office_medium_mesh.obj */,
+				83C8561C1E87ABCE003429DB /* office_stepped_mesh.obj */,
+				83C8561D1E87ABCE003429DB /* path_cross_mesh.obj */,
+				83C8561E1E87ABCE003429DB /* path_straight_mesh.obj */,
+				83C8561F1E87ABCE003429DB /* pipe_mesh.obj */,
+				83C856201E87ABCE003429DB /* road_bend_left_mesh.obj */,
+				83C856211E87ABCE003429DB /* road_bend_right_mesh.obj */,
+				83C856221E87ABCE003429DB /* road_corner_mesh.obj */,
+				83C856231E87ABCE003429DB /* road_crossing_mesh.obj */,
+				83C856241E87ABCE003429DB /* road_divider_mesh.obj */,
+				83C856251E87ABCE003429DB /* road_square_mesh.obj */,
+				83C856261E87ABCE003429DB /* road_straight_clear_mesh.obj */,
+				83C856271E87ABCE003429DB /* road_t_mesh.obj */,
+				83C856281E87ABCE003429DB /* rubbish_truck_seperate_mesh.obj */,
+				83C856291E87ABCE003429DB /* rubbishTruck_mesh.obj */,
+				83C8562A1E87ABCE003429DB /* store_corner_mesh.obj */,
+				83C8562B1E87ABCE003429DB /* taxi_mesh.obj */,
+				83C8562C1E87ABCE003429DB /* taxi_seperate_mesh.obj */,
+				83C8562D1E87ABCE003429DB /* traffic_light_mesh.obj */,
+				83C8562E1E87ABCE003429DB /* trash_mesh.obj */,
+				83C8562F1E87ABCE003429DB /* tree_large_mesh.obj */,
+				83C856301E87ABCE003429DB /* tree_medium_mesh.obj */,
+				83C856311E87ABCE003429DB /* tree_small_mesh.obj */,
+				83C856321E87ABCE003429DB /* ute_empty_mesh.obj */,
+				83C856331E87ABCE003429DB /* ute_empty_seperate_mesh.obj */,
+				83C856341E87ABCE003429DB /* ute_mesh.obj */,
+				83C856351E87ABCE003429DB /* ute_seperate_mesh.obj */,
+				83C856361E87ABCE003429DB /* van_mesh.obj */,
+				83C856371E87ABCE003429DB /* van_seperate_mesh.obj */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		83C856381E87ABCE003429DB /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				83C856391E87ABCE003429DB /* Building01a.bmp */,
+				83C8563A1E87ABCE003429DB /* Building01b.bmp */,
+				83C8563B1E87ABCE003429DB /* Building01c.bmp */,
+				83C8563C1E87ABCE003429DB /* Building02a.bmp */,
+				83C8563D1E87ABCE003429DB /* Building02b.bmp */,
+				83C8563E1E87ABCE003429DB /* Building02c.bmp */,
+				83C8563F1E87ABCE003429DB /* Building03a.bmp */,
+				83C856401E87ABCE003429DB /* Building03b.bmp */,
+				83C856411E87ABCE003429DB /* Building03c.bmp */,
+				83C856421E87ABCE003429DB /* House_01.bmp */,
+				83C856431E87ABCE003429DB /* House_02.bmp */,
+				83C856441E87ABCE003429DB /* House_03.bmp */,
+				83C856451E87ABCE003429DB /* Nature_Trees.bmp */,
+				83C856461E87ABCE003429DB /* Props.bmp */,
+				83C856471E87ABCE003429DB /* Props_2.bmp */,
+				83C856481E87ABCE003429DB /* Props_Billboard.bmp */,
+				83C856491E87ABCE003429DB /* Props_Dumpster.bmp */,
+				83C8564A1E87ABCE003429DB /* Road.bmp */,
+				83C8564B1E87ABCE003429DB /* Road_divider.bmp */,
+				83C8564C1E87ABCE003429DB /* Vehice_Ambulance.bmp */,
+				83C8564D1E87ABCE003429DB /* Vehicle_Bus_a.bmp */,
+				83C8564E1E87ABCE003429DB /* Vehicle_Bus_b.bmp */,
+				83C8564F1E87ABCE003429DB /* Vehicle_Bus_c.bmp */,
+				83C856501E87ABCE003429DB /* Vehicle_Car01_a.bmp */,
+				83C856511E87ABCE003429DB /* Vehicle_Car01_b.bmp */,
+				83C856521E87ABCE003429DB /* Vehicle_Car01_c.bmp */,
+				83C856531E87ABCE003429DB /* Vehicle_Fire_Truck.bmp */,
+				83C856541E87ABCE003429DB /* Vehicle_Police.bmp */,
+				83C856551E87ABCE003429DB /* Vehicle_Rubbish_Truck.bmp */,
+				83C856561E87ABCE003429DB /* Vehicle_Taxi.bmp */,
+				83C856571E87ABCE003429DB /* Vehicle_Ute_a.bmp */,
+				83C856581E87ABCE003429DB /* Vehicle_Ute_b.bmp */,
+				83C856591E87ABCE003429DB /* Vehicle_Ute_c.bmp */,
+				83C8565A1E87ABCE003429DB /* Vehicle_Van_a.bmp */,
+				83C8565B1E87ABCE003429DB /* Vehicle_Van_b.bmp */,
+				83C8565C1E87ABCE003429DB /* Vehicle_Van_c.bmp */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		83C8565D1E87ABF9003429DB /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				838EA12C1DA1B244004F56EF /* shader.fs */,
+				838EA12D1DA1B244004F56EF /* shader.vs */,
+			);
+			name = shaders;
 			sourceTree = "<group>";
 		};
 		83D0FF6E1DB68372002B749E /* component */ = {

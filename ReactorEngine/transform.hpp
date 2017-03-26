@@ -17,6 +17,14 @@ public:
     Transform *getParent();
     void setParent(Transform *parent);
     
+    /**
+     * @brief Returns an TRS (Translation-Rotation-Scale) Matrix of this transform object.
+     * 
+     * @return TRS (Translation-Rotation-Scale) Matrix of this transform object
+     */
+    Matrix getTransformationMat();
+    Matrix getWorldTransformationMat();
+    
     Vector3 getWorldPosition();
 };
 

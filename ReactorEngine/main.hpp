@@ -46,6 +46,9 @@ using namespace std;
 
 #define WINDOW_TITLE "Reactor Engine"
 
+#define VERTEX_SHADER_FILE "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.vs"
+#define FRAGEMENT_SHADER_FILE "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.fs"
+
 #define INFO_LOG_BUF_LEN 1024
 
 #define NUM_VERTICES_PER_PATCH 16
@@ -53,6 +56,8 @@ using namespace std;
 // class Component
 #define COMPONENT_TRANSFORM 0
 #define COMPONENT_RENDERER 1
+
+#define SHOW_FPS false
 
 extern Engine *engine;
 

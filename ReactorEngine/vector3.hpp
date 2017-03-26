@@ -28,7 +28,9 @@ public:
     
     void operator=(const Vector3 &vec);
     Vector3 operator+(const Vector3 &vec); // Vector addition
+    Vector3 operator+=(const Vector3 &vec);
     Vector3 operator-(const Vector3 &vec); // Vector subtraction
+    Vector3 operator-=(const Vector3 &vec);
     Vector3 operator*(const float scalar); // Scalar multiple
     Vector3 operator/(const float scalar); // Scalar division
     

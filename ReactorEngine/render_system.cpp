@@ -17,11 +17,8 @@ void RenderSystem::update(GameObject *gameObject) {
         //================================================================
         
         Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 100.0f, 30.0f * M_PI / 180.0f);
-        Matrix scaleMat = Matrix::getScaleMat(transform->scale);
-        Matrix rotationMat = Matrix::getRotationMat(Vector3(0, 0, 1), transform->rotation.z);
-        Matrix translationMat = Matrix::getTranslationMat(transform->getWorldPosition());
         
-        Matrix transformationMat = projectionMat * translationMat * rotationMat * scaleMat;
+        Matrix transformationMat = projectionMat * transform->getWorldTransformationMat();
         glUniformMatrix4fv(engine->transformationMatLoc, 1, true, transformationMat.m);
         
         //================================================================

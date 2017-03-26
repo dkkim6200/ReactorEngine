@@ -32,12 +32,20 @@ void Transform::setParent(Transform *parent) {
     }
 }
 
-Vector3 Transform::getWorldPosition() {
+Matrix Transform::getTransformationMat() {
+    Matrix scaleMat = Matrix::getScaleMat(scale);
+    Matrix rotationMat = Matrix::getRotationMat(Vector3(0, 0, 1), rotation.z);
+    Matrix translationMat = Matrix::getTranslationMat(position);
+    
+    return translationMat * rotationMat * scaleMat;
+}
+
+Matrix Transform::getWorldTransformationMat() {
     if (parent == NULL) {
-        return position;
+        return getTransformationMat();
     }
     else {
-        return position + parent->getWorldPosition();
+        return parent->getWorldTransformationMat() * getTransformationMat();
     }
 }
 

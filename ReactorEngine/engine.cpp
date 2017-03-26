@@ -1,6 +1,30 @@
 #include "main.hpp"
 
 Engine::Engine() {
+    // OpenGL Initialization
+    
+    // https://www.opengl.org/discussion_boards/showthread.php/172472-GL_DEPTH_TEST-not-working
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE);
+    
+    glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow(WINDOW_TITLE);
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    
+    glEnable(GL_TEXTURE_2D);
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    // http://swchoi06.tistory.com/entry/OpenGL-validation-failed-no-vertex-array-object-bound
+    // https://www.opengl.org/discussion_boards/showthread.php/175839-OSX-GL3-2-and-VAO
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    
+    // Reactor Engine initialization
+    
     previousTime = std::chrono::high_resolution_clock::now();
     currentTime = std::chrono::high_resolution_clock::now();
     
@@ -13,8 +37,8 @@ Engine::Engine() {
 }
 
 /**
- * Source
- * 1. http://stackoverflow.com/questions/2602013/read-whole-ascii-file-into-c-stdstring
+ Source
+ 1. http://stackoverflow.com/questions/2602013/read-whole-ascii-file-into-c-stdstring
  */
 string Engine::readFile(string fileName) {
     ifstream file(fileName);
@@ -56,8 +80,8 @@ void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shad
 void Engine::compileShaders() {
     GLuint shaderProgram = glCreateProgram();
     
-    string vs = readFile("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.vs");
-    string fs = readFile("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/shader.fs");
+    string vs = readFile(VERTEX_SHADER_FILE);
+    string fs = readFile(FRAGEMENT_SHADER_FILE);
     
     // TODO: Check if vs and fs are properly read.
     
@@ -107,7 +131,9 @@ void Engine::update() {
     
     Time::deltaTime = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime).count();
     
-    cout << 1.0 / Time::deltaTime << " FPS" << endl;
+    if (SHOW_FPS) {
+        cout << 1.0 / Time::deltaTime << " FPS" << endl;
+    }
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -116,6 +142,10 @@ void Engine::update() {
             systems->at(i)->update(it->second);
         }
     }
+}
+
+void Engine::keyboardDetected(int key) {
+    
 }
 
 GameObject *Engine::getGameObject(int id) {
