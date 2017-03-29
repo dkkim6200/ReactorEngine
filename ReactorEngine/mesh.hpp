@@ -2,9 +2,6 @@
 #define MESH_HPP
 
 class Mesh {
-private:
-    bool equals(float f1, float f2);
-    
 public:
     std::vector<Vector3> vertices;
     std::vector<Vector2> uvs;

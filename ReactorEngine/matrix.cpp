@@ -133,14 +133,12 @@ void Matrix::set(int row, int col, float value) {
     m[row * numCol + col] = value;
 }
 
-Matrix Matrix::getRotationMat(Vector3 axis, float angle) {
-    axis = axis.getNormalized();
-    
+Matrix Matrix::getRotationMat(Quaternion q) {
     Matrix rotationMat = Matrix (4, 4, (float[]) {
-        cosf(angle) + axis.x*axis.x * (1 - cosf(angle)), axis.x * axis.y * (1 - cosf(angle)) - axis.z * sinf(angle), axis.x * axis.z * (1 - cosf(angle)) + axis.y * sinf(angle), 0,
-        axis.y * axis.x * (1 - cosf(angle)) + axis.z * sinf(angle), cosf(angle) + axis.y*axis.y * (1 - cosf(angle)), axis.y * axis.z * (1 - cosf(angle)) - axis.x * sinf(angle), 0,
-        axis.z * axis.x * (1 - cosf(angle)) - axis.y * sinf(angle), axis.z * axis.y * (1 - cosf(angle)) + axis.x * sinf(angle), cosf(angle) + axis.z*axis.z * (1 - cosf(angle)), 0,
-        0,                                                          0,                                                                                                        0, 1});
+        static_cast<float>(1 - 2*(q.y*q.y + q.z*q.z)),          static_cast<float>(2*(q.x * q.y - q.w * q.z)),  static_cast<float>(2*(q.w * q.y + q.x * q.z)),  0,
+        static_cast<float>(2*(q.x * q.y + q.w * q.z)),          static_cast<float>(1 - 2*(q.x*q.x + q.z*q.z)),  static_cast<float>(2*(q.y * q.z - q.w * q.x)),  0,
+        static_cast<float>(2*(q.x * q.z - q.w * q.y)),          static_cast<float>(2*(q.w * q.x + q.y * q.z)),  static_cast<float>(1 - 2*(q.x*q.x + q.y*q.y)),  0,
+        0,                                                      0,                                              0,                                              1});
     
     return rotationMat;
 }

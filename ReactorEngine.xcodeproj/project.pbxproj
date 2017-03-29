@@ -20,6 +20,7 @@
 		83AC87311DA34AA400B86308 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83AC872F1DA34AA400B86308 /* mesh.cpp */; };
 		83AC87341DA34DE100B86308 /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83AC87321DA34DE100B86308 /* engine.cpp */; };
 		83C78A8D1DA55A420008466D /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C78A8B1DA55A420008466D /* texture.cpp */; };
+		83C856601E87B33C003429DB /* quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C8565E1E87B33C003429DB /* quaternion.cpp */; };
 		83D0FF6D1DB682B6002B749E /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6B1DB682B6002B749E /* game_object.cpp */; };
 		83D0FF711DB68389002B749E /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6F1DB68389002B749E /* component.cpp */; };
 		83D0FF741DB6869F002B749E /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF721DB6869F002B749E /* transform.cpp */; };
@@ -159,6 +160,8 @@
 		83C8565A1E87ABCE003429DB /* Vehicle_Van_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_a.bmp; sourceTree = "<group>"; };
 		83C8565B1E87ABCE003429DB /* Vehicle_Van_b.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_b.bmp; sourceTree = "<group>"; };
 		83C8565C1E87ABCE003429DB /* Vehicle_Van_c.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Vehicle_Van_c.bmp; sourceTree = "<group>"; };
+		83C8565E1E87B33C003429DB /* quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quaternion.cpp; sourceTree = "<group>"; };
+		83C8565F1E87B33C003429DB /* quaternion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = quaternion.hpp; sourceTree = "<group>"; };
 		83D0FF6B1DB682B6002B749E /* game_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cpp; sourceTree = "<group>"; };
 		83D0FF6C1DB682B6002B749E /* game_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_object.hpp; sourceTree = "<group>"; };
 		83D0FF6F1DB68389002B749E /* component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cpp; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				838717431DA6CD8C008DC001 /* vector2.cpp */,
 				835C3B131D9F65050019F073 /* matrix.hpp */,
 				835C3B141D9F65050019F073 /* matrix.cpp */,
+				83C8565F1E87B33C003429DB /* quaternion.hpp */,
+				83C8565E1E87B33C003429DB /* quaternion.cpp */,
 			);
 			name = math;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 				83AC87311DA34AA400B86308 /* mesh.cpp in Sources */,
 				838717451DA6CD8C008DC001 /* vector2.cpp in Sources */,
 				835C2D291D9D8C0A0019F073 /* main.cpp in Sources */,
+				83C856601E87B33C003429DB /* quaternion.cpp in Sources */,
 				83D0FF711DB68389002B749E /* component.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

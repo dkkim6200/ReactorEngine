@@ -63,13 +63,12 @@ public:
     void set(int row, int col, float value);
     
     /**
-     @brief Returns a rotation matrix around Vector3 'axis' for the 'angle' amount in radians.
+     @brief Returns a rotation matrix matching the rotation given by 'q'
      
-     @param axis Vector of the axis in which the object is to rotate around
-     @param angle Amount of rotation around axis in radians
-     @return Rotation matrix around 'axis' for 'angle' amount
+     @param q Quaternion representing the rotation
+     @return Rotation matrix matching the rotation given by 'q'
      */
-    static Matrix getRotationMat(Vector3 axis, float angle);
+    static Matrix getRotationMat(Quaternion q);
     
     /**
      @brief Returns a translation matrix.

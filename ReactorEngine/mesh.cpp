@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-bool Mesh::equals(float f1, float f2) {
+bool equals(float f1, float f2) {
     return fabs(f1 - f2) < 0.01f;
 }
 
