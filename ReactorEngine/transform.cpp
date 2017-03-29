@@ -5,11 +5,11 @@ Transform::Transform() : Component(COMPONENT_TRANSFORM) {
     children = new vector<Transform *>();
     
     position = Vector3(0, 0, 0);
-    rotation = Vector3(0, 0, 0);
+    rotation = Quaternion(0, 0, 0, 0);
     scale = Vector3(1, 1, 1);
 }
 
-Transform::Transform(Vector3 position, Vector3 rotation, Vector3 scale) : Component(COMPONENT_TRANSFORM) {
+Transform::Transform(Vector3 position, Quaternion rotation, Vector3 scale) : Component(COMPONENT_TRANSFORM) {
     this->position = position;
     this->rotation = rotation;
     this->scale = scale;
@@ -34,7 +34,7 @@ void Transform::setParent(Transform *parent) {
 
 Matrix Transform::getTransformationMat() {
     Matrix scaleMat = Matrix::getScaleMat(scale);
-    Matrix rotationMat = Matrix::getRotationMat(Vector3(0, 0, 1), rotation.z);
+    Matrix rotationMat = Matrix::getRotationMat(rotation);
     Matrix translationMat = Matrix::getTranslationMat(position);
     
     return translationMat * rotationMat * scaleMat;
@@ -49,4 +49,42 @@ Matrix Transform::getWorldTransformationMat() {
     }
 }
 
-// TODO: make Transform::getWorldRotation()
+Vector3 Transform::getWorldPosition() {
+    if (parent == NULL) {
+        return position;
+    }
+    else {
+        return parent->getWorldPosition() + position;
+    }
+}
+
+Quaternion Transform::getWorldRotation() {
+    if (parent == NULL) {
+        return rotation;
+    }
+    else {
+        return parent->rotation * rotation;
+    }
+}
+
+Vector3 Transform::getWorldScale() {
+    if (parent == NULL) {
+        return scale;
+    }
+    else {
+        Vector3 parentScale = parent->getWorldScale();
+        return Vector3(parentScale.x * scale.x, parentScale.y * scale.y, parentScale.z * scale.z);
+    }
+}
+
+void Transform::translate(Vector3 translation) {
+    position += translation;
+}
+
+void Transform::rotate(Vector3 eulerAngles) {
+    rotation = Quaternion(eulerAngles.x, eulerAngles.y, eulerAngles.z) * rotation;
+}
+
+void Transform::rotate(Vector3 axis, double angle) {
+    rotation = Quaternion(axis, angle) * rotation;
+}

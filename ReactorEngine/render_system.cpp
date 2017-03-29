@@ -16,7 +16,7 @@ void RenderSystem::update(GameObject *gameObject) {
         // Update Matrices
         //================================================================
         
-        Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 100.0f, 30.0f * M_PI / 180.0f);
+        Matrix projectionMat = Matrix::getProjectionMat((float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT), 0.1f, 1000.0f, 30.0f * M_PI / 180.0f);
         
         Matrix transformationMat = projectionMat * transform->getWorldTransformationMat();
         glUniformMatrix4fv(engine->transformationMatLoc, 1, true, transformationMat.m);

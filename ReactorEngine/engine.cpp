@@ -6,7 +6,7 @@ Engine::Engine() {
     // https://www.opengl.org/discussion_boards/showthread.php/172472-GL_DEPTH_TEST-not-working
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE);
     
-    glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    glutInitWindowSize(INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT);
     glutInitWindowPosition(100, 100);
     glutCreateWindow(WINDOW_TITLE);
     

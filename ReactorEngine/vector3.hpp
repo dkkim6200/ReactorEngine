@@ -44,11 +44,11 @@ public:
     float getMagnitude();
     
     /**
-     @brief Returns the nomalized vector of this vector.
+     @brief Normalizes this vector.
      
-     @return Nomalized Vector3 of this
+     WARNING! This function alters the current state of this vector!
      */
-    Vector3 getNormalized();
+    Vector3 normalize();
     
     /**
      @brief Returns the dot product of this and 'vec'.

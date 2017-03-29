@@ -30,6 +30,7 @@ using namespace std;
 #include "time.hpp"
 #include "vector3.hpp"
 #include "vector2.hpp"
+#include "quaternion.hpp"
 #include "matrix.hpp"
 #include "texture.hpp"
 #include "mesh.hpp"
@@ -41,8 +42,8 @@ using namespace std;
 #include "render_system.hpp"
 #include "engine.hpp"
 
-#define SCREEN_WIDTH 500
-#define SCREEN_HEIGHT 500
+#define INIT_SCREEN_WIDTH 500
+#define INIT_SCREEN_HEIGHT 500
 
 #define WINDOW_TITLE "Reactor Engine"
 
@@ -58,6 +59,9 @@ using namespace std;
 #define COMPONENT_RENDERER 1
 
 #define SHOW_FPS false
+
+#define RAD(x) x*3.14159265359/180.0
+#define DEG(x) x*180.0/3.14159265359
 
 extern Engine *engine;
 

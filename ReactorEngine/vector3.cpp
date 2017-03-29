@@ -61,7 +61,7 @@ float Vector3::getMagnitude() {
     return sqrt(x*x + y*y + z*z);
 }
 
-Vector3 Vector3::getNormalized() {
+Vector3 Vector3::normalize() {
     return (*this) / getMagnitude();
 }
 
@@ -90,7 +90,7 @@ float Vector3::angle(Vector3 vec) {
 }
 
 void Vector3::rotate(Vector3 axis, float angle) {
-    axis = axis.getNormalized();
+    axis.normalize();
     angle = angle * M_PI / 180.0;
     
     Matrix rotationMat = Matrix (3, 3, (float[]) {
