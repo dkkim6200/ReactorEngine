@@ -1,1 +1,5 @@
 /build
+xcuserdatad/
+xcuserdata/
+ReactorEngine.xcodeproj/project.xcworkspace/xcuserdata/
+ReactorEngine.xcodeproj/project.xcworkspace/xcuserdata/DaekunKim.xcuserdatad/UserInterfaceState.xcuserstate
