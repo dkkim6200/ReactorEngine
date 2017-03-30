@@ -7,36 +7,20 @@ int gameObjectId2;
 
 #define FACTOR 0.1
 
-int direction = 1;
-double scale = 0;
-
 void update() {
     engine->update();
     
     GameObject *gameObject1 = engine->getGameObject(gameObjectId1);
     
     double rotation = RAD(90.0) * Time::deltaTime;
-    scale += Time::deltaTime;
-    double scaleFactor = abs(sin(scale) * FACTOR);
     
-    Vector3 gameObject1Pos = gameObject1->transform->getWorldPosition();
-    
-    // Test Transform::translate(). See if the GameObject moves back and forth along its side.
-    if (gameObject1Pos.x > 1) {
-        direction = -1;
-    } else if (gameObject1Pos.x < -1) {
-        direction = 1;
-    }
-    gameObject1->transform->translate(Vector3(direction * 1 * Time::deltaTime, 0, 0));
+    cout << "====================\n\n" << endl;
+    cout << "Position: " << gameObject1->transform->getWorldPosition() << endl;
+    cout << "Rotation: " << DEG(gameObject1->transform->getWorldRotation().toEulerAngles()) << endl;
+    cout << "Scale: " << gameObject1->transform->getWorldScale() << endl;
     
     // Test Transform::rotate(). See if the GameObject rotates without any gimbal lock.
-    gameObject1->transform->rotate(Vector3(rotation, rotation, rotation));
-    
-    // Test Transform::scale. See if it actually changes its size
-    gameObject1->transform->scale = Vector3(scaleFactor, scaleFactor, scaleFactor);
-    
-    // Test Transform::getWorldRotation. See if the rotation being printed is correct.
-    cout << DEG(gameObject1->transform->getWorldRotation().toEulerAngles()) << endl;
+    gameObject1->transform->rotate(Vector3(0, rotation, 0));
     
     glutSwapBuffers();
 }
@@ -48,20 +32,37 @@ void idle() {
 void keyboard(int key, int x, int y) {
     GameObject *gameObject1 = engine->getGameObject(gameObjectId1);
     
-    if (key == GLUT_KEY_UP) {
-        gameObject1->transform->position += Vector3(0, 1, 0) * FACTOR;
-    } else if (key == GLUT_KEY_DOWN) {
-        gameObject1->transform->position += Vector3(0, -1, 0) * FACTOR;
-    } else if (key == GLUT_KEY_LEFT) {
-        gameObject1->transform->position += Vector3(-1, 0, 0) * FACTOR;
-    } else if (key == GLUT_KEY_RIGHT) {
-        gameObject1->transform->position += Vector3(1, 0, 0) * FACTOR;
-    } else if (key == 'w') {
-        gameObject1->transform->position += Vector3(0, 0, 1) * FACTOR;
-    } else if (key == 's') {
-        gameObject1->transform->position += Vector3(0, 0, -1) * FACTOR;
-    } else if (key == 'q') {
-        exit(0);
+    switch (key) {
+        case GLUT_KEY_UP:
+            gameObject1->transform->position += Vector3(0, 1, 0) * FACTOR;
+            break;
+            
+        case GLUT_KEY_DOWN:
+            gameObject1->transform->position += Vector3(0, -1, 0) * FACTOR;
+            break;
+            
+        case GLUT_KEY_LEFT:
+            gameObject1->transform->position += Vector3(-1, 0, 0) * FACTOR;
+            break;
+            
+        case GLUT_KEY_RIGHT:
+            gameObject1->transform->position += Vector3(1, 0, 0) * FACTOR;
+            break;
+            
+        case 'w':
+            gameObject1->transform->position += Vector3(0, 0, 1) * FACTOR;
+            break;
+            
+        case 's':
+            gameObject1->transform->position += Vector3(0, 0, -1) * FACTOR;
+            break;
+            
+        case 'q':
+            exit(0);
+            break;
+            
+        default:
+            break;
     }
     
     engine->keyboardDetected(key);
@@ -85,14 +86,15 @@ int main(int argc, char* argv[]) {
     gameObject1->transform->setParent(NULL);
     gameObjectId1 = gameObject1->getId();
     
-    gameObject1->transform->position = Vector3(0, 0, 3);
-    gameObject1->transform->rotation = Quaternion(RAD(-30), RAD(-45), RAD(-45));
+    gameObject1->transform->position = Vector3(0, -0.5, 4);
+    gameObject1->transform->rotation = Quaternion::identity();
     gameObject1->transform->scale = Vector3(0.1, 0.1, 0.1);
     
     Renderer *renderer1 = (Renderer *)gameObject1->addComponent(COMPONENT_RENDERER);
-    Mesh *teapotMesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/models/cop_mesh.obj",
-                                "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/textures/Vehicle_Police.bmp");
-    renderer1->mesh = teapotMesh;
+//    renderer1->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/models/cop_mesh.obj",
+//                                "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/textures/Vehicle_Police.bmp");
+    renderer1->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/models/road_t_mesh.obj",
+                               "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/textures/Road.bmp");
     
     //=====================================================================
     
@@ -101,14 +103,13 @@ int main(int argc, char* argv[]) {
     gameObject2->transform->setParent(gameObject1->transform);
     gameObjectId2 = gameObject2->getId();
     
-    gameObject2->transform->position = Vector3(3, 0, 0);
-    gameObject2->transform->rotation = Quaternion(0, 0, 0);
-    gameObject2->transform->scale = Vector3(0.5, 0.5, 0.5);
+    gameObject2->transform->position = Vector3(0, 0, 10);
+    gameObject2->transform->rotation = Quaternion::identity();
+    gameObject2->transform->scale = Vector3(1, 1, 1);
     
     Renderer *renderer2 = (Renderer *)gameObject2->addComponent(COMPONENT_RENDERER);
-    Mesh *cubeMesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/models/ambo_mesh.obj",
-                              "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/textures/Vehice_Ambulance.bmp");
-    renderer2->mesh = cubeMesh;
+    renderer2->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/models/store_corner_mesh.obj",
+                              "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/simple_town/textures/Building03c.bmp");
     
     //======================================================================
     

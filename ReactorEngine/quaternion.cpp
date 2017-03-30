@@ -1,9 +1,7 @@
 #include "main.hpp"
 
-
 Quaternion::Quaternion() : Quaternion(0, 0, 0, 1) {
 }
-
 
 Quaternion::Quaternion(double x, double y, double z, double w) {
     this->x = x;
@@ -35,6 +33,10 @@ Quaternion::Quaternion(Vector3 axis, double angle) {
     y = axis.y * sin(angle / 2);
     z = axis.z * sin(angle / 2);
     w = cos(angle / 2);
+}
+
+Quaternion Quaternion::identity() {
+    return Quaternion(0, 0, 0, 1);
 }
 
 Quaternion Quaternion::operator*(const Vector3 vec) {
@@ -95,5 +97,5 @@ Vector3 Quaternion::toEulerAngles() {
     double t4 = +1.0 - 2.0 * (y * y + z * z);
     double yaw = std::atan2(t3, t4);
     
-    return Vector3(fmod(roll, 2 * M_PI), fmod(pitch, 2 * M_PI), fmod(yaw, 2 * M_PI));
+    return Vector3(roll, pitch, yaw);
 }

@@ -54,6 +54,7 @@ public:
     /**
      @brief Sets the parent of this transform object.
      
+     It adds itself to the end of the parent's children list.
      When the parent is changed, it removes itself from the list of children of the ex-parent.
      */
     void setParent(Transform *parent);
@@ -75,6 +76,8 @@ public:
     /**
      @brief Returns the position of this GameObject relative to the world.
      
+     @see http://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
+     
      @return Position of this GameObject relative to the world
      */
     Vector3 getWorldPosition();
@@ -82,12 +85,17 @@ public:
     /**
      @brief Returns the rotation of this GameObject relative to the world.
      
+     @see http://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
+     @see http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/
+     
      @return Rotation of this GameObject relative to the world
      */
     Quaternion getWorldRotation();
     
     /**
      @brief Returns the scale of this GameObject relative to the world.
+     
+     @see http://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
      
      @return Scale of this GameObject relative to the world.
      */

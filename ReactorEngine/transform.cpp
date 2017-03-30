@@ -5,7 +5,7 @@ Transform::Transform() : Component(COMPONENT_TRANSFORM) {
     children = new vector<Transform *>();
     
     position = Vector3(0, 0, 0);
-    rotation = Quaternion(0, 0, 0, 0);
+    rotation = Quaternion(0, 0, 0, 1);
     scale = Vector3(1, 1, 1);
 }
 
@@ -50,15 +50,31 @@ Matrix Transform::getWorldTransformationMat() {
 }
 
 Vector3 Transform::getWorldPosition() {
-    if (parent == NULL) {
-        return position;
-    }
-    else {
-        return parent->getWorldPosition() + position;
-    }
+    Matrix worldTransformMat = getWorldTransformationMat();
+    
+    return Vector3(worldTransformMat.get(0, 3), worldTransformMat.get(1, 3), worldTransformMat.get(2, 3));
 }
 
 Quaternion Transform::getWorldRotation() {
+//    Matrix worldTransformMat = getWorldTransformationMat();
+//    Vector3 worldScale = getWorldScale();
+//    
+//    Matrix rotationMat = Matrix(4, 4, (float[]) {
+//        worldTransformMat.get(0, 0) / scale.x, worldTransformMat.get(0, 1) / scale.y, worldTransformMat.get(0, 2) / scale.z, 0,
+//        worldTransformMat.get(1, 0) / scale.x, worldTransformMat.get(1, 1) / scale.y, worldTransformMat.get(1, 2) / scale.z, 0,
+//        worldTransformMat.get(2, 0) / scale.x, worldTransformMat.get(2, 1) / scale.y, worldTransformMat.get(2, 2) / scale.z, 0,
+//        0,                                     0,                                     0,                                     1
+//    });
+//    
+//    Quaternion result = Quaternion::identity();
+//    result.w = sqrt(1.0 + rotationMat.get(0, 0) + rotationMat.get(1, 1) + rotationMat.get(2, 2)) / 2.0;
+//    double w4 = 4.0 * result.w;
+//    result.x = (rotationMat.get(2, 1) - rotationMat.get(1, 2)) / w4;
+//    result.y = (rotationMat.get(0, 2) - rotationMat.get(2, 0)) / w4;
+//    result.z = (rotationMat.get(1, 0) - rotationMat.get(0, 1)) / w4;
+//    
+//    return result;
+    
     if (parent == NULL) {
         return rotation;
     }
@@ -68,6 +84,14 @@ Quaternion Transform::getWorldRotation() {
 }
 
 Vector3 Transform::getWorldScale() {
+//    Matrix worldTransformMat = getWorldTransformationMat();
+//    
+//    double scaleX = Vector3(worldTransformMat.get(0, 0), worldTransformMat.get(1, 0), worldTransformMat.get(2, 0)).getMagnitude();
+//    double scaleY = Vector3(worldTransformMat.get(0, 1), worldTransformMat.get(1, 1), worldTransformMat.get(2, 1)).getMagnitude();
+//    double scaleZ = Vector3(worldTransformMat.get(0, 2), worldTransformMat.get(1, 2), worldTransformMat.get(2, 2)).getMagnitude();
+//    
+//    return Vector3(scaleX, scaleY, scaleZ);
+    
     if (parent == NULL) {
         return scale;
     }

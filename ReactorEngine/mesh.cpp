@@ -65,13 +65,45 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
             tempUVIndices.push_back(uvIndex[0]);
             tempUVIndices.push_back(uvIndex[1]);
             tempUVIndices.push_back(uvIndex[2]);
-            tempNormalIndices.push_back(uvIndex[0]);
-            tempNormalIndices.push_back(uvIndex[1]);
-            tempNormalIndices.push_back(uvIndex[2]);
+            tempNormalIndices.push_back(normalIndex[0]);
+            tempNormalIndices.push_back(normalIndex[1]);
+            tempNormalIndices.push_back(normalIndex[2]);
+            
+            //=====================================================
+            // Check if this set of indices is representing a quad.
+            // If so, add another triangle to make it a quad.
+            //=====================================================
+            
+            // There may be 4th index. Check for that.
+            int extraVertexIndex;
+            int extraUvIndex;
+            int extraNormalIndex;
+            
+            // I really don't know how the hell this works. Shouldn't the fscanf above ready skipped a line???? How is the fscanf below sucessfully reading a line???
+            int extraIndexMatch = fscanf(file, "%d/%d/%d\n",
+                                         &extraVertexIndex, &extraUvIndex, &extraNormalIndex);
+            
+            // If the 4th index does exist, this line represents a quad.
+            if (extraIndexMatch == 3) {
+                // Create another triangle.
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempVertexIndices.push_back(extraVertexIndex);
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempUVIndices.push_back(uvIndex[2]);
+                tempUVIndices.push_back(extraUvIndex);
+                tempUVIndices.push_back(uvIndex[0]);
+                tempNormalIndices.push_back(normalIndex[2]);
+                tempNormalIndices.push_back(extraNormalIndex);
+                tempNormalIndices.push_back(normalIndex[0]);
+            }
         }
         else {
+            cout << strBuf << endl;
+            
             // Unsignificant line; probably a comment
             fgets(strBuf, 1000, file);
+            
+            cout << strBuf << endl;
         }
     }
     
@@ -106,5 +138,10 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
         else { // If the vertex already exists
             indices.push_back(existingIndex);
         }
+    }
+    
+    for (int i = 0; i < uvs.size(); i++) {
+        cout << vertices[i] << endl;
+        cout << uvs[i].x << ", " << uvs[i].y << endl;
     }
 }

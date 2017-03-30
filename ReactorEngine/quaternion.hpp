@@ -9,7 +9,7 @@ public:
     double w;
     
     /**
-     @brief Initiates a rotation quaternion of an identity rotation.
+     @brief Initiates a identity quaternion.
      */
     Quaternion();
     
@@ -41,6 +41,13 @@ public:
      @param angle The angle of rotaiton around the axis
      */
     Quaternion(Vector3 axis, double angle);
+    
+    /**
+     @brief Returns a rotation quaternion of an identity rotation.
+     
+     @return Identity quaternion
+     */
+    static Quaternion identity();
     
     Quaternion operator*(const Vector3 vec);
     Quaternion operator*(const Quaternion quat);
