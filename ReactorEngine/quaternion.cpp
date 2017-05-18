@@ -14,17 +14,17 @@ Quaternion::Quaternion(double x, double y, double z, double w) {
 Quaternion::Quaternion(double xRot, double yRot, double zRot) {
     yRot *= -1;
     
-    double t0 = cos(zRot * 0.5);
-    double t1 = sin(zRot * 0.5);
-    double t2 = cos(xRot * 0.5);
-    double t3 = sin(xRot * 0.5);
-    double t4 = cos(yRot * 0.5);
-    double t5 = sin(yRot * 0.5);
+    double cosHalfZ = cos(zRot * 0.5);
+    double sinHalfZ = sin(zRot * 0.5);
+    double cosHalfX = cos(xRot * 0.5);
+    double sinHalfX = sin(xRot * 0.5);
+    double cosHalfY = cos(yRot * 0.5);
+    double sinHalfY = sin(yRot * 0.5);
     
-    w = t0 * t2 * t4 + t1 * t3 * t5;
-    x = t0 * t3 * t4 - t1 * t2 * t5;
-    y = t0 * t2 * t5 + t1 * t3 * t4;
-    z = t1 * t2 * t4 - t0 * t3 * t5;
+    x = cosHalfZ * sinHalfX * cosHalfY + sinHalfZ * cosHalfX * sinHalfY;
+    y = cosHalfZ * cosHalfX * sinHalfY - sinHalfZ * sinHalfX * cosHalfY;
+    z = sinHalfZ * cosHalfX * cosHalfY - cosHalfZ * sinHalfX * sinHalfY;
+    w = cosHalfZ * cosHalfX * cosHalfY + sinHalfZ * sinHalfX * sinHalfY;
 }
 
 

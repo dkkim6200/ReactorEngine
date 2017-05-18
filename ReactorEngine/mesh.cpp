@@ -97,14 +97,6 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
                 tempNormalIndices.push_back(normalIndex[0]);
             }
         }
-        else {
-            cout << strBuf << endl;
-            
-            // Unsignificant line; probably a comment
-            fgets(strBuf, 1000, file);
-            
-            cout << strBuf << endl;
-        }
     }
     
     for (int i = 0; i < tempVertexIndices.size(); i++) {
@@ -138,10 +130,5 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
         else { // If the vertex already exists
             indices.push_back(existingIndex);
         }
-    }
-    
-    for (int i = 0; i < uvs.size(); i++) {
-        cout << vertices[i] << endl;
-        cout << uvs[i].x << ", " << uvs[i].y << endl;
     }
 }

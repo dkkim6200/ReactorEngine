@@ -27,7 +27,11 @@ using namespace std;
 
 #include <glm/glm.hpp>
 
+#include "util.hpp"
+#include "screen.hpp"
+#include "window.hpp"
 #include "time.hpp"
+#include "input.hpp"
 #include "vector3.hpp"
 #include "vector2.hpp"
 #include "quaternion.hpp"
@@ -40,6 +44,7 @@ using namespace std;
 #include "game_object.hpp"
 #include "system.hpp"
 #include "render_system.hpp"
+#include "scene.hpp"
 #include "engine.hpp"
 
 #define INIT_SCREEN_WIDTH 500
@@ -58,7 +63,7 @@ using namespace std;
 #define COMPONENT_TRANSFORM 0
 #define COMPONENT_RENDERER 1
 
-#define SHOW_FPS false
+#define SHOW_FPS true
 
 #define RAD(x) x*3.14159265359/180.0
 #define DEG(x) x*180.0/3.14159265359

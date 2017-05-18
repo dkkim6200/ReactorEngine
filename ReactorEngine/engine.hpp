@@ -2,33 +2,22 @@
 #define ENGINE_H
 
 class Engine {
-protected:
-    std::chrono::high_resolution_clock::time_point previousTime;
-    std::chrono::high_resolution_clock::time_point currentTime;
-    
-    Vector3 *teapotVertices;
-    int **teapotPatches;
-    
-    int numTeapotVertices;
-    int numTeapotPatches;
-    
-    vector<System *> *systems;
-    map<int, GameObject *> *gameObjects;
-    
-    string readFile(string fileName);
+private:
     void addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType);
     void compileShaders();
+    
+    Scene *curScene;
     
 public:
     GLuint transformationMatLoc;
     
     Engine();
     
-    void update();
-    void keyboardDetected(int key);
+    void loadScene(Scene *scene);
     
-    GameObject *getGameObject(int id);
-    void addGameObject(GameObject *gameObject);
+    void update();
+    void onKeyPressed(int key);
+    void onMouse(int x, int y);
 };
 
 #endif

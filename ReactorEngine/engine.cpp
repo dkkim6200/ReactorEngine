@@ -23,30 +23,45 @@ Engine::Engine() {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     
+    compileShaders();
+    
     // Reactor Engine initialization
     
-    previousTime = std::chrono::high_resolution_clock::now();
-    currentTime = std::chrono::high_resolution_clock::now();
+    curScene = NULL;
     
-    systems = new vector<System *>();
-    systems->push_back(new RenderSystem());
-    
-    gameObjects = new map<int, GameObject *>();
-    
-    compileShaders();
+    Time::init();
+    Input::init();
+    Screen::init();
+    Window::init();
 }
 
-/**
- Source
- 1. http://stackoverflow.com/questions/2602013/read-whole-ascii-file-into-c-stdstring
- */
-string Engine::readFile(string fileName) {
-    ifstream file(fileName);
-    stringstream buffer;
+void Engine::update() {
+    Time::updateDeltaTime();
     
-    buffer << file.rdbuf();
+    Screen::width = glutGet(GLUT_SCREEN_WIDTH);
+    Screen::height = glutGet(GLUT_SCREEN_HEIGHT);
     
-    return buffer.str();
+    Screen::width = glutGet(GLUT_WINDOW_WIDTH);
+    Screen::height = glutGet(GLUT_WINDOW_HEIGHT);
+    
+    if (SHOW_FPS) {
+        cout << 1.0 / Time::deltaTime << " FPS" << endl;
+    }
+    
+    curScene->update();
+}
+
+void Engine::loadScene(Scene *scene) {
+    curScene = scene;
+}
+
+void Engine::onKeyPressed(int key) {
+    Input::pressedKey = key;
+}
+
+void Engine::onMouse(int x, int y) {
+    Input::mouseX = ((double)x - (Window::width / 2)) / (Window::width / 2);
+    Input::mouseY = (((double)y - (Window::height / 2)) * -1) / (Window::height / 2);
 }
 
 void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType) {
@@ -123,40 +138,4 @@ void Engine::compileShaders() {
         exit(1);
     }
     glUniform1i(sampler, 0);
-}
-
-void Engine::update() {
-    previousTime = currentTime;
-    currentTime = std::chrono::high_resolution_clock::now();
-    
-    Time::deltaTime = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime).count();
-    
-    if (SHOW_FPS) {
-        cout << 1.0 / Time::deltaTime << " FPS" << endl;
-    }
-    
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    for (int i = 0; i < systems->size(); i++) {
-        for (auto it = gameObjects->begin(); it != gameObjects->end(); it++) {
-            systems->at(i)->update(it->second);
-        }
-    }
-}
-
-void Engine::keyboardDetected(int key) {
-    
-}
-
-GameObject *Engine::getGameObject(int id) {
-    if (gameObjects->find(id) != gameObjects->end()) {
-        return gameObjects->at(id);
-    }
-    else {
-        return NULL;
-    }
-}
-
-void Engine::addGameObject(GameObject *gameObject) {
-    gameObjects->emplace(gameObject->getId(), gameObject);
 }

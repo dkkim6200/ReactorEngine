@@ -5,7 +5,7 @@ Transform::Transform() : Component(COMPONENT_TRANSFORM) {
     children = new vector<Transform *>();
     
     position = Vector3(0, 0, 0);
-    rotation = Quaternion(0, 0, 0, 1);
+    rotation = Quaternion::identity();
     scale = Vector3(1, 1, 1);
 }
 
@@ -106,7 +106,11 @@ void Transform::translate(Vector3 translation) {
 }
 
 void Transform::rotate(Vector3 eulerAngles) {
-    rotation = Quaternion(eulerAngles.x, eulerAngles.y, eulerAngles.z) * rotation;
+    rotation = rotation * Quaternion(eulerAngles.x, eulerAngles.y, eulerAngles.z);
+    
+//    rotation = rotation * Quaternion(eulerAngles.x, 0, 0);
+//    rotation = rotation * Quaternion(0, eulerAngles.y, 0);
+//    rotation = Quaternion(0, 0, eulerAngles.z) * rotation;
 }
 
 void Transform::rotate(Vector3 axis, double angle) {
