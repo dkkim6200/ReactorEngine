@@ -10,6 +10,9 @@ private:
     
 public:
     GLuint transformationMatLoc;
+    GLuint samplerLoc;
+    
+    GLuint shaderProgram;
     
     Engine();
     

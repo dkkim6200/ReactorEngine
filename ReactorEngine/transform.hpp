@@ -102,6 +102,20 @@ public:
     Vector3 getWorldScale();
     
     /**
+     @brief Returns the up-vector of this GameObject relative to the world.
+     
+     @return Up-vector of this GameObject relative to the world.
+     */
+    Vector3 getUp();
+    
+    /**
+     @brief Returns the vector in which this GameObject is looking toward.
+     
+     @return Forward vector of this GameObject
+     */
+    Vector3 getForward();
+    
+    /**
      @brief Translates (moves) this GameObject by 'translation'.
      
      @param translation Translation in X-axis, Y-axis, and Z-axis

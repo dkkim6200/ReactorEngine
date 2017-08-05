@@ -32,6 +32,9 @@ Component *GameObject::addComponent(int id) {
     if (id == COMPONENT_RENDERER) {
         componentToAdd = new Renderer();
     }
+    else if (id == COMPONENT_CAMERA) {
+        componentToAdd = new Camera();
+    }
     else {
         cout << "NO SUCH COMPONENT!" << endl;
         exit(1);
@@ -40,7 +43,8 @@ Component *GameObject::addComponent(int id) {
     if (components->find(componentToAdd->getId()) == components->end()) {
         componentToAdd->gameObject = this;
         components->emplace(componentToAdd->getId(), componentToAdd);
-        
+    } else {
+        delete componentToAdd;
     }
     
     return componentToAdd;

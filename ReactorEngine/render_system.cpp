@@ -16,9 +16,17 @@ void RenderSystem::update(GameObject *gameObject) {
         // Update Matrices
         //================================================================
         
-        Matrix projectionMat = Matrix::getProjectionMat(Screen::width / Screen::height, 0.1f, 1000.0f, 30.0f * M_PI / 180.0f);
+        GameObject *cameraGameObject = Camera::mainCamera->gameObject;
         
-        Matrix transformationMat = projectionMat * transform->getWorldTransformationMat();
+        Matrix projectionMat = Matrix::getProjectionMat(Window::width / Window::height,
+                                                        Camera::mainCamera->nearClipPlane,
+                                                        Camera::mainCamera->farClipPlane,
+                                                        Camera::mainCamera->fov);
+        
+        Matrix cameraTranslationMat = Matrix::getTranslationMat(cameraGameObject->transform->getWorldPosition() * -1);
+        Matrix cameraRotationMat = Matrix::getRotationMat(cameraGameObject->transform->getWorldRotation());
+        
+        Matrix transformationMat = projectionMat * cameraRotationMat * cameraTranslationMat * transform->getWorldTransformationMat();
         glUniformMatrix4fv(engine->transformationMatLoc, 1, true, transformationMat.m);
         
         //================================================================

@@ -166,11 +166,11 @@ Matrix Matrix::getScaleMat(Vector3 scaleVec) {
 }
 
 
-Matrix Matrix::getProjectionMat(float aspectRatio, float zNear, float zFar, float fov) {
+Matrix Matrix::getProjectionMat(float aspectRatio, float nearClipPlane, float farClipPlane, float fov) {
     Matrix projectionMat = Matrix (4, 4, (float[]) {
         1.0f / (aspectRatio * tan(fov / 2)), 0,                   0,                            0,
         0,                                   1.0f / tan(fov / 2), 0,                            0,
-        0,                                   0,                   (-zNear-zFar) / (zNear-zFar), (2*zFar*zNear) / (zNear-zFar),
+        0,                                   0,                   (-nearClipPlane-farClipPlane) / (nearClipPlane-farClipPlane), (2*farClipPlane*nearClipPlane) / (nearClipPlane-farClipPlane),
         0,                                   0,                   1,                            0
     });
     

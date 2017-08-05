@@ -49,7 +49,6 @@ public:
      */
     static Quaternion identity();
     
-    Quaternion operator*(const Vector3 vec);
     Quaternion operator*(const Quaternion quat);
     
     friend ostream& operator<<(ostream& os, const Quaternion &q);

@@ -39,15 +39,6 @@ Quaternion Quaternion::identity() {
     return Quaternion(0, 0, 0, 1);
 }
 
-Quaternion Quaternion::operator*(const Vector3 vec) {
-    const float w = - ((*this).x * vec.x) - ((*this).y * vec.y) - ((*this).z * vec.z);
-    const float x =   ((*this).w * vec.x) + ((*this).y * vec.z) - ((*this).z * vec.y);
-    const float y =   ((*this).w * vec.y) + ((*this).z * vec.x) - ((*this).x * vec.z);
-    const float z =   ((*this).w * vec.z) + ((*this).x * vec.y) - ((*this).y * vec.x);
-    
-    return Quaternion(x, y, z, w);
-}
-
 Quaternion Quaternion::operator*(const Quaternion quat) {
     const float w = ((*this).w * quat.w) - ((*this).x * quat.x) - ((*this).y * quat.y) - ((*this).z * quat.z);
     const float x = ((*this).x * quat.w) + ((*this).w * quat.x) + ((*this).y * quat.z) - ((*this).z * quat.y);

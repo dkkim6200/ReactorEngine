@@ -41,8 +41,8 @@ void Engine::update() {
     Screen::width = glutGet(GLUT_SCREEN_WIDTH);
     Screen::height = glutGet(GLUT_SCREEN_HEIGHT);
     
-    Screen::width = glutGet(GLUT_WINDOW_WIDTH);
-    Screen::height = glutGet(GLUT_WINDOW_HEIGHT);
+    Window::width = glutGet(GLUT_WINDOW_WIDTH);
+    Window::height = glutGet(GLUT_WINDOW_HEIGHT);
     
     if (SHOW_FPS) {
         cout << 1.0 / Time::deltaTime << " FPS" << endl;
@@ -93,7 +93,7 @@ void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shad
 }
 
 void Engine::compileShaders() {
-    GLuint shaderProgram = glCreateProgram();
+    shaderProgram = glCreateProgram();
     
     string vs = readFile(VERTEX_SHADER_FILE);
     string fs = readFile(FRAGEMENT_SHADER_FILE);
@@ -132,10 +132,10 @@ void Engine::compileShaders() {
         exit(1);
     }
     
-    GLuint sampler = glGetUniformLocation(shaderProgram, "sampler");
-    if (sampler == 0xFFFFFFFF) {
+    samplerLoc = glGetUniformLocation(shaderProgram, "sampler");
+    if (samplerLoc == 0xFFFFFFFF) {
         cout << "Error getting 'sampler' variable from shaderProgram." << endl;
         exit(1);
     }
-    glUniform1i(sampler, 0);
+//    glUniform1i(sampler, 0);
 }

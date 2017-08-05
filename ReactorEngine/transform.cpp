@@ -101,6 +101,16 @@ Vector3 Transform::getWorldScale() {
     }
 }
 
+Vector3 Transform::getUp() {
+    Quaternion worldRot = getWorldRotation();
+    return (worldRot * Vector3(0, 1, 0).getQuaternion() * worldRot.getConjugate()).getVector();
+}
+
+Vector3 Transform::getForward() {
+    Quaternion worldRot = getWorldRotation();
+    return (worldRot * Vector3(0, 0, 1).getQuaternion() * worldRot.getConjugate()).getVector();
+}
+
 void Transform::translate(Vector3 translation) {
     position += translation;
 }

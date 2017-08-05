@@ -3,7 +3,8 @@
 
 class SceneMain : public Scene {
 private:
-    int gameObjectId1;
+    int gameObject1Id;
+    int worldId;
     
 public:
     SceneMain();

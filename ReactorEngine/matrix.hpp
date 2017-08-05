@@ -90,12 +90,12 @@ public:
      @brief Returns a projection matrix.
      
      @param aspectRatio Aspect ratio of the screen; equivalent of (Screen Width) / (Screen Height)
-     @param nearZ Z-plane of which the objects that are too close are to be clipped past this plane
-     @param farZ Z-plane of which the objects that are too far are to be clipped past this plane
+     @param nearClipPlane Z-plane of which the objects that are too close are to be clipped past this plane
+     @param farClipPlane Z-plane of which the objects that are too far are to be clipped past this plane
      @param fov Angle of Field-of-view of the camera in radians
      @return Projection matrix for the camera
      */
-    static Matrix getProjectionMat(float aspectRatio, float nearZ, float farZ, float fov);
+    static Matrix getProjectionMat(float aspectRatio, float nearClipPlane, float farClipPlane, float fov);
 };
 
 #endif

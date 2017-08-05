@@ -16,8 +16,11 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+xcuserdata/*
 
 ## Other
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+
+.DS_Store

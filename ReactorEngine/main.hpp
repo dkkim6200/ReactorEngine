@@ -41,6 +41,7 @@ using namespace std;
 #include "component.hpp"
 #include "transform.hpp"
 #include "renderer.hpp"
+#include "camera.hpp"
 #include "game_object.hpp"
 #include "system.hpp"
 #include "render_system.hpp"
@@ -62,6 +63,7 @@ using namespace std;
 // class Component
 #define COMPONENT_TRANSFORM 0
 #define COMPONENT_RENDERER 1
+#define COMPONENT_CAMERA 2
 
 #define SHOW_FPS true
 

@@ -1,6 +1,24 @@
 #include "main.hpp"
 
 Texture::Texture(char *imagePath) {
+    this->loadBMP(imagePath);
+    
+    glGenTextures(1, &(this->textureObjId));
+    glBindTexture(GL_TEXTURE_2D, this->textureObjId);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+Texture::Texture(char *imagePath, GLenum type, GLuint textureObjId) {
+    this->loadBMP(imagePath);
+    
+    this->textureObjId = textureObjId;
+}
+
+void Texture::loadBMP(char *imagePath) {
     unsigned char buffer[1024];
     unsigned int dataPos = 0;
     
@@ -36,11 +54,4 @@ Texture::Texture(char *imagePath) {
     fread(data, 1, width * height * 3, file);
     
     fclose(file);
-    
-    glGenTextures(1, &textureObjId);
-    glBindTexture(GL_TEXTURE_2D, textureObjId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glBindTexture(GL_TEXTURE_2D, 0);
 }

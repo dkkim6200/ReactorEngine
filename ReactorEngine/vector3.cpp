@@ -61,6 +61,10 @@ float Vector3::getMagnitude() {
     return sqrt(x*x + y*y + z*z);
 }
 
+Quaternion Vector3::getQuaternion() {
+    return Quaternion(x, y, z, 0);
+}
+
 Vector3 Vector3::normalize() {
     return (*this) / getMagnitude();
 }

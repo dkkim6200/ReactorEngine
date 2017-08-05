@@ -1,6 +1,8 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
+class Quaternion;
+
 class Vector3 {
 public:
     float x;
@@ -42,6 +44,8 @@ public:
      @return Magnitude of this Vector3 in float
      */
     float getMagnitude();
+    
+    Quaternion getQuaternion();
     
     /**
      @brief Normalizes this vector.
