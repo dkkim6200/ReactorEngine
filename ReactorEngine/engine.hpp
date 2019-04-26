@@ -20,7 +20,8 @@ public:
     
     void update();
     void onKeyPressed(int key);
-    void onMouse(int x, int y);
+    void onKeyRelease(int key);
+    void onMouse(double x, double y);
 };
 
 #endif

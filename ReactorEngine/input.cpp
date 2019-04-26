@@ -10,7 +10,7 @@ void Input::init() {
     mouseY = 0;
 }
 
-bool Input::getKey(int glutKey) {
+int Input::getKey() {
     return pressedKey;
 }
 

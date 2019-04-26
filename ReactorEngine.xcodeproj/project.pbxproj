@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8334A2E61DA3691100140E2E /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8334A2E51DA3691100140E2E /* time.cpp */; };
+		83533A0E22737AC6001036C8 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */; };
+		83533A1022737DC8001036C8 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */; };
 		835C2D291D9D8C0A0019F073 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C2D281D9D8C0A0019F073 /* main.cpp */; };
 		835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B011D9E194F0019F073 /* OpenGL.framework */; };
 		835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B0E1D9F621C0019F073 /* GLUT.framework */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		8334A2E41DA3691100140E2E /* time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = time.hpp; sourceTree = "<group>"; };
 		8334A2E51DA3691100140E2E /* time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time.cpp; sourceTree = "<group>"; };
+		83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		835C2D251D9D8C0A0019F073 /* ReactorEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReactorEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		835C2D281D9D8C0A0019F073 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		835C3B011D9E194F0019F073 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -287,6 +291,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83533A1022737DC8001036C8 /* libGLEW.2.1.0.dylib in Frameworks */,
+				83533A0E22737AC6001036C8 /* libglfw.3.3.dylib in Frameworks */,
 				835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */,
 				835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */,
 			);
@@ -370,6 +376,8 @@
 		835C2D2F1D9D8FB30019F073 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */,
+				83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */,
 				835C3B0E1D9F621C0019F073 /* GLUT.framework */,
 				835C3B011D9E194F0019F073 /* OpenGL.framework */,
 			);
@@ -860,6 +868,8 @@
 					/usr/local/lib,
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/usr/local/Cellar/glfw/3.3/lib,
+					/usr/local/Cellar/glew/2.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USE_HEADERMAP = YES;
@@ -875,6 +885,8 @@
 					/usr/local/lib,
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/usr/local/Cellar/glfw/3.3/lib,
+					/usr/local/Cellar/glew/2.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USE_HEADERMAP = YES;

@@ -4,6 +4,6 @@ int Screen::width;
 int Screen::height;
 
 void Screen::init() {
-    width = glutGet(GLUT_SCREEN_WIDTH);
-    height = glutGet(GLUT_SCREEN_HEIGHT);
+    width = INIT_SCREEN_WIDTH;
+    height = INIT_SCREEN_HEIGHT;
 }

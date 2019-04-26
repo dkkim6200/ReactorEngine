@@ -9,7 +9,7 @@ public:
     
     static void init();
     
-    static bool getKey(int glutKey);
+    static int getKey();
     static double getMouseX();
     static double getMouseY();
 };

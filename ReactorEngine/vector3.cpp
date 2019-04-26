@@ -93,7 +93,7 @@ float Vector3::angle(Vector3 vec) {
     return acos(cosine);
 }
 
-void Vector3::rotate(Vector3 axis, float angle) {
+Vector3 Vector3::rotate(Vector3 axis, float angle) {
     axis.normalize();
     angle = angle * M_PI / 180.0;
     
@@ -108,4 +108,12 @@ void Vector3::rotate(Vector3 axis, float angle) {
     x = rotatedMat.get(0, 0);
     y = rotatedMat.get(1, 0);
     z = rotatedMat.get(2, 0);
+    
+    return Vector3(x, y, z);
+}
+
+Vector3 Vector3::rotate(Quaternion q) {
+    Vector3 rotatedVec = (q.getConjugate() * Quaternion(x, y, z, 0) * q).getVector();
+    
+    return rotatedVec;
 }

@@ -13,19 +13,10 @@
 
 using namespace std;
 
-#ifdef __APPLE__
-#include <OpenGL/gl3.h>
-#include <OpenGL/gl3ext.h>
-#include <GLUT/glut.h>
-#endif
-
-#ifdef WIN32
 #include <GL/glew.h>
-#endif
-
 #include <GLFW/glfw3.h>
 
-#include <glm/glm.hpp>
+//#include <glm/glm.hpp>
 
 #include "util.hpp"
 #include "screen.hpp"
@@ -48,8 +39,8 @@ using namespace std;
 #include "scene.hpp"
 #include "engine.hpp"
 
-#define INIT_SCREEN_WIDTH 500
-#define INIT_SCREEN_HEIGHT 500
+#define INIT_SCREEN_WIDTH 800
+#define INIT_SCREEN_HEIGHT 600
 
 #define WINDOW_TITLE "Reactor Engine"
 

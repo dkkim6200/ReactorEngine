@@ -79,7 +79,7 @@ Quaternion Transform::getWorldRotation() {
         return rotation;
     }
     else {
-        return parent->rotation * rotation;
+        return parent->getWorldRotation() * rotation;
     }
 }
 

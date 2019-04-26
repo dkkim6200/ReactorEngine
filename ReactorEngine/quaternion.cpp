@@ -12,7 +12,7 @@ Quaternion::Quaternion(double x, double y, double z, double w) {
 
 
 Quaternion::Quaternion(double xRot, double yRot, double zRot) {
-    yRot *= -1;
+//    yRot *= -1;
     
     double cosHalfZ = cos(zRot * 0.5);
     double sinHalfZ = sin(zRot * 0.5);
@@ -41,9 +41,9 @@ Quaternion Quaternion::identity() {
 
 Quaternion Quaternion::operator*(const Quaternion quat) {
     const float w = ((*this).w * quat.w) - ((*this).x * quat.x) - ((*this).y * quat.y) - ((*this).z * quat.z);
-    const float x = ((*this).x * quat.w) + ((*this).w * quat.x) + ((*this).y * quat.z) - ((*this).z * quat.y);
-    const float y = ((*this).y * quat.w) + ((*this).w * quat.y) + ((*this).z * quat.x) - ((*this).x * quat.z);
-    const float z = ((*this).z * quat.w) + ((*this).w * quat.z) + ((*this).x * quat.y) - ((*this).y * quat.x);
+    const float x = ((*this).w * quat.x) + ((*this).x * quat.w) + ((*this).y * quat.z) - ((*this).z * quat.y);
+    const float y = ((*this).w * quat.y) + ((*this).y * quat.w) + ((*this).z * quat.x) - ((*this).x * quat.z);
+    const float z = ((*this).w * quat.z) + ((*this).x * quat.y) + ((*this).z * quat.w) - ((*this).y * quat.x);
     
     return Quaternion(x, y, z, w);
 }

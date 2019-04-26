@@ -170,8 +170,8 @@ Matrix Matrix::getProjectionMat(float aspectRatio, float nearClipPlane, float fa
     Matrix projectionMat = Matrix (4, 4, (float[]) {
         1.0f / (aspectRatio * tan(fov / 2)), 0,                   0,                            0,
         0,                                   1.0f / tan(fov / 2), 0,                            0,
-        0,                                   0,                   (-nearClipPlane-farClipPlane) / (nearClipPlane-farClipPlane), (2*farClipPlane*nearClipPlane) / (nearClipPlane-farClipPlane),
-        0,                                   0,                   1,                            0
+        0,                                   0,                   (-nearClipPlane-farClipPlane) / (farClipPlane-nearClipPlane), (2*farClipPlane*nearClipPlane) / (nearClipPlane-farClipPlane),
+        0,                                   0,                   -1,                            0
     });
     
     return projectionMat;

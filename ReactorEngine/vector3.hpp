@@ -99,7 +99,7 @@ public:
     float angle(Vector3 vec); // Return the angle in radians
     
     /**
-     @brief Rotates this vector.
+     @brief Rotates this vector around an axis.
      
      The rotation matrix used (from [2]):
      @code
@@ -126,7 +126,14 @@ public:
      @param  axis Axis of which this vector is to rotate around
      @param  angle Amount of angle to rotate
      */
-    void rotate(Vector3 axis, float angle);
+    Vector3 rotate(Vector3 axis, float angle);
+    
+    /**
+     @brief Rotates this vector using a quaternion
+     
+     @param q The unit quaternion used to rotate this vector
+     */
+    Vector3 rotate(Quaternion q);
 };
 
 #endif

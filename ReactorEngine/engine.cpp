@@ -1,15 +1,6 @@
 #include "main.hpp"
 
 Engine::Engine() {
-    // OpenGL Initialization
-    
-    // https://www.opengl.org/discussion_boards/showthread.php/172472-GL_DEPTH_TEST-not-working
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE);
-    
-    glutInitWindowSize(INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow(WINDOW_TITLE);
-    
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     
@@ -38,15 +29,17 @@ Engine::Engine() {
 void Engine::update() {
     Time::updateDeltaTime();
     
-    Screen::width = glutGet(GLUT_SCREEN_WIDTH);
-    Screen::height = glutGet(GLUT_SCREEN_HEIGHT);
-    
-    Window::width = glutGet(GLUT_WINDOW_WIDTH);
-    Window::height = glutGet(GLUT_WINDOW_HEIGHT);
+//    Screen::width = glutGet(GLUT_SCREEN_WIDTH);
+//    Screen::height = glutGet(GLUT_SCREEN_HEIGHT);
+//
+//    Window::width = glutGet(GLUT_WINDOW_WIDTH);
+//    Window::height = glutGet(GLUT_WINDOW_HEIGHT);
     
     if (SHOW_FPS) {
         cout << 1.0 / Time::deltaTime << " FPS" << endl;
     }
+    
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     curScene->update();
 }
@@ -59,9 +52,16 @@ void Engine::onKeyPressed(int key) {
     Input::pressedKey = key;
 }
 
-void Engine::onMouse(int x, int y) {
-    Input::mouseX = ((double)x - (Window::width / 2)) / (Window::width / 2);
-    Input::mouseY = (((double)y - (Window::height / 2)) * -1) / (Window::height / 2);
+void Engine::onKeyRelease(int key) {
+    Input::pressedKey = NULL;
+}
+
+void Engine::onMouse(double x, double y) {
+//    Input::mouseX = (x - (Window::width / 2)) / (Window::width / 2);
+//    Input::mouseY = (y - (Window::height / 2)) / (Window::height / 2);
+    
+    Input::mouseX = (x / Window::width) - 0.5;
+    Input::mouseY = (y / Window::height) - 0.5;
 }
 
 void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType) {

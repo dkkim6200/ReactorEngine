@@ -8,8 +8,6 @@ Scene::Scene() {
 }
 
 void Scene::update() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
     for (int i = 0; i < systems->size(); i++) {
         for (auto it = gameObjects->begin(); it != gameObjects->end(); it++) {
             systems->at(i)->update(it->second);
