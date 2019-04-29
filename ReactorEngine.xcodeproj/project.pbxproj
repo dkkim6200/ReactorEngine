@@ -12,9 +12,9 @@
 		83533A1022737DC8001036C8 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */; };
 		835C2D291D9D8C0A0019F073 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C2D281D9D8C0A0019F073 /* main.cpp */; };
 		835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B011D9E194F0019F073 /* OpenGL.framework */; };
-		835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C3B0E1D9F621C0019F073 /* GLUT.framework */; };
 		835C3B121D9F64600019F073 /* vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B111D9F64600019F073 /* vector3.cpp */; };
 		835C3B151D9F65050019F073 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 835C3B141D9F65050019F073 /* matrix.cpp */; };
+		836785112276C712006F9E76 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836785102276C712006F9E76 /* SDL2.framework */; };
 		8383071B1DB931F7005BE968 /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838307191DB931F7005BE968 /* system.cpp */; };
 		8383071F1DB93967005BE968 /* render_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8383071D1DB93967005BE968 /* render_system.cpp */; };
 		838717451DA6CD8C008DC001 /* vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838717431DA6CD8C008DC001 /* vector2.cpp */; };
@@ -61,6 +61,8 @@
 		835C3B111D9F64600019F073 /* vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector3.cpp; sourceTree = "<group>"; };
 		835C3B131D9F65050019F073 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		835C3B141D9F65050019F073 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		8367850D2276C02A006F9E76 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		836785102276C712006F9E76 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		838307191DB931F7005BE968 /* system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cpp; sourceTree = "<group>"; };
 		8383071A1DB931F7005BE968 /* system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = system.hpp; sourceTree = "<group>"; };
 		8383071D1DB93967005BE968 /* render_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render_system.cpp; sourceTree = "<group>"; };
@@ -291,9 +293,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836785112276C712006F9E76 /* SDL2.framework in Frameworks */,
 				83533A1022737DC8001036C8 /* libGLEW.2.1.0.dylib in Frameworks */,
 				83533A0E22737AC6001036C8 /* libglfw.3.3.dylib in Frameworks */,
-				835C3B0F1D9F621C0019F073 /* GLUT.framework in Frameworks */,
 				835C3B021D9E194F0019F073 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +378,8 @@
 		835C2D2F1D9D8FB30019F073 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				836785102276C712006F9E76 /* SDL2.framework */,
+				8367850D2276C02A006F9E76 /* QTKit.framework */,
 				83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */,
 				83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */,
 				835C3B0E1D9F621C0019F073 /* GLUT.framework */,
@@ -863,6 +867,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -880,6 +888,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,

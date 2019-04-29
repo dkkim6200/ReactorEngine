@@ -61,7 +61,7 @@ void Engine::onMouse(double x, double y) {
 //    Input::mouseY = (y - (Window::height / 2)) / (Window::height / 2);
     
     Input::mouseX = (x / Window::width) - 0.5;
-    Input::mouseY = (y / Window::height) - 0.5;
+    Input::mouseY = -((y / Window::height) - 0.5);
 }
 
 void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType) {

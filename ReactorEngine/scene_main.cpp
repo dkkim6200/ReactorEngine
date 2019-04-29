@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include "scene_main.hpp"
+#include <algorithm>
 
 SceneMain::SceneMain() : Scene() {
     //=====================================================================
@@ -25,7 +26,7 @@ SceneMain::SceneMain() : Scene() {
     addGameObject(car1);
     carId = car1->getId();
     
-    car1->transform->position = Vector3(0, 0, 1);
+    car1->transform->position = Vector3(0, 0, -1);
     car1->transform->rotation = Quaternion::identity();
     car1->transform->scale = Vector3(1, 1, 1) / 50;
     
@@ -40,7 +41,7 @@ SceneMain::SceneMain() : Scene() {
     GameObject *car2 = new GameObject();
     addGameObject(car2);
 
-    car2->transform->position = Vector3(0, 0, -1);
+    car2->transform->position = Vector3(0, 0, 1);
     car2->transform->rotation = Quaternion::identity();
     car2->transform->scale = Vector3(1, 1, 1) / 50;
 
@@ -129,6 +130,10 @@ SceneMain::SceneMain() : Scene() {
 //    //=====================================================================
 }
 
+float SceneMain::clamp(float n, float lo, float hi) {
+    return std::max(lo, std::min(n, hi));
+}
+
 void SceneMain::update() {
     Scene::update();
     
@@ -137,7 +142,9 @@ void SceneMain::update() {
     }
     
     GameObject *mainCamera = Camera::mainCamera->gameObject;
-    Camera::mainCamera->gameObject->transform->rotation = Quaternion(0, Input::getMouseX() * 10 , 0);
+//    mainCamera->transform->rotation = Quaternion(clamp(-Input::getMouseY() * 5, RAD(-90), RAD(90)), Input::getMouseX() * 5 , 0);
+    GameObject *car = getGameObject(carId);
+    car->transform->rotation = Quaternion(RAD(120) * Time::deltaTime, RAD(100) * Time::deltaTime, RAD(80) * Time::deltaTime) * car->transform->rotation;
     
     if (Input::pressedKey == GLFW_KEY_W) {
         mainCamera->transform->translate(Vector3(0, 0, -1).rotate(mainCamera->transform->getWorldRotation()) * Time::deltaTime);
