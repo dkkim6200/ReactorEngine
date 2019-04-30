@@ -79,7 +79,7 @@ Quaternion Transform::getWorldRotation() {
         return rotation;
     }
     else {
-        return parent->getWorldRotation() * rotation;
+        return rotation * parent->getWorldRotation();
     }
 }
 
@@ -103,12 +103,17 @@ Vector3 Transform::getWorldScale() {
 
 Vector3 Transform::getUp() {
     Quaternion worldRot = getWorldRotation();
-    return (worldRot * Vector3(0, 1, 0).getQuaternion() * worldRot.getConjugate()).getVector();
+    return (worldRot.getConjugate() * Vector3(0, 1, 0).getQuaternion() * worldRot).getVector();
 }
 
 Vector3 Transform::getForward() {
     Quaternion worldRot = getWorldRotation();
-    return (worldRot * Vector3(0, 0, 1).getQuaternion() * worldRot.getConjugate()).getVector();
+    return (worldRot.getConjugate() * Vector3(0, 0, -1).getQuaternion() * worldRot).getVector();
+}
+
+Vector3 Transform::getRight() {
+    Quaternion worldRot = getWorldRotation();
+    return (worldRot.getConjugate() * Vector3(1, 0, 0).getQuaternion() * worldRot).getVector();
 }
 
 void Transform::translate(Vector3 translation) {

@@ -4,6 +4,7 @@
 class SceneMain : public Scene {
 private:
     int carId;
+    int characterId;
     float clamp(float n, float lo, float hi);
     
 public:

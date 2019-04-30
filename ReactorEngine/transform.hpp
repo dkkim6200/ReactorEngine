@@ -111,9 +111,16 @@ public:
     /**
      @brief Returns the vector in which this GameObject is looking toward.
      
-     @return Forward vector of this GameObject
+     @return Forward (negative z-axis in OpenGL) vector of this GameObject
      */
     Vector3 getForward();
+    
+    /**
+     @brief Returns right vector of this GameObject.
+     
+     @return Right (positive x-axis) vector of this GameObject
+     */
+    Vector3 getRight();
     
     /**
      @brief Translates (moves) this GameObject by 'translation'.

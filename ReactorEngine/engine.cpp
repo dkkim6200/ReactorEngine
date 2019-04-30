@@ -1,6 +1,12 @@
 #include "main.hpp"
 
 Engine::Engine() {
+    glewExperimental = GL_TRUE;
+    glewInit();
+    
+    cout << "Renderer: " << glGetString(GL_RENDERER) << endl;
+    cout << "OpenGL version supported " << glGetString(GL_VERSION) << endl;
+    
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     

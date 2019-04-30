@@ -16,58 +16,62 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
     std::vector<Vector3> tempNormals;
     std::vector<unsigned int> tempNormalIndices;
     
-    FILE *file = fopen(objFilePath, "r");
-    if (file == NULL) {
-        cout << "Error loading file: " << objFilePath << endl;
-        exit(1);
-    }
+    ifstream file;
+    file.open(objFilePath);
+    string line;
     
-    while (true) {
-        char strBuf[1000];
-        
-        int result = fscanf(file, "%s", strBuf);
-        if (result == EOF) {
-            break;
+    while (getline(file, line)) {
+        if (line.length() == 0) {
+            continue;
         }
         
-        if (strcmp(strBuf, "v") == 0) {
+        string lineType = line.substr(0, line.find(" "));
+        string dataStr = line.substr(line.find(" "));
+        
+        stringstream stream(dataStr);
+        
+        if (lineType.compare("#") == 0) {
+            continue;
+        }
+        else if (lineType.compare("v") == 0) {
             Vector3 vertex = Vector3(0, 0, 0);
-            fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
+            stream >> vertex.x >> vertex.y >> vertex.z;
             tempVertices.push_back(vertex);
         }
-        else if (strcmp(strBuf, "vt") == 0) {
+        else if (lineType.compare("vt") == 0) {
             Vector2 uv = Vector2(0, 0);
-            fscanf(file, "%f %f\n", &uv.x, &uv.y);
+            stream >> uv.x >> uv.y;
             tempUVs.push_back(uv);
         }
-        else if (strcmp(strBuf, "vn") == 0) {
+        else if (lineType.compare("vn") == 0) {
             Vector3 normal = Vector3(0, 0, 0);
-            fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
+            stream >> normal.x >> normal.y >> normal.z;
             tempNormals.push_back(normal);
         }
-        else if (strcmp(strBuf, "f") == 0) {
+        else if (lineType.compare("f") == 0) {
+            bool matched = false;
+            
             int vertexIndex[3];
             int uvIndex[3];
             int normalIndex[3];
             
-            int matches = fscanf(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n",
+            int matches = sscanf(dataStr.c_str(), "%d/%d/%d %d/%d/%d %d/%d/%d",
                                  &vertexIndex[0], &uvIndex[0], &normalIndex[0],
                                  &vertexIndex[1], &uvIndex[1], &normalIndex[1],
                                  &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
-            if (matches != 9) {
-                cout << "File parsing error: " << objFilePath << endl;
-                exit(1);
+            if (matches == 9) {
+                matched = true;
+                
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempVertexIndices.push_back(vertexIndex[1]);
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempUVIndices.push_back(uvIndex[0]);
+                tempUVIndices.push_back(uvIndex[1]);
+                tempUVIndices.push_back(uvIndex[2]);
+                tempNormalIndices.push_back(normalIndex[0]);
+                tempNormalIndices.push_back(normalIndex[1]);
+                tempNormalIndices.push_back(normalIndex[2]);
             }
-            
-            tempVertexIndices.push_back(vertexIndex[0]);
-            tempVertexIndices.push_back(vertexIndex[1]);
-            tempVertexIndices.push_back(vertexIndex[2]);
-            tempUVIndices.push_back(uvIndex[0]);
-            tempUVIndices.push_back(uvIndex[1]);
-            tempUVIndices.push_back(uvIndex[2]);
-            tempNormalIndices.push_back(normalIndex[0]);
-            tempNormalIndices.push_back(normalIndex[1]);
-            tempNormalIndices.push_back(normalIndex[2]);
             
             //=====================================================
             // Check if this set of indices is representing a quad.
@@ -80,11 +84,16 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
             int extraNormalIndex;
             
             // I really don't know how the hell this works. Shouldn't the fscanf above ready skipped a line???? How is the fscanf below sucessfully reading a line???
-            int extraIndexMatch = fscanf(file, "%d/%d/%d\n",
-                                         &extraVertexIndex, &extraUvIndex, &extraNormalIndex);
+            matches = sscanf(dataStr.c_str(), "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d",
+                             &vertexIndex[0], &uvIndex[0], &normalIndex[0],
+                             &vertexIndex[1], &uvIndex[1], &normalIndex[1],
+                             &vertexIndex[2], &uvIndex[2], &normalIndex[2],
+                             &extraVertexIndex, &extraUvIndex, &extraNormalIndex);
             
             // If the 4th index does exist, this line represents a quad.
-            if (extraIndexMatch == 3) {
+            if (matches == 12) {
+                matched = true;
+                
                 // Create another triangle.
                 tempVertexIndices.push_back(vertexIndex[2]);
                 tempVertexIndices.push_back(extraVertexIndex);
@@ -96,7 +105,112 @@ Mesh::Mesh(char *objFilePath, char *imagePath) {
                 tempNormalIndices.push_back(extraNormalIndex);
                 tempNormalIndices.push_back(normalIndex[0]);
             }
+            
+            //=======================================================
+            // Check if this set of indices represent a vertex texture coordinate index
+            //=======================================================
+            
+            matches = sscanf(dataStr.c_str(), "%d/%d %d/%d %d/%d",
+                             &vertexIndex[0], &uvIndex[0],
+                             &vertexIndex[1], &uvIndex[1],
+                             &vertexIndex[2], &uvIndex[2]);
+            
+            if (matches == 6) {
+                matched = true;
+                
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempVertexIndices.push_back(vertexIndex[1]);
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempUVIndices.push_back(uvIndex[0]);
+                tempUVIndices.push_back(uvIndex[1]);
+                tempUVIndices.push_back(uvIndex[2]);
+                tempNormalIndices.push_back(1);
+                tempNormalIndices.push_back(1);
+                tempNormalIndices.push_back(1);
+            }
+            
+            matches = sscanf(dataStr.c_str(), "%d/%d %d/%d %d/%d %d/%d",
+                             &vertexIndex[0], &uvIndex[0],
+                             &vertexIndex[1], &uvIndex[1],
+                             &vertexIndex[2], &uvIndex[2],
+                             &extraVertexIndex, &extraUvIndex);
+            
+            // If the 4th index does exist, this line represents a quad.
+            if (matches == 8) {
+                matched = true;
+                
+                // Create another triangle.
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempVertexIndices.push_back(extraVertexIndex);
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempUVIndices.push_back(uvIndex[2]);
+                tempUVIndices.push_back(extraUvIndex);
+                tempUVIndices.push_back(uvIndex[0]);
+                tempNormalIndices.push_back(1);
+                tempNormalIndices.push_back(1);
+                tempNormalIndices.push_back(1);
+            }
+            
+            //=======================================================
+            // Check if this set of indices represent a vertex normal index
+            //=======================================================
+            
+            matches = sscanf(dataStr.c_str(), "%d//%d %d//%d %d//%d",
+                             &vertexIndex[0], &normalIndex[0],
+                             &vertexIndex[1], &normalIndex[1],
+                             &vertexIndex[2], &normalIndex[2]);
+            
+            if (matches == 6) {
+                matched = true;
+                
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempVertexIndices.push_back(vertexIndex[1]);
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempUVIndices.push_back(1);
+                tempUVIndices.push_back(1);
+                tempUVIndices.push_back(1);
+                tempNormalIndices.push_back(normalIndex[0]);
+                tempNormalIndices.push_back(normalIndex[1]);
+                tempNormalIndices.push_back(normalIndex[2]);
+            }
+            
+            matches = sscanf(dataStr.c_str(), "%d//%d %d//%d %d//%d %d//%d",
+                             &vertexIndex[0], &normalIndex[0],
+                             &vertexIndex[1], &normalIndex[1],
+                             &vertexIndex[2], &normalIndex[2],
+                             &extraVertexIndex, &extraNormalIndex);
+            
+            // If the 4th index does exist, this line represents a quad.
+            if (matches == 8) {
+                matched = true;
+                
+                // Create another triangle.
+                tempVertexIndices.push_back(vertexIndex[2]);
+                tempVertexIndices.push_back(extraVertexIndex);
+                tempVertexIndices.push_back(vertexIndex[0]);
+                tempUVIndices.push_back(1);
+                tempUVIndices.push_back(1);
+                tempUVIndices.push_back(1);
+                tempNormalIndices.push_back(normalIndex[2]);
+                tempNormalIndices.push_back(extraNormalIndex);
+                tempNormalIndices.push_back(normalIndex[0]);
+            }
+            
+            if (matched == false) {
+                cout << "File parsing error: " << objFilePath << endl;
+                exit(1);
+            }
         }
+    }
+    
+    file.close();
+    
+    if (tempUVIndices.size() == 0) {
+        tempUVs.push_back(Vector2(0, 0));
+    }
+    
+    if (tempNormals.size() == 0) {
+        tempNormals.push_back(Vector3(0, 1, 0));
     }
     
     for (int i = 0; i < tempVertexIndices.size(); i++) {

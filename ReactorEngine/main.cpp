@@ -21,10 +21,10 @@ void mouse(GLFWwindow *window, double x, double y) {
     engine->onMouse(x, y);
 }
 
-int main(int argc, char *argv[]) {
+GLFWwindow *initGLFWwindow() {
     if (!glfwInit()) {
         fprintf(stderr, "ERROR: could not start GLFW3\n");
-        return 1;
+        exit(1);
     }
     
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -37,17 +37,17 @@ int main(int argc, char *argv[]) {
     if (!window) {
         fprintf(stderr, "ERROR: could not open window with GLFW3\n");
         glfwTerminate();
-        return 1;
+        exit(1);
     }
     glfwMakeContextCurrent(window);
     
-    glewExperimental = GL_TRUE;
-    glewInit();
-    
-    cout << "Renderer: " << glGetString(GL_RENDERER) << endl;
-    cout << "OpenGL version supported " << glGetString(GL_VERSION) << endl;
-    
-//    engine = new Engine(new SceneMain());
+    return window;
+}
+
+int main(int argc, char *argv[]) {
+    GLFWwindow* window = initGLFWwindow();
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     engine = new Engine();
     engine->loadScene(new SceneMain);
     

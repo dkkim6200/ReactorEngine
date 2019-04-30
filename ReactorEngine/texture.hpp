@@ -9,8 +9,9 @@ private:
     void loadBMP(char *imagePath);
     
 public:
-    unsigned int width;
-    unsigned int height;
+    int width;
+    int height;
+    int numChannels;
     
     unsigned char *data;
     
