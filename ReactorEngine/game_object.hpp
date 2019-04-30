@@ -5,7 +5,7 @@ class GameObject {
 private:
     int id;
     
-    map<int, Component *> *components;
+    map<size_t, Component *> *components;
     
 public:
     GameObject();
@@ -14,8 +14,39 @@ public:
     int getId();
     Transform *transform;
     
-    Component *getComponent(int id);
-    Component *addComponent(int id);
+    // The template functions have to be in the header file.
+    // TODO: find a solution to put the function definitions to the CPP file.
+    
+    template <class T>
+    T *getComponent() {
+        if (typeid(T).hash_code() == typeid(Transform).hash_code()) {
+            return (T *)transform;
+        }
+        else if (hasComponent<T>()) {
+            return (T *)(components->at(typeid(T).hash_code()));
+        } else {
+            return NULL;
+        }
+    }
+    
+    template <class T>
+    bool hasComponent() {
+        return typeid(T).hash_code() == typeid(Transform).hash_code() || components->find(typeid(T).hash_code()) != components->end();
+    }
+    
+    template <class T>
+    T *addComponent() {
+        T *componentToAdd = new T();
+        
+        if (!this->hasComponent<T>()) {
+            componentToAdd->gameObject = this;
+            components->emplace(typeid(T).hash_code(), componentToAdd);
+        } else {
+            delete componentToAdd;
+        }
+        
+        return componentToAdd;
+    }
 };
 
 #endif

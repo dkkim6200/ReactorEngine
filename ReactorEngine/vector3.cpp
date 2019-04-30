@@ -117,3 +117,15 @@ Vector3 Vector3::rotate(Quaternion q) {
     
     return rotatedVec;
 }
+
+Vector3 Vector3::up() {
+    return Vector3(0, 1, 0);
+}
+
+Vector3 Vector3::forward() {
+    return Vector3(0, 0, -1);
+}
+
+Vector3 Vector3::right() {
+    return Vector3(1, 0, 0);
+}

@@ -102,25 +102,25 @@ public:
     Vector3 getWorldScale();
     
     /**
-     @brief Returns the up-vector of this GameObject relative to the world.
+     @brief Returns the positive y-axis vector in *world space*.
      
-     @return Up-vector of this GameObject relative to the world.
+     @return Up (positive y-axis in OpenGL) vector in world space
      */
-    Vector3 getUp();
+    Vector3 up();
     
     /**
-     @brief Returns the vector in which this GameObject is looking toward.
+     @brief Returns the negative z-axis vector in *world space*.
      
-     @return Forward (negative z-axis in OpenGL) vector of this GameObject
+     @return Forward (negative z-axis in OpenGL) vector in world space
      */
-    Vector3 getForward();
+    Vector3 forward();
     
     /**
-     @brief Returns right vector of this GameObject.
+     @brief Returns the positive x-axis vector in *world space*.
      
-     @return Right (positive x-axis) vector of this GameObject
+     @return Right (positive x-axis in OpenGL) vector in world space
      */
-    Vector3 getRight();
+    Vector3 right();
     
     /**
      @brief Translates (moves) this GameObject by 'translation'.

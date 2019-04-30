@@ -11,7 +11,6 @@ public:
     SceneMain();
     
     void update();
-    
 };
 
 #endif

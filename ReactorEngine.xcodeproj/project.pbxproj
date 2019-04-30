@@ -24,8 +24,6 @@
 		83B09E751ECC076A00B606F9 /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E731ECC076A00B606F9 /* scene.cpp */; };
 		83B09E781ECC0C3100B606F9 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E761ECC0C3100B606F9 /* input.cpp */; };
 		83B09E7B1ECC101400B606F9 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E791ECC101400B606F9 /* util.cpp */; };
-		83B09E7E1ECC1F4E00B606F9 /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E7C1ECC1F4E00B606F9 /* screen.cpp */; };
-		83B09E871ECC220D00B606F9 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E851ECC220D00B606F9 /* window.cpp */; };
 		83B09E8A1ECCCBF900B606F9 /* scene_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E881ECCCBF900B606F9 /* scene_main.cpp */; };
 		83B09E931ECD383F00B606F9 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83B09E911ECD383F00B606F9 /* camera.cpp */; };
 		83C78A8D1DA55A420008466D /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C78A8B1DA55A420008466D /* texture.cpp */; };
@@ -33,6 +31,7 @@
 		83D0FF6D1DB682B6002B749E /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6B1DB682B6002B749E /* game_object.cpp */; };
 		83D0FF711DB68389002B749E /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6F1DB68389002B749E /* component.cpp */; };
 		83D0FF741DB6869F002B749E /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF721DB6869F002B749E /* transform.cpp */; };
+		83DFA5D42278DC0C00C32A1E /* time_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DFA5D22278DC0C00C32A1E /* time_system.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -170,10 +169,6 @@
 		83B09E771ECC0C3100B606F9 /* input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = input.hpp; sourceTree = "<group>"; };
 		83B09E791ECC101400B606F9 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		83B09E7A1ECC101400B606F9 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
-		83B09E7C1ECC1F4E00B606F9 /* screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screen.cpp; sourceTree = "<group>"; };
-		83B09E7D1ECC1F4E00B606F9 /* screen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen.hpp; sourceTree = "<group>"; };
-		83B09E851ECC220D00B606F9 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
-		83B09E861ECC220D00B606F9 /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
 		83B09E881ECCCBF900B606F9 /* scene_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_main.cpp; sourceTree = "<group>"; };
 		83B09E891ECCCBF900B606F9 /* scene_main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene_main.hpp; sourceTree = "<group>"; };
 		83B09E8C1ECD364600B606F9 /* arrow.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = arrow.obj; sourceTree = "<group>"; };
@@ -286,6 +281,8 @@
 		83D0FF701DB68389002B749E /* component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = component.hpp; sourceTree = "<group>"; };
 		83D0FF721DB6869F002B749E /* transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
 		83D0FF731DB6869F002B749E /* transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = transform.hpp; sourceTree = "<group>"; };
+		83DFA5D22278DC0C00C32A1E /* time_system.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = time_system.cpp; sourceTree = "<group>"; };
+		83DFA5D32278DC0C00C32A1E /* time_system.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = time_system.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +401,8 @@
 				838307191DB931F7005BE968 /* system.cpp */,
 				8383071E1DB93967005BE968 /* render_system.hpp */,
 				8383071D1DB93967005BE968 /* render_system.cpp */,
+				83DFA5D32278DC0C00C32A1E /* time_system.hpp */,
+				83DFA5D22278DC0C00C32A1E /* time_system.cpp */,
 			);
 			name = system;
 			sourceTree = "<group>";
@@ -506,10 +505,6 @@
 				8334A2E51DA3691100140E2E /* time.cpp */,
 				83B09E771ECC0C3100B606F9 /* input.hpp */,
 				83B09E761ECC0C3100B606F9 /* input.cpp */,
-				83B09E7D1ECC1F4E00B606F9 /* screen.hpp */,
-				83B09E7C1ECC1F4E00B606F9 /* screen.cpp */,
-				83B09E861ECC220D00B606F9 /* window.hpp */,
-				83B09E851ECC220D00B606F9 /* window.cpp */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -755,10 +750,10 @@
 				8334A2E61DA3691100140E2E /* time.cpp in Sources */,
 				83D0FF6D1DB682B6002B749E /* game_object.cpp in Sources */,
 				83AC87341DA34DE100B86308 /* engine.cpp in Sources */,
-				83B09E871ECC220D00B606F9 /* window.cpp in Sources */,
 				835C3B121D9F64600019F073 /* vector3.cpp in Sources */,
 				83AC872D1DA3450600B86308 /* renderer.cpp in Sources */,
 				83B09E751ECC076A00B606F9 /* scene.cpp in Sources */,
+				83DFA5D42278DC0C00C32A1E /* time_system.cpp in Sources */,
 				83D0FF741DB6869F002B749E /* transform.cpp in Sources */,
 				83B09E7B1ECC101400B606F9 /* util.cpp in Sources */,
 				83B09E8A1ECCCBF900B606F9 /* scene_main.cpp in Sources */,
@@ -766,7 +761,6 @@
 				83C78A8D1DA55A420008466D /* texture.cpp in Sources */,
 				83AC87311DA34AA400B86308 /* mesh.cpp in Sources */,
 				838717451DA6CD8C008DC001 /* vector2.cpp in Sources */,
-				83B09E7E1ECC1F4E00B606F9 /* screen.cpp in Sources */,
 				835C2D291D9D8C0A0019F073 /* main.cpp in Sources */,
 				83C856601E87B33C003429DB /* quaternion.cpp in Sources */,
 				83D0FF711DB68389002B749E /* component.cpp in Sources */,

@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-Renderer::Renderer() : Component(COMPONENT_RENDERER) {
+Renderer::Renderer() {
     mesh = NULL;
     
     glGenBuffers(1, &vboId);

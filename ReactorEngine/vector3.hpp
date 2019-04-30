@@ -25,7 +25,7 @@ public:
      @return Returns new Vector3 object.
      */
     Vector3(float x, float y, float z);
-    
+
     ~Vector3();
     
     void operator=(const Vector3 &vec);
@@ -134,6 +134,27 @@ public:
      @param q The unit quaternion used to rotate this vector
      */
     Vector3 rotate(Quaternion q);
+    
+    /**
+     @brief Returns the positive y-axis vector, ignoring the GameObject's rotation.
+     
+     @return Up (positive y-axis in OpenGL) vector
+     */
+    Vector3 up();
+    
+    /**
+     @brief Returns the negative yz-axis vector, ignoring the GameObject's rotation.
+     
+     @return Forward (negative z-axis in OpenGL) vector
+     */
+    Vector3 forward();
+    
+    /**
+     @brief Returns the positive x-axis vector, ignoring the GameObject's rotation.
+     
+     @return Right (positive x-axis in OpenGL) vector
+     */
+    Vector3 right();
 };
 
 #endif

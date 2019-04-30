@@ -6,7 +6,7 @@ public:
     RenderSystem();
     ~RenderSystem();
     
-    virtual void update(GameObject *gameObject);
+    virtual void update();
 };
 
 #endif

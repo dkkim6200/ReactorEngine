@@ -4,7 +4,7 @@ GameObject::GameObject() {
     id = rand();
     
     transform = new Transform();
-    components = new map<int, Component *>();
+    components = new map<size_t, Component *>();
 }
 
 GameObject::~GameObject() {
@@ -15,37 +15,33 @@ int GameObject::getId() {
     return id;
 }
 
-Component *GameObject::getComponent(int id) {
-    if (id == COMPONENT_TRANSFORM) {
-        return transform;
-    }
-    else if (components->find(id) != components->end()) {
-        return components->at(id);
-    } else {
-        return NULL;
-    }
-}
-
-Component *GameObject::addComponent(int id) {
-    Component *componentToAdd = NULL;
-    
-    if (id == COMPONENT_RENDERER) {
-        componentToAdd = new Renderer();
-    }
-    else if (id == COMPONENT_CAMERA) {
-        componentToAdd = new Camera();
-    }
-    else {
-        cout << "NO SUCH COMPONENT!" << endl;
-        exit(1);
-    }
-    
-    if (components->find(componentToAdd->getId()) == components->end()) {
-        componentToAdd->gameObject = this;
-        components->emplace(componentToAdd->getId(), componentToAdd);
-    } else {
-        delete componentToAdd;
-    }
-    
-    return componentToAdd;
-}
+//template <class T>
+//T *GameObject::getComponent() {
+//    if (typeid(T) == typeid(Transform)) {
+//        return (T *)transform;
+//    }
+//    else if (hasComponent<T>()) {
+//        return (T *)(components->at(typeid(T)));
+//    } else {
+//        return NULL;
+//    }
+//}
+//
+//template <class T>
+//bool GameObject::hasComponent() {
+//    return typeid(T) == typeid(Transform) || components->find(typeid(T)) != components->end();
+//}
+//
+//template <class T>
+//T *GameObject::addComponent() {
+//    T *componentToAdd = new T();
+//
+//    if (!hasComponent<T>()) {
+//        componentToAdd->gameObject = this;
+//        components->emplace(typeid(T), componentToAdd);
+//    } else {
+//        delete componentToAdd;
+//    }
+//
+//    return componentToAdd;
+//}

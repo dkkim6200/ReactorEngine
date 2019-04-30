@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-Transform::Transform() : Component(COMPONENT_TRANSFORM) {
+Transform::Transform() {
     parent = NULL;
     children = new vector<Transform *>();
     
@@ -9,7 +9,7 @@ Transform::Transform() : Component(COMPONENT_TRANSFORM) {
     scale = Vector3(1, 1, 1);
 }
 
-Transform::Transform(Vector3 position, Quaternion rotation, Vector3 scale) : Component(COMPONENT_TRANSFORM) {
+Transform::Transform(Vector3 position, Quaternion rotation, Vector3 scale) {
     this->position = position;
     this->rotation = rotation;
     this->scale = scale;
@@ -101,17 +101,17 @@ Vector3 Transform::getWorldScale() {
     }
 }
 
-Vector3 Transform::getUp() {
+Vector3 Transform::up() {
     Quaternion worldRot = getWorldRotation();
     return (worldRot.getConjugate() * Vector3(0, 1, 0).getQuaternion() * worldRot).getVector();
 }
 
-Vector3 Transform::getForward() {
+Vector3 Transform::forward() {
     Quaternion worldRot = getWorldRotation();
     return (worldRot.getConjugate() * Vector3(0, 0, -1).getQuaternion() * worldRot).getVector();
 }
 
-Vector3 Transform::getRight() {
+Vector3 Transform::right() {
     Quaternion worldRot = getWorldRotation();
     return (worldRot.getConjugate() * Vector3(1, 0, 0).getQuaternion() * worldRot).getVector();
 }

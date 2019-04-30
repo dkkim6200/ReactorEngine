@@ -6,19 +6,26 @@ RenderSystem::RenderSystem() {
 RenderSystem::~RenderSystem() {
 }
 
-void RenderSystem::update(GameObject *gameObject) {
-    Transform *transform = (Transform *)gameObject->getComponent(COMPONENT_TRANSFORM);
-    Renderer *renderer = (Renderer *)gameObject->getComponent(COMPONENT_RENDERER);
+void RenderSystem::update() {
+    auto gameObjects = engine->getGameObjects();
     
-    if (renderer != NULL &&
-        renderer->mesh != NULL) {
+    for (auto it = gameObjects->begin(); it != gameObjects->end(); it++) {
+        if (!it->second->hasComponent<Renderer>()) {
+            continue;
+        }
+        
+        GameObject *gameObject = it->second;
+        
+        Transform *transform = gameObject->transform;
+        Renderer *renderer = gameObject->getComponent<Renderer>();
+        
         //================================================================
         // Update Matrices
         //================================================================
         
         GameObject *cameraGameObject = Camera::mainCamera->gameObject;
         
-        Matrix projectionMat = Matrix::getProjectionMat(Window::width / Window::height,
+        Matrix projectionMat = Matrix::getProjectionMat(INIT_SCREEN_WIDTH / INIT_SCREEN_HEIGHT,
                                                         Camera::mainCamera->nearClipPlane,
                                                         Camera::mainCamera->farClipPlane,
                                                         Camera::mainCamera->fov);

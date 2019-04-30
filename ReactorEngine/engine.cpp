@@ -1,11 +1,26 @@
 #include "main.hpp"
 
 Engine::Engine() {
+    initOpenGL();
+    
+    // Reactor Engine initialization
+    
+    curScene = NULL;
+    
+    Input::init();
+    
+    gameObjects = new map<int, GameObject *>();
+    systems = new vector<System *>();
+    systems->push_back(new RenderSystem());
+    systems->push_back(new TimeSystem());
+}
+
+void Engine::initOpenGL() {
     glewExperimental = GL_TRUE;
     glewInit();
     
     cout << "Renderer: " << glGetString(GL_RENDERER) << endl;
-    cout << "OpenGL version supported " << glGetString(GL_VERSION) << endl;
+    cout << "OpenGL version supported: " << glGetString(GL_VERSION) << endl;
     
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -21,37 +36,37 @@ Engine::Engine() {
     glBindVertexArray(vao);
     
     compileShaders();
-    
-    // Reactor Engine initialization
-    
-    curScene = NULL;
-    
-    Time::init();
-    Input::init();
-    Screen::init();
-    Window::init();
 }
 
-void Engine::update() {
-    Time::updateDeltaTime();
-    
-//    Screen::width = glutGet(GLUT_SCREEN_WIDTH);
-//    Screen::height = glutGet(GLUT_SCREEN_HEIGHT);
-//
-//    Window::width = glutGet(GLUT_WINDOW_WIDTH);
-//    Window::height = glutGet(GLUT_WINDOW_HEIGHT);
-    
-    if (SHOW_FPS) {
-        cout << 1.0 / Time::deltaTime << " FPS" << endl;
-    }
-    
+void Engine::update() {    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    for (int i = 0; i < systems->size(); i++) {
+        systems->at(i)->update();
+    }
     
     curScene->update();
 }
 
 void Engine::loadScene(Scene *scene) {
     curScene = scene;
+}
+
+GameObject *Engine::getGameObject(int id) {
+    if (gameObjects->find(id) != gameObjects->end()) {
+        return gameObjects->at(id);
+    }
+    else {
+        return NULL;
+    }
+}
+
+map<int, GameObject *> *Engine::getGameObjects() {
+    return gameObjects;
+}
+
+void Engine::addGameObject(GameObject *gameObject) {
+    gameObjects->emplace(gameObject->getId(), gameObject);
 }
 
 void Engine::onKeyPressed(int key) {
@@ -66,8 +81,8 @@ void Engine::onMouse(double x, double y) {
 //    Input::mouseX = (x - (Window::width / 2)) / (Window::width / 2);
 //    Input::mouseY = (y - (Window::height / 2)) / (Window::height / 2);
     
-    Input::mouseX = (x / Window::width) - 0.5;
-    Input::mouseY = -((y / Window::height) - 0.5);
+    Input::mouseX = (x / INIT_SCREEN_WIDTH) - 0.5;
+    Input::mouseY = -((y / INIT_SCREEN_HEIGHT) - 0.5);
 }
 
 void Engine::addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType) {

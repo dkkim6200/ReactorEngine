@@ -6,7 +6,7 @@ SceneMain::SceneMain() : Scene() {
     //=====================================================================
     
     GameObject *character = new GameObject();
-    addGameObject(character);
+    engine->addGameObject(character);
     characterId = character->getId();
     
     character->transform->position = Vector3(0, 0, 0);
@@ -18,14 +18,14 @@ SceneMain::SceneMain() : Scene() {
     //=====================================================================
     
     GameObject *mainCamera = new GameObject();
-    addGameObject(mainCamera);
+    engine->addGameObject(mainCamera);
     mainCamera->transform->setParent(character->transform);
     
     mainCamera->transform->position = Vector3(0, 0, 0);
     mainCamera->transform->rotation = Quaternion::identity();
     mainCamera->transform->scale = Vector3(1, 1, 1);
     
-    Camera *cameraComp = (Camera *)mainCamera->addComponent(COMPONENT_CAMERA);
+    Camera *cameraComp = mainCamera->addComponent<Camera>();
     cameraComp->nearClipPlane = 0.1;
     cameraComp->farClipPlane = 100.0;
     cameraComp->fov = RAD(45.0);
@@ -36,20 +36,16 @@ SceneMain::SceneMain() : Scene() {
     //=====================================================================
     
     GameObject *mario = new GameObject();
-    addGameObject(mario);
+    engine->addGameObject(mario);
     carId = mario->getId();
     
     mario->transform->position = Vector3(0, -0.5, -5);
     mario->transform->rotation = Quaternion(0, 0, 0);
     mario->transform->scale = Vector3(1, 1, 1);
     
-    Renderer *rendererMario = (Renderer *)mario->addComponent(COMPONENT_RENDERER);
+    Renderer *rendererMario = mario->addComponent<Renderer>();
     rendererMario->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/maze/maze.obj",
                                "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/maze/maze_texture.bmp");
-    
-    for (int i = 0; i < rendererMario->mesh->vertices.size(); i++) {
-        cout << rendererMario->mesh->vertices[i] << endl;
-    }
     
     //=====================================================================
 }
@@ -66,23 +62,24 @@ void SceneMain::update() {
     }
     
     GameObject *mainCamera = Camera::mainCamera->gameObject;
-    mainCamera->transform->rotation = Quaternion(Vector3(1, 0, 0), clamp(-Input::getMouseY() * 10, RAD(-90), RAD(90)));
-    GameObject *character = getGameObject(characterId);
-    character->transform->rotation = Quaternion(Vector3(0, 1, 0), fmod(Input::getMouseX() * 10, RAD(360)));
+    mainCamera->transform->rotation = Quaternion(Vector3(1, 0, 0), clamp(-Input::getMouseY(), RAD(-90), RAD(90)));
     
-    cout << mainCamera->transform->getRight() << endl;
+    GameObject *character = engine->getGameObject(characterId);
+    character->transform->rotation = Quaternion(Vector3(0, 1, 0), fmod(Input::getMouseX(), RAD(360)));
+    
+    cout << mainCamera->transform->right() << endl;
     
     if (Input::pressedKey == GLFW_KEY_W) {
-        character->transform->translate(character->transform->getForward() * Time::deltaTime);
+        character->transform->translate(character->transform->forward() * Time::deltaTime);
     }
     else if (Input::pressedKey == GLFW_KEY_S) {
-        character->transform->translate(character->transform->getForward() * -1 * Time::deltaTime);
+        character->transform->translate(character->transform->forward() * -1 * Time::deltaTime);
     }
     else if (Input::pressedKey == GLFW_KEY_A) {
-        character->transform->translate(character->transform->getRight() * -1 * Time::deltaTime);
+        character->transform->translate(character->transform->right() * -1 * Time::deltaTime);
     }
     else if (Input::pressedKey == GLFW_KEY_D) {
-        character->transform->translate(character->transform->getRight() * Time::deltaTime);
+        character->transform->translate(character->transform->right() * Time::deltaTime);
     }
     
     cout << "====================\n\n" << endl;
@@ -90,5 +87,4 @@ void SceneMain::update() {
     cout << "Forward vector: " << Vector3(1, 0, 0).rotate(mainCamera->transform->getWorldRotation()) << endl;
     cout << endl;
     cout << "Mouse: (" << Input::getMouseX() << ", " << Input::getMouseY() << ")" << endl;
-    cout << "Window: " << Window::width << "x" << Window::height << endl;
 }

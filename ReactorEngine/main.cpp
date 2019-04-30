@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     engine = new Engine();
-    engine->loadScene(new SceneMain);
+    engine->loadScene(new SceneMain());
     
     glfwSetKeyCallback(window, keyboard);
     glfwSetCursorPosCallback(window, mouse);

@@ -20,8 +20,6 @@ using namespace std;
 //#include <glm/glm.hpp>
 
 #include "util.hpp"
-#include "screen.hpp"
-#include "window.hpp"
 #include "time.hpp"
 #include "input.hpp"
 #include "vector3.hpp"
@@ -37,6 +35,7 @@ using namespace std;
 #include "game_object.hpp"
 #include "system.hpp"
 #include "render_system.hpp"
+#include "time_system.hpp"
 #include "scene.hpp"
 #include "engine.hpp"
 
