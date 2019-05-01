@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8334173922796A410044FD80 /* type_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8334173722796A410044FD80 /* type_info.cpp */; };
 		8334A2E61DA3691100140E2E /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8334A2E51DA3691100140E2E /* time.cpp */; };
 		83533A0E22737AC6001036C8 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */; };
 		83533A1022737DC8001036C8 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83533A0F22737DC8001036C8 /* libGLEW.2.1.0.dylib */; };
@@ -32,6 +33,9 @@
 		83D0FF711DB68389002B749E /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF6F1DB68389002B749E /* component.cpp */; };
 		83D0FF741DB6869F002B749E /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D0FF721DB6869F002B749E /* transform.cpp */; };
 		83DFA5D42278DC0C00C32A1E /* time_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DFA5D22278DC0C00C32A1E /* time_system.cpp */; };
+		83DFA5DA2279063200C32A1E /* script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DFA5D82279063200C32A1E /* script.cpp */; };
+		83DFA5DD2279074F00C32A1E /* script_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DFA5DB2279074F00C32A1E /* script_system.cpp */; };
+		83DFA5E3227916CD00C32A1E /* player_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DFA5E1227916CD00C32A1E /* player_controller.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8334173722796A410044FD80 /* type_info.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = type_info.cpp; sourceTree = "<group>"; };
+		8334173822796A410044FD80 /* type_info.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type_info.hpp; sourceTree = "<group>"; };
 		8334A2E41DA3691100140E2E /* time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = time.hpp; sourceTree = "<group>"; };
 		8334A2E51DA3691100140E2E /* time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time.cpp; sourceTree = "<group>"; };
 		83533A0D22737AC6001036C8 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
@@ -283,6 +289,12 @@
 		83D0FF731DB6869F002B749E /* transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = transform.hpp; sourceTree = "<group>"; };
 		83DFA5D22278DC0C00C32A1E /* time_system.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = time_system.cpp; sourceTree = "<group>"; };
 		83DFA5D32278DC0C00C32A1E /* time_system.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = time_system.hpp; sourceTree = "<group>"; };
+		83DFA5D82279063200C32A1E /* script.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = script.cpp; sourceTree = "<group>"; };
+		83DFA5D92279063200C32A1E /* script.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = script.hpp; sourceTree = "<group>"; };
+		83DFA5DB2279074F00C32A1E /* script_system.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = script_system.cpp; sourceTree = "<group>"; };
+		83DFA5DC2279074F00C32A1E /* script_system.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = script_system.hpp; sourceTree = "<group>"; };
+		83DFA5E1227916CD00C32A1E /* player_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_controller.cpp; sourceTree = "<group>"; };
+		83DFA5E2227916CD00C32A1E /* player_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_controller.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +321,8 @@
 				83C78A8B1DA55A420008466D /* texture.cpp */,
 				83B09E7A1ECC101400B606F9 /* util.hpp */,
 				83B09E791ECC101400B606F9 /* util.cpp */,
+				8334173822796A410044FD80 /* type_info.hpp */,
+				8334173722796A410044FD80 /* type_info.cpp */,
 				832730D21E8118C200C64273 /* math */,
 			);
 			name = util;
@@ -366,6 +380,8 @@
 				835C2D281D9D8C0A0019F073 /* main.cpp */,
 				83B09E891ECCCBF900B606F9 /* scene_main.hpp */,
 				83B09E881ECCCBF900B606F9 /* scene_main.cpp */,
+				83DFA5E2227916CD00C32A1E /* player_controller.hpp */,
+				83DFA5E1227916CD00C32A1E /* player_controller.cpp */,
 				832730D31E81190100C64273 /* core */,
 				83C855FB1E87ABCE003429DB /* models */,
 			);
@@ -403,6 +419,8 @@
 				8383071D1DB93967005BE968 /* render_system.cpp */,
 				83DFA5D32278DC0C00C32A1E /* time_system.hpp */,
 				83DFA5D22278DC0C00C32A1E /* time_system.cpp */,
+				83DFA5DC2279074F00C32A1E /* script_system.hpp */,
+				83DFA5DB2279074F00C32A1E /* script_system.cpp */,
 			);
 			name = system;
 			sourceTree = "<group>";
@@ -682,6 +700,8 @@
 				83AC872B1DA3450600B86308 /* renderer.cpp */,
 				83B09E921ECD383F00B606F9 /* camera.hpp */,
 				83B09E911ECD383F00B606F9 /* camera.cpp */,
+				83DFA5D92279063200C32A1E /* script.hpp */,
+				83DFA5D82279063200C32A1E /* script.cpp */,
 			);
 			name = component;
 			sourceTree = "<group>";
@@ -744,6 +764,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				835C3B151D9F65050019F073 /* matrix.cpp in Sources */,
+				8334173922796A410044FD80 /* type_info.cpp in Sources */,
+				83DFA5DA2279063200C32A1E /* script.cpp in Sources */,
 				8383071B1DB931F7005BE968 /* system.cpp in Sources */,
 				83B09E781ECC0C3100B606F9 /* input.cpp in Sources */,
 				8383071F1DB93967005BE968 /* render_system.cpp in Sources */,
@@ -752,9 +774,11 @@
 				83AC87341DA34DE100B86308 /* engine.cpp in Sources */,
 				835C3B121D9F64600019F073 /* vector3.cpp in Sources */,
 				83AC872D1DA3450600B86308 /* renderer.cpp in Sources */,
+				83DFA5DD2279074F00C32A1E /* script_system.cpp in Sources */,
 				83B09E751ECC076A00B606F9 /* scene.cpp in Sources */,
 				83DFA5D42278DC0C00C32A1E /* time_system.cpp in Sources */,
 				83D0FF741DB6869F002B749E /* transform.cpp in Sources */,
+				83DFA5E3227916CD00C32A1E /* player_controller.cpp in Sources */,
 				83B09E7B1ECC101400B606F9 /* util.cpp in Sources */,
 				83B09E8A1ECCCBF900B606F9 /* scene_main.cpp in Sources */,
 				83B09E931ECD383F00B606F9 /* camera.cpp in Sources */,

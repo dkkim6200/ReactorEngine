@@ -1,4 +1,4 @@
 #include "main.hpp"
 
-Scene::Scene() {
+Script::~Script() {
 }

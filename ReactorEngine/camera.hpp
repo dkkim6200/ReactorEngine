@@ -2,8 +2,6 @@
 #define CAMERA_H
 
 class Camera : public Component {
-private:
-    
 public:
     static Camera *mainCamera;
     

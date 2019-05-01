@@ -2,10 +2,14 @@
 #define GAME_OBJECT_HPP
 
 class GameObject {
+    friend class RenderSystem;
+    friend class ScriptSystem;
+    
 private:
     int id;
     
-    map<size_t, Component *> *components;
+    unordered_map<TypeInfo, Component *> *components;
+    unordered_map<TypeInfo, Script *> *scripts;
     
 public:
     GameObject();
@@ -14,16 +18,18 @@ public:
     int getId();
     Transform *transform;
     
-    // The template functions have to be in the header file.
-    // TODO: find a solution to put the function definitions to the CPP file.
-    
     template <class T>
     T *getComponent() {
-        if (typeid(T).hash_code() == typeid(Transform).hash_code()) {
+        TypeInfo type = TypeInfo::typeOf<T>();
+        
+        if (type == TypeInfo::typeOf<Transform>()) {
             return (T *)transform;
         }
+        else if (hasScript<T>()) {
+            return (T *)(scripts->at(type));
+        }
         else if (hasComponent<T>()) {
-            return (T *)(components->at(typeid(T).hash_code()));
+            return (T *)(components->at(type));
         } else {
             return NULL;
         }
@@ -31,21 +37,44 @@ public:
     
     template <class T>
     bool hasComponent() {
-        return typeid(T).hash_code() == typeid(Transform).hash_code() || components->find(typeid(T).hash_code()) != components->end();
+        TypeInfo type = TypeInfo::typeOf<T>();
+        
+        return type == TypeInfo::typeOf<Transform>() || components->find(type) != components->end() || hasScript<T>();
+    }
+    
+    template <class T>
+    bool hasScript() {
+        TypeInfo type = TypeInfo::typeOf<T>();
+        
+        return std::is_base_of<Script, T>::value && scripts->find(type) != scripts->end();
     }
     
     template <class T>
     T *addComponent() {
-        T *componentToAdd = new T();
+        T *componentToAdd = engine->createComponent<T>();
+        componentToAdd->gameObject = this;
+        componentToAdd->transform = this->transform;
         
-        if (!this->hasComponent<T>()) {
-            componentToAdd->gameObject = this;
-            components->emplace(typeid(T).hash_code(), componentToAdd);
+        TypeInfo type = TypeInfo::typeOf<T>();
+        
+        if ((std::is_base_of<Script, T>::value) && scripts->find(type) == scripts->end()) {
+            scripts->emplace(type, (Script *)componentToAdd);
+        }
+        else if (!this->hasComponent<T>()) {
+            components->emplace(type, (Component *)componentToAdd);
         } else {
             delete componentToAdd;
         }
         
         return componentToAdd;
+    }
+    
+    template <class T>
+    void removeComponent() {
+        T *componentToRemove = getComponent<T>();
+        
+        engine->removeComponent(componentToRemove);
+        delete componentToRemove;
     }
 };
 

@@ -7,9 +7,7 @@ RenderSystem::~RenderSystem() {
 }
 
 void RenderSystem::update() {
-    auto gameObjects = engine->getGameObjects();
-    
-    for (auto it = gameObjects->begin(); it != gameObjects->end(); it++) {
+    for (auto it = engine->gameObjects->begin(); it != engine->gameObjects->end(); it++) {
         if (!it->second->hasComponent<Renderer>()) {
             continue;
         }

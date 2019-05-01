@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include "scene_main.hpp"
+#include "player_controller.hpp"
 #include <unistd.h>
 
 Engine *engine;

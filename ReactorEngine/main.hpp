@@ -8,8 +8,9 @@
 #include <chrono>
 #include <sstream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
+#include <typeindex>
 
 using namespace std;
 
@@ -19,6 +20,10 @@ using namespace std;
 
 //#include <glm/glm.hpp>
 
+class Engine;
+extern Engine *engine;
+
+#include "type_info.hpp"
 #include "util.hpp"
 #include "time.hpp"
 #include "input.hpp"
@@ -28,16 +33,22 @@ using namespace std;
 #include "matrix.hpp"
 #include "texture.hpp"
 #include "mesh.hpp"
+
 #include "component.hpp"
 #include "transform.hpp"
 #include "renderer.hpp"
 #include "camera.hpp"
-#include "game_object.hpp"
+#include "script.hpp"
+#include "collider.hpp"
+
 #include "system.hpp"
 #include "render_system.hpp"
 #include "time_system.hpp"
+#include "script_system.hpp"
+
 #include "scene.hpp"
 #include "engine.hpp"
+#include "game_object.hpp"
 
 #define INIT_SCREEN_WIDTH 800
 #define INIT_SCREEN_HEIGHT 600
@@ -51,16 +62,10 @@ using namespace std;
 
 #define NUM_VERTICES_PER_PATCH 16
 
-// class Component
-#define COMPONENT_TRANSFORM 0
-#define COMPONENT_RENDERER 1
-#define COMPONENT_CAMERA 2
-
+#define MAX_FPS 60
 #define SHOW_FPS true
 
 #define RAD(x) x*3.14159265359/180.0
 #define DEG(x) x*180.0/3.14159265359
-
-extern Engine *engine;
 
 #endif

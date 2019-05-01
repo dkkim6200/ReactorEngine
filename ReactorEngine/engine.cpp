@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include <unistd.h>
 
 Engine::Engine() {
     initOpenGL();
@@ -9,10 +10,16 @@ Engine::Engine() {
     
     Input::init();
     
-    gameObjects = new map<int, GameObject *>();
+    gameObjects = new unordered_map<int, GameObject *>();
+    
+    componentContainers = new unordered_map<TypeInfo, vector<Component *> *>();
+    scriptContainers = new unordered_map<TypeInfo, vector<Script *> *>();
+    scripts = new vector<Script *>();
+    
     systems = new vector<System *>();
     systems->push_back(new RenderSystem());
     systems->push_back(new TimeSystem());
+    systems->push_back(new ScriptSystem());
 }
 
 void Engine::initOpenGL() {
@@ -38,14 +45,16 @@ void Engine::initOpenGL() {
     compileShaders();
 }
 
-void Engine::update() {    
+void Engine::update() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     for (int i = 0; i < systems->size(); i++) {
         systems->at(i)->update();
     }
     
-    curScene->update();
+    if (1.0 / Time::deltaTime > MAX_FPS) {
+        usleep(500000.0 * (1.0 / MAX_FPS - Time::deltaTime));
+    }
 }
 
 void Engine::loadScene(Scene *scene) {
@@ -61,12 +70,21 @@ GameObject *Engine::getGameObject(int id) {
     }
 }
 
-map<int, GameObject *> *Engine::getGameObjects() {
-    return gameObjects;
+void Engine::addGameObject(GameObject *gameObject) {
+    (*gameObjects)[gameObject->getId()] = gameObject;
 }
 
-void Engine::addGameObject(GameObject *gameObject) {
-    gameObjects->emplace(gameObject->getId(), gameObject);
+void Engine::removeComponent(Component *component) {
+    if (dynamic_cast<Script *>(component)) {
+        vector<Script *> *curContainer = (*scriptContainers)[component->type];
+        
+        curContainer->erase(std::remove(curContainer->begin(), curContainer->end(), (Script *)component));
+    }
+    else {
+        vector<Component *> *curContainer = (*componentContainers)[component->type];
+        
+        curContainer->erase(std::remove(curContainer->begin(), curContainer->end(), component));
+    }
 }
 
 void Engine::onKeyPressed(int key) {
