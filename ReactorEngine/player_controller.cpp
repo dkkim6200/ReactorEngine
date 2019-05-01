@@ -2,7 +2,7 @@
 #include "player_controller.hpp"
 
 void PlayerController::start() {
-    
+    engine->eventBus->subscribe(this, &PlayerController::onKeyDown);
 }
 
 void PlayerController::update() {
@@ -33,6 +33,10 @@ void PlayerController::update() {
 //    cout << "Forward vector: " << Vector3(1, 0, 0).rotate(mainCamera->transform->getWorldRotation()) << endl;
 //    cout << endl;
 //    cout << "Mouse: (" << Input::getMouseX() << ", " << Input::getMouseY() << ")" << endl;
+}
+
+void PlayerController::onKeyDown(KeyDownEvent *e) {
+    cout << "Key " << (char) e->key << " is down." << endl;
 }
 
 float PlayerController::clamp(float n, float lo, float hi) {

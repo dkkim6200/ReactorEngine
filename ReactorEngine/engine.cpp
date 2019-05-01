@@ -20,6 +20,9 @@ Engine::Engine() {
     systems->push_back(new RenderSystem());
     systems->push_back(new TimeSystem());
     systems->push_back(new ScriptSystem());
+    systems->push_back(new InputSystem());
+    
+    eventBus = new EventBus();
 }
 
 void Engine::initOpenGL() {
@@ -43,6 +46,12 @@ void Engine::initOpenGL() {
     glBindVertexArray(vao);
     
     compileShaders();
+}
+
+void Engine::ignite() {
+    for (int i = 0; i < systems->size(); i++) {
+        systems->at(i)->start();
+    }
 }
 
 void Engine::update() {
@@ -85,14 +94,6 @@ void Engine::removeComponent(Component *component) {
         
         curContainer->erase(std::remove(curContainer->begin(), curContainer->end(), component));
     }
-}
-
-void Engine::onKeyPressed(int key) {
-    Input::pressedKey = key;
-}
-
-void Engine::onKeyRelease(int key) {
-    Input::pressedKey = NULL;
 }
 
 void Engine::onMouse(double x, double y) {

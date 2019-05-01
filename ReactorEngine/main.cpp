@@ -11,10 +11,10 @@ GLuint samplerId;
 
 void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (action == GLFW_PRESS) {
-        engine->onKeyPressed(key);
+        engine->eventBus->publish(new KeyDownEvent(key));
     }
     else if (action == GLFW_RELEASE) {
-        engine->onKeyRelease(key);
+        engine->eventBus->publish(new KeyUpEvent(key));
     }
 }
 
@@ -51,6 +51,8 @@ int main(int argc, char *argv[]) {
 
     engine = new Engine();
     engine->loadScene(new SceneMain());
+    
+    engine->ignite();
     
     glfwSetKeyCallback(window, keyboard);
     glfwSetCursorPosCallback(window, mouse);

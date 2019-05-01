@@ -11,13 +11,12 @@
 #include <unordered_map>
 #include <algorithm>
 #include <typeindex>
+#include <list>
 
 using namespace std;
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-//#include <QApplication>
-
 //#include <glm/glm.hpp>
 
 class Engine;
@@ -38,12 +37,16 @@ extern Engine *engine;
 #include "transform.hpp"
 #include "renderer.hpp"
 #include "camera.hpp"
-#include "script.hpp"
-#include "collider.hpp"
 
 #include "system.hpp"
+#include "script.hpp"
 #include "render_system.hpp"
 #include "time_system.hpp"
+#include "input_system.hpp"
+
+#include "event.hpp"
+#include "key_down_event.hpp"
+#include "key_up_event.hpp"
 #include "script_system.hpp"
 
 #include "scene.hpp"
@@ -63,7 +66,7 @@ extern Engine *engine;
 #define NUM_VERTICES_PER_PATCH 16
 
 #define MAX_FPS 60
-#define SHOW_FPS true
+#define SHOW_FPS false
 
 #define RAD(x) x*3.14159265359/180.0
 #define DEG(x) x*180.0/3.14159265359

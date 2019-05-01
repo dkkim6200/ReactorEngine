@@ -1,12 +1,14 @@
 #ifndef SCRIPT_H
 #define SCRIPT_H
 
-class Script : public Component {
+class System;
+
+class Script : public Component, public System {
 public:
-    virtual ~Script();
+    bool started;
     
-    virtual void start() = 0;
-    virtual void update() = 0;
+    Script() : started(false) { };
+    virtual ~Script();
 };
 
 #endif

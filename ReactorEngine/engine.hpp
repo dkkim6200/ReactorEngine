@@ -5,6 +5,7 @@ class RenderSystem;
 class TimeSystem;
 class ScriptSystem;
 struct TypeInfo;
+class EventBus;
 
 class Engine {
     friend class RenderSystem;
@@ -68,12 +69,15 @@ private:
     }
     
 public:
+    EventBus *eventBus;
+    
     Engine();
     
     void onKeyPressed(int key);
     void onKeyRelease(int key);
     void onMouse(double x, double y);
     
+    void ignite();
     void update();
     
     void loadScene(Scene *scene);

@@ -22,13 +22,6 @@ SceneMain::SceneMain() : Scene() {
     mainCamera->transform->rotation = Quaternion::identity();
     mainCamera->transform->scale = Vector3(1, 1, 1);
     
-    GameObject *mario = new GameObject();
-    engine->addGameObject(mario);
-    
-    mario->transform->position = Vector3(0, -0.5, -5);
-    mario->transform->rotation = Quaternion(0, 0, 0);
-    mario->transform->scale = Vector3(1, 1, 1);
-    
     //=====================================================================
     
     PlayerController *playerController = character->addComponent<PlayerController>();
@@ -44,9 +37,13 @@ SceneMain::SceneMain() : Scene() {
     
     //=====================================================================
     
-    Renderer *rendererMario = mario->addComponent<Renderer>();
-    rendererMario->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/maze/maze.obj",
-                               "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/maze/maze_texture.bmp");
-    
-    //=====================================================================
+    GameObject *floor = new GameObject();
+    engine->addGameObject(floor);
+    floor->transform->position = Vector3(0, -2.25, 0);
+    floor->transform->rotation = Quaternion::identity();
+    floor->transform->scale = Vector3(10, 0.5, 10);
+
+    Renderer *floorRenderer = floor->addComponent<Renderer>();
+    floorRenderer->mesh = new Mesh("/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/floor/floor.obj",
+                                   "/Users/DaekunKim/Documents/Programming/ReactorEngine/ReactorEngine/models/floor/floor.bmp");
 }

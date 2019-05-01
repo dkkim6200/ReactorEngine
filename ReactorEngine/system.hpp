@@ -3,9 +3,13 @@
 
 class System {
 public:
+    bool started;
+    
+    System() : started(false) { };
     virtual ~System();
     
-    virtual void update() = 0;
+    virtual void start() { };
+    virtual void update() { };
 };
 
 #endif
