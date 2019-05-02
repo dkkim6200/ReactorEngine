@@ -14,10 +14,6 @@ class Engine {
     friend class GameObject;
     
 private:
-    void addShader(GLuint shaderProgram, const char *shaderText, GLenum shaderType);
-    void compileShaders();
-    void initOpenGL();
-    
     Scene *curScene;
     
     vector<System *> *systems;
@@ -25,11 +21,6 @@ private:
     unordered_map<TypeInfo, vector<Component *> *> *componentContainers;
     unordered_map<TypeInfo, vector<Script *> *> *scriptContainers;
     vector<Script *> *scripts;
-
-    GLuint transformationMatLoc;
-    GLuint samplerLoc;
-    
-    GLuint shaderProgram;
     
     void removeComponent(Component *component);
     

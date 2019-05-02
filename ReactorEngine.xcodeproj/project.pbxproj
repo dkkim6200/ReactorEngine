@@ -115,6 +115,7 @@
 		83BDF052227A40CA00BACF22 /* input_system.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = input_system.hpp; sourceTree = "<group>"; };
 		83BDF054227A435900BACF22 /* key_up_event.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = key_up_event.cpp; sourceTree = "<group>"; };
 		83BDF055227A435900BACF22 /* key_up_event.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = key_up_event.hpp; sourceTree = "<group>"; };
+		83BDF057227AA92800BACF22 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		83C78A8B1DA55A420008466D /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		83C78A8C1DA55A420008466D /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		83C855FE1E87ABCE003429DB /* ambo_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = ambo_mesh.obj; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 		835C2D1C1D9D8C0A0019F073 = {
 			isa = PBXGroup;
 			children = (
+				83BDF057227AA92800BACF22 /* README.md */,
 				835C2D271D9D8C0A0019F073 /* ReactorEngine */,
 				835C2D261D9D8C0A0019F073 /* Products */,
 				835C2D2F1D9D8FB30019F073 /* Frameworks */,

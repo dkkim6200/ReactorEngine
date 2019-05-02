@@ -3,15 +3,39 @@
 ## Introduction
 Reactor Engine is a 3D Game Engine developed by Daekun Kim. It uses C++ as a main lanaguage. The goal is to create a multi-platform and platform-independent game engine, like Unity 3D or Unreal Engine. I know it would be hard, but I want to give it a try!
 
-This engine implements an Entity-component-system as a framework design.
+This engine implements a component-based architecture.
 
-## To Do!
-- [x] OpenGL integration
-- [x] Basic OBJ model loading
+## Feature list
+- [x] 3D model loading
+    - [x] OBJ
+- [x] OpenGL
+    - [x] Shaders (vertex and fragment)
+- [x] GLFW integration (Window, input, OpenGL context)
+- [x] Event messaging system
+    - [x] Pub/sub with callbacks
+- [ ] Math libray
+    - Vector3
+    - Vector2
+    - Matrix
+    - Quaternion
+- [ ] Custom containers (for ease of debugging and simplicity)
+    - [ ] Linked List
+    - [ ] Stack
+    - [ ] Queue
+    - [ ] Hash Table
+- [ ] Input
+    
+## To-do list
 - [ ] Level Editor
-- [ ] Qt integration (Remove GLUT and GLFW from the project)
 - [ ] Physics Engine
-- [ ] Script API
+- [ ] Serialization / Deserialization
+- [ ] Debugger logging/assertions
+- [ ] Custom introspection
+- [ ] Scripting API
     - Possible Language: Python (I know how to use it), Lua (Heard that it can be easily used on iOS)
+    
+## References
+- Simple Engine Library
+    - https://bitbucket.org/rgaul/sel/src/default/
 
-Copyright (c) Daekun Kim 2016-2017
+Copyright (c) Daekun Kim 2016-2019

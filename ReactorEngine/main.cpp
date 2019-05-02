@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
 
     engine = new Engine();
     engine->loadScene(new SceneMain());
-    
     engine->ignite();
     
     glfwSetKeyCallback(window, keyboard);
