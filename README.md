@@ -6,10 +6,19 @@ Reactor Engine is a 3D Game Engine developed by Daekun Kim. It uses C++ as a mai
 This engine implements a component-based architecture.
 
 ## Feature list
-- [x] 3D model loading
-    - [x] OBJ
-- [x] OpenGL
-    - [x] Shaders (vertex and fragment)
+- [x] 3D Graphics
+    - [x] OpenGL
+    - [x] Texture loading
+        - [x] BMP
+        - [ ] PNG, JPEG
+    - [x] Mesh loading
+        - [x] OBJ
+        - [ ] FBX
+        - [ ] Bezier patches
+    - [ ] Material
+        - [x] Shaders (vertex and fragment)
+    - [ ] Lighting
+    - [ ] Animation
 - [x] GLFW integration (Window, input, OpenGL context)
 - [x] Event messaging system
     - [x] Pub/sub with callbacks
