@@ -47,4 +47,4 @@ This engine implements a component-based architecture.
 - Simple Engine Library
     - https://bitbucket.org/rgaul/sel/src/default/
 
-Copyright (c) Daekun Kim 2016-2019
+Copyright (c) Daisy Kim 2016-2025
