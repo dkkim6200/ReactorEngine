@@ -1,7 +1,7 @@
 # ReactorEngine
 
 ## Introduction
-Reactor Engine is a 3D Game Engine developed by Daekun Kim. It uses C++ as a main lanaguage. The goal is to create a multi-platform and platform-independent game engine, like Unity 3D or Unreal Engine. I know it would be hard, but I want to give it a try!
+Reactor Engine is a 3D Game Engine developed by Daisy Kim. It uses C++ as a main lanaguage. The goal is to create a multi-platform and platform-independent game engine, like Unity 3D or Unreal Engine. I know it would be hard, but I want to give it a try!
 
 This engine implements a component-based architecture.
 
